@@ -51,17 +51,17 @@ def FindRestartFile(fcst_path,run_name,time):
             f_time = f.variables['time'][0]
 
             if( N.abs(f_time - time) < 1.0 ):
-                print("\n Found time %d in file:  %s" % (f_time, file))
+                print(("\n Found time %d in file:  %s" % (f_time, file)))
                 return n
 
         print("\n\n  ERROR!!!")
-        print("\n      FindRestartFile: A file with the restart time of %d cannot be found, exiting!!!" % time)
+        print(("\n      FindRestartFile: A file with the restart time of %d cannot be found, exiting!!!" % time))
         print("\n\n  ERROR!!!")
         sys.exit(-1)
 
     else:
         print("\n\n  ERROR!!!")
-        print("\n      FindRestartFile: No files where found having the header:  %s, exiting" % fileheader)
+        print(("\n      FindRestartFile: No files where found having the header:  %s, exiting" % fileheader))
         print("\n\n  ERROR!!!")
         sys.exit(-1)
 
@@ -110,17 +110,17 @@ def mymap(x, y, glat, glon, scale = 1.0, ax = None, ticks = True, resolution='c'
             s = map.readshapefile(shapefile,'shapeinfo',drawbounds=False)
 
             for shape in map.shapeinfo:
-                xx, yy = zip(*shape)
+                xx, yy = list(zip(*shape))
                 map.plot(xx,yy,color=color,linewidth=linewidth,ax=ax)
 
 # pickle the class instance.
 
     if _debug_timing:
-        print(timeit.clock()-tt,' secs to create original Basemap instance')
+        print((timeit.clock()-tt,' secs to create original Basemap instance'))
 
     if pickle:
         pickle.dump(map,open('mymap.pickle','wb'),-1)
-        print(timeit.clock()-tt,' secs to create original Basemap instance and pickle it')
+        print((timeit.clock()-tt,' secs to create original Basemap instance and pickle it'))
 
     return map
 #===============================================================================
@@ -249,7 +249,7 @@ parser.add_option("-m", "--member",    dest="member", type="int" )
 
 if options.dir and options.exp == None:
     options.exp = glob.glob(os.path.join(options.dir, "*.exp" ))[0]
-    print("\n ==> Quick4Panel: found experiment files %s" % options.exp)
+    print(("\n ==> Quick4Panel: found experiment files %s" % options.exp))
 
 if options.exp == None:
     parser.print_help()
@@ -266,20 +266,20 @@ if options.datetime == None:
 else:
     list = [int(t) for t in options.datetime.split(",")]
     myDT = datetime.datetime(list[0],list[1],list[2],list[3],list[4],list[5])
-    print("\n ==> Quick4Panel: Date and time supplied is %s" % (myDT.strftime("%Y %m-%d %H:%M:%S")))
+    print(("\n ==> Quick4Panel: Date and time supplied is %s" % (myDT.strftime("%Y %m-%d %H:%M:%S"))))
 
 if options.height == None:
-    print
-    print("\n ==> Quick4Panel:  No height supplied, using default height: %4.2f\n" % _height)
-    print
+    print()
+    print(("\n ==> Quick4Panel:  No height supplied, using default height: %4.2f\n" % _height))
+    print()
     height = _height
 else:
     height = options.height
 
 if options.member == None:
-    print
-    print("\n ==> Quick4Panel:  No member supplied, using default member: %d\n" % _member)
-    print
+    print()
+    print(("\n ==> Quick4Panel:  No member supplied, using default member: %d\n" % _member))
+    print()
     member = _member
 else:
     member = options.member-1
@@ -338,7 +338,7 @@ figure, filename = plot_W_DBZ_T_WZ(wplot, dplot, tplot, wzplot, xc, yc, height, 
 
 newfilename = os.path.join(newBasePath,'Plots',filename)
 if output_format: 
-    print "\n Saving file %s" % (newfilename)
+    print("\n Saving file %s" % (newfilename))
     figure.savefig(newfilename, format=output_format)
 
 if not options.nodisplay:

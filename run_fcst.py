@@ -30,17 +30,17 @@ def FindRestartFile(fcst_path,run_name,time):
             f_time = f.variables['time'][0]
 
             if( N.abs(f_time - time) < 1.0 ):
-                print("\n Found time %d in file:  %s" % (f_time, file))
+                print(("\n Found time %d in file:  %s" % (f_time, file)))
                 return n
 
         print("\n\n  ERROR!!!")
-        print("\n      FindRestartFile: A file with the restart time of %d cannot be found, exiting!!!" % time)
+        print(("\n      FindRestartFile: A file with the restart time of %d cannot be found, exiting!!!" % time))
         print("\n\n  ERROR!!!")
         sys.exit(-1)
                 
     else:
         print("\n\n  ERROR!!!")
-        print("\n      FindRestartFile: No files where found having the header:  %s, exiting" % fileheader)
+        print(("\n      FindRestartFile: No files where found having the header:  %s, exiting" % fileheader))
         print("\n\n  ERROR!!!")
         sys.exit(-1)
 
@@ -48,9 +48,9 @@ def FindRestartFile(fcst_path,run_name,time):
 # RunMember is a function that runs a system command
 
 def RunMember(cmd):
-    print("\n Executing command:  %s " % cmd)
+    print(("\n Executing command:  %s " % cmd))
     os.system(cmd)
-    print("\n %s completed...." % cmd)
+    print(("\n %s completed...." % cmd))
     return
     
 #-------------------------------------------------------------------------------
@@ -74,7 +74,7 @@ parser.add_option(      "--range",    dest="range",    type ="int",   default=No
 
 if options.exp == None:
     parser.print_help()
-    print "\n RUN_FCST: ERROR -->  Experiment file not supplied..EXITING!!!"
+    print("\n RUN_FCST: ERROR -->  Experiment file not supplied..EXITING!!!")
     sys.exit(0)
 else:
     with open(options.exp, 'rb') as f:
@@ -93,10 +93,10 @@ else:
          startDT    = DT.datetime(list[0],list[1],list[2],list[3],list[4],list[5])
          runDT      = DT.datetime(experiment["YEAR"],experiment["MONTH"],experiment["DAY"],experiment["HOUR"],experiment["MINUTE"],experiment["SECOND"])
          start_time = (startDT-runDT).seconds
-         print("\n ==> RUN_FCST: Date&time supplied: %s, which corresponds to a local model time of %d sec" % (startDT.strftime("%Y %m-%d %H:%M:%S"), start_time))
+         print(("\n ==> RUN_FCST: Date&time supplied: %s, which corresponds to a local model time of %d sec" % (startDT.strftime("%Y %m-%d %H:%M:%S"), start_time)))
 
 if options.run_time == None:
-    print "\n Run_Fcst Script: IMPORTANT:  Run time not supplied...defaulting to init mode!!!"
+    print("\n Run_Fcst Script: IMPORTANT:  Run time not supplied...defaulting to init mode!!!")
     options.init = True
     run_time = 0.0
 else:
@@ -104,21 +104,21 @@ else:
 
 if options.nthreads != None:
     nthreads = options.nthreads
-    print("\n Run_Fcst Script:  %d threads requested...." % nthreads)
+    print(("\n Run_Fcst Script:  %d threads requested...." % nthreads))
 else:
     nthreads = _nthreads
-    print("\n Run_Fcst Script:  defaulting to %d threads" % nthreads)
+    print(("\n Run_Fcst Script:  defaulting to %d threads" % nthreads))
     
 if options.range == None:
     ne = experiment['ne']
     ne_start = 1
     ne_end   = ne
-    print("\n Run_Fcst Script: Number ensemble members to run not supplied, defaulting to experiment file:  %d" % ne)
+    print(("\n Run_Fcst Script: Number ensemble members to run not supplied, defaulting to experiment file:  %d" % ne))
 else:
     ne = 1 + options.range[1] - options.range[0]
     ne_start = options.range[0]
     ne_end   = options.range[1]
-    print("\n Run_Fcst Script: Number ensemble members supplied  %d  %d" % ne_start, ne_end)
+    print(("\n Run_Fcst Script: Number ensemble members supplied  %d  %d" % ne_start, ne_end))
 
 #-------------------------------------------------------------------------------
 #
@@ -128,9 +128,9 @@ cpu_model = 0.0
 c0 = cpu.time()
 
 if init:
-    print("\n Run_Fcst Script: Initializing %3.3d ensemble members" % (ne))
+    print(("\n Run_Fcst Script: Initializing %3.3d ensemble members" % (ne)))
 else:
-    print("\n Run_Fcst Script: Integrating %3.3d ensemble members for %4.4d seconds" % (ne, run_time))
+    print(("\n Run_Fcst Script: Integrating %3.3d ensemble members for %4.4d seconds" % (ne, run_time)))
 
 nthreads = min(nthreads, ne)
 
@@ -189,9 +189,9 @@ for n in N.arange(ne_start-1,ne_end):
     outputfile  = os.path.join(fcst_member, "cm1.out")
 
     if debug:  
-        print("\n Now setting up forecast member: %s" % fcst_member)
-        print("%s is the model path" % model)
-        print("%s is the outputfile path" % outputfile)
+        print(("\n Now setting up forecast member: %s" % fcst_member))
+        print(("%s is the model path" % model))
+        print(("%s is the outputfile path" % outputfile))
 
     cmd = "cd %s ; %s >> %s" % (fcst_member, "cm1.exe", "cm1.out")
     pool.apply_async(RunMember, (cmd,))
@@ -202,6 +202,6 @@ pool.join()
 cpu_model = cpu_model + cpu.time() - c0
 
 if init:
-    print "\nRun_Fcst Script: Model runs initialized for experiment   %f  CPU secs\n" % (round(cpu_model, 3))
+    print("\nRun_Fcst Script: Model runs initialized for experiment   %f  CPU secs\n" % (round(cpu_model, 3)))
 else:
-    print "\nRun_Fcst Script: Model runs integrated out %d seconds, used   %f  CPU secs\n" % (run_time, round(cpu_model, 3))
+    print("\nRun_Fcst Script: Model runs integrated out %d seconds, used   %f  CPU secs\n" % (run_time, round(cpu_model, 3)))

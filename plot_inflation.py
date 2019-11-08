@@ -69,14 +69,14 @@ def mymap(x, y, glat, glon, scale = 1.0, ax = None, ticks = True, resolution='c'
             s = map.readshapefile(shapefile,'shapeinfo',drawbounds=False)
 
             for shape in map.shapeinfo:
-                xx, yy = zip(*shape)
+                xx, yy = list(zip(*shape))
                 map.plot(xx,yy,color=color,linewidth=linewidth,ax=ax)
 
 # pickle the class instance.
 
     if pickle:
         pickle.dump(map,open('mymap.pickle','wb'),-1)
-        print(timeit.clock()-tt,' secs to create original Basemap instance and pickle it')
+        print((timeit.clock()-tt,' secs to create original Basemap instance and pickle it'))
 
     return map
 #===============================================================================
@@ -185,7 +185,7 @@ parser.add_option("--show", dest="show", action="store_true", help="Show plot in
 
 if options.dir and options.exp == None:
     options.exp = glob.glob(os.path.join(options.dir, "*.exp" ))[0]
-    print("\n ==> Plot_Inflation: found experiment files %s" % options.exp)
+    print(("\n ==> Plot_Inflation: found experiment files %s" % options.exp))
 
 if options.exp == None:
     parser.print_help()
@@ -202,12 +202,12 @@ if options.datetime == None:
 else:
     list = [int(t) for t in options.datetime.split(",")]
     myDT = datetime.datetime(list[0],list[1],list[2],list[3],list[4],list[5])
-    print("\n ==> Plot_Inflation: Date and time supplied is %s" % (myDT.strftime("%Y-%m-%d %H:%M:%S")))
+    print(("\n ==> Plot_Inflation: Date and time supplied is %s" % (myDT.strftime("%Y-%m-%d %H:%M:%S"))))
 
 infilename = "Inflation_%s.nc" % (myDT.strftime("%Y-%m-%d_%H:%M:%S"))
 newfile = os.path.join(exper['base_path'], infilename)  
 
-print("\n ==> Plot_Inflation: opening inflation file:  %s" % (newfile))
+print(("\n ==> Plot_Inflation: opening inflation file:  %s" % (newfile)))
 
 file_obj  = netCDF4.Dataset(newfile, "r")
 xc        = file_obj.variables['XC'][:]
@@ -226,7 +226,7 @@ fig.suptitle(title, fontsize=16)
 newbase = os.path.join("./", os.path.split(newfile)[0], "Plots", os.path.split(newfile)[1][:-2])
 
 filename = "%s%s" % (newbase, "pdf")
-print "\n Saving file %s" % (filename)
+print("\n Saving file %s" % (filename))
 fig.savefig(filename, format="pdf", dpi=300)
  
 if options.show:

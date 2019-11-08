@@ -32,7 +32,7 @@ if __name__ == "__main__":
 
   print("\n  ----------------------------------------------------------------------")
   print("\n                BEGIN PROGRAM ComputeHx                                 ")
-  print("\n    WALLCLOCK START TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M")  )
+  print(("\n    WALLCLOCK START TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M")  ))
   print("\n  ----------------------------------------------------------------------")
   
 #-----------------------------------------------
@@ -92,14 +92,14 @@ if __name__ == "__main__":
 
   if options.obserr == None:
     obs_error = exper['DA_PARAMS']['obs_errors']
-    print("\n --> ComputeHx:  using the obs errors from the EXPER file:  %s" % obs_error)
+    print(("\n --> ComputeHx:  using the obs errors from the EXPER file:  %s" % obs_error))
   else:
     print("\n --> ComputeHx:  using the obs errors from the command line")
     obs_error = _default_obs_error
-    for key in obs_error.keys():
+    for key in list(obs_error.keys()):
       for n, item in enumerate(options.obserr):
         if item == obs_error[key][0]:
-           print("\n --> ComputeHx:  Changing %s observational error to:  %s" % (obs_error[key][0],options.obserr[n+1]))
+           print(("\n --> ComputeHx:  Changing %s observational error to:  %s" % (obs_error[key][0],options.obserr[n+1])))
            obs_error[key][1] = float(options.obserr[n+1])
 
 #-------------------------------------------------------------------------------
@@ -107,20 +107,20 @@ if __name__ == "__main__":
 
   if options.window == None:
     window = int(exper['DA_PARAMS']['assim_window'])
-    print("\n --> ComputeHx:  using the window from the EXPER file:  +/- %d secs" % (window/2))
+    print(("\n --> ComputeHx:  using the window from the EXPER file:  +/- %d secs" % (window/2)))
   else:
     window = int(options.window)
-    print("\n --> ComputeHx:  using the window from the command line:  +/- %d secs" % (window/2))
+    print(("\n --> ComputeHx:  using the window from the command line:  +/- %d secs" % (window/2)))
 
 #-------------------------------------------------------------------------------    
 # Observation file
 
   if options.obs == None:
     obs_file = exper['radar_obs']
-    print("\n --> ComputeHx:  using the observation file from the EXPER file:  %s" % obs_file)
+    print(("\n --> ComputeHx:  using the observation file from the EXPER file:  %s" % obs_file))
   else:
     obs_file = options.obs
-    print("\n --> ComputeHx:  using the observation file from the command line:  %s" % obs_file)
+    print(("\n --> ComputeHx:  using the observation file from the command line:  %s" % obs_file))
 
 #-------------------------------------------------------------------------------    
 # Init flag creates a new file
@@ -142,7 +142,7 @@ if __name__ == "__main__":
 # Need this value for 
 
   outlier = exper['DA_PARAMS']['outlier']
-  print("\n --> ComputeHx: obs outlier is from EXPER file:  %d" % outlier)
+  print(("\n --> ComputeHx: obs outlier is from EXPER file:  %d" % outlier))
 
    
 #################################################################################################
@@ -168,7 +168,7 @@ if __name__ == "__main__":
 
   analysis_time = DT.datetime(int(time[0]),int(time[1]),int(time[2]),int(time[3]),int(time[4]),int(time[5]))
      
-  print "\n --> ComputeHx:  Reading in model state for HxF at %s \n" %  (analysis_time.strftime("%Y-%m-%d %H:%M:%S"))
+  print("\n --> ComputeHx:  Reading in model state for HxF at %s \n" %  (analysis_time.strftime("%Y-%m-%d %H:%M:%S")))
     
 # read from history files
 
@@ -199,11 +199,11 @@ if __name__ == "__main__":
   begin  = analysis_time - dt
   ending = analysis_time + dt
     
-  print "\n --> ComputeHx:  Using pyDart to search with condition: " + condition  
-  print "\n --> ComputeHx:  Using pyDart to search with begin time of: ", begin.strftime("%Y-%m-%d %H:%M:%S")
-  print "\n --> ComputeHx:  Using pyDart to search with end   time of: ", ending.strftime("%Y-%m-%d %H:%M:%S")
-  print begin.timetuple()[:6]
-  print ending.timetuple()[:6]
+  print("\n --> ComputeHx:  Using pyDart to search with condition: " + condition)  
+  print("\n --> ComputeHx:  Using pyDart to search with begin time of: ", begin.strftime("%Y-%m-%d %H:%M:%S"))
+  print("\n --> ComputeHx:  Using pyDart to search with end   time of: ", ending.strftime("%Y-%m-%d %H:%M:%S"))
+  print(begin.timetuple()[:6])
+  print(ending.timetuple()[:6])
     
 # ob_f.search(start=begin.timetuple()[:6], end=ending.timetuple()[:6], condition=condition)
   ob_f.search(start=begin.timetuple()[:6], end=ending.timetuple()[:6])
@@ -211,10 +211,10 @@ if __name__ == "__main__":
 # number of observations, if there are none, kick out of the loop...
   
   if ob_f.index != None:
-    print "\n --> ComputeHx:  Total number of obs found at search time: %s \n" % len(ob_f.index)
-    print ob_f.index
+    print("\n --> ComputeHx:  Total number of obs found at search time: %s \n" % len(ob_f.index))
+    print(ob_f.index)
   else:
-    print "\n --> ComputeHx:  No obs found at search time:  %s exiting......\n" % (analysis_time)
+    print("\n --> ComputeHx:  No obs found at search time:  %s exiting......\n" % (analysis_time))
     sys.exit(0)
   
 # using the search index generated from above, obtain the location, data, and type
@@ -236,7 +236,7 @@ if __name__ == "__main__":
 
     nobs = N.size(idx) 
 
-    print "\n --> ComputeHx:  Total number of obs found is: %d \n" % (nobs)
+    print("\n --> ComputeHx:  Total number of obs found is: %d \n" % (nobs))
 
 # retrieve these from pyTable
 
@@ -245,16 +245,16 @@ if __name__ == "__main__":
     dates   = N.append(dates,   subdata['date'][idx])
   
   else:
-    print "\n  >======================================================================<\n"    
-    print "\n    ComputeHx: NOBS == 0:  NO HXF's were created - EXITING computeHx!!!  "
-    print "\n    ComputeHx:  NOBS == 0:  NO HXF's were created - EXITING computeHx!!! "
-    print "\n  >======================================================================<\n"   
+    print("\n  >======================================================================<\n")    
+    print("\n    ComputeHx: NOBS == 0:  NO HXF's were created - EXITING computeHx!!!  ")
+    print("\n    ComputeHx:  NOBS == 0:  NO HXF's were created - EXITING computeHx!!! ")
+    print("\n  >======================================================================<\n")   
     sys.exit(0)
     
 # Overide the file observation std deviations with either defaults at top of script or input parameters
 
   for n, kk in enumerate(kind):
-    if obs_error.has_key(kk):  err_var[n] = obs_error[kk][1]**2.0
+    if kk in obs_error:  err_var[n] = obs_error[kk][1]**2.0
   
 # Here we choose to create a coordinate system of x/y's based from the SW corner (lat,lon) of model grid.
 # The observations' new x/y's are then in the model's coordinate system relative to reference (lat,lon) of grid
@@ -294,6 +294,6 @@ if __name__ == "__main__":
 
   print("\n  ----------------------------------------------------------------------")
   print("\n                END PROGRAM ComputeHx                                   ")
-  print("\n      WALLCLOCK END TIME:  %s " % now.strftime("%Y-%m-%d %H:%M")     )
+  print(("\n      WALLCLOCK END TIME:  %s " % now.strftime("%Y-%m-%d %H:%M")     ))
   print("\n  ----------------------------------------------------------------------\n")
 

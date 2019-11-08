@@ -17,7 +17,7 @@ preprocess   = "-DF2PY_REPORT_ON_ARRAY_COPY"
 preprocess   = ""
 fopts        = {'pgf': ['pg',"-tp x64 -fastsse -mp -fPIC",""], \
                 'gnu': ["gnu95","-O3 -funroll-loops -fopenmp -fPIC \
-                        -I/usr/local/include","-lgomp -L/usr/local/lib -lnetcdf -lnetcdff \
+                        -I/usr/local/include","-lgomp -L/opt/local/lib -lnetcdf -lnetcdff \
                         -L/usr/local/Cellar/zlib/1.2.8/lib -lhdf5 -lhdf5_hl -lz"], 
                 'intel': ['intelem',"-v -O3", "-liomp5 -L/opt/local/netcdf4m64/lib -lnetcdf -lnetcdff \
                           -L/opt/local/hdf5m64/lib -lhdf5 -lhdf5_hl -lz"]}
@@ -33,9 +33,9 @@ objects = ""
 # First compiler the fortran only files
  
 for item in fortran_only:
-    print "\n=====================================================\n"
-    print "  Compiling file: %s using the %s compiler" % (item, options.compiler)
-    print "\n====================================================="
+    print("\n=====================================================\n")
+    print("  Compiling file: %s using the %s compiler" % (item, options.compiler))
+    print("\n=====================================================")
     if options.compiler == 'gnu':
         print("\n  Using GNU gfortran compiler \n")
         cmd = 'gfortran %s -c %s ' % (fopts['gnu'][1],item)
@@ -46,14 +46,14 @@ for item in fortran_only:
         print("\n  Using Portland group compiler \n")
         cmd = 'pgf90 %s -c %s ' % (fopts['pgf'][1],item)
 
-    print("  "+cmd+"\n")
+    print(("  "+cmd+"\n"))
     ret = os.system(cmd)
 
     if ret == 0:
         objects = objects + " %s.o" % item.split(".")[0]
 
-print "\nFortran object files compiled:  %s \n" % objects    
-print "\n=====================================================\n"
+print("\nFortran object files compiled:  %s \n" % objects)    
+print("\n=====================================================\n")
 
 for item in f2py_only:
     ret = os.system('rm %s.so ' % (item.split(".")[0]))
@@ -72,17 +72,17 @@ for item in f2py_only:
         cmd = ('f2py --fcompiler="pg" "--f90flags=%s" %s -c -m %s %s %s %s' % (fopts['pgf'][0],fopts['pgf'][1], \
                preprocess, item.split(".")[0], item, objects,fopts['pgf'][2]))
 
-print("\n\n ==> %s \n\n" % cmd)
+print(("\n\n ==> %s \n\n" % cmd))
 
 ret = os.system(cmd)
 
-print "\n==========================================================================================\n"
+print("\n==========================================================================================\n")
 
 if ret == 0:
-    print("\nSuccessfully compiled file: %s " % item)
-    print("\nObject file is: %s " % (item.split(".")[0] + ".so"))
+    print(("\nSuccessfully compiled file: %s " % item))
+    print(("\nObject file is: %s " % (item.split(".")[0] + ".so")))
 else:
-    print "   ERROR !!!!!   ERROR--> unsuccessful compile file: %s\n" % item
+    print("   ERROR !!!!!   ERROR--> unsuccessful compile file: %s\n" % item)
     sys.exit(0)
 
 cmd = "python -c 'import fpython2'"
@@ -92,6 +92,6 @@ if ret == 0:
     print("\n   --> fpython2 was successfully imported into python, you should be good to go...\n")
 else:
     print("\n\n!!!!!! fcompile ERROR, compile must have failed as fpython2 cannot be loaded....")
-    print("\n error: %s" % ret)
+    print(("\n error: %s" % ret))
 
 print("\n==========================================================================================\n")

@@ -13,7 +13,7 @@ import re
 import matplotlib
 import matplotlib.pyplot as P
 from mpl_toolkits.basemap import Basemap
-from mpl_toolkits.axes_grid1.anchored_artists import AnchoredText
+from matplotlib.offsetbox import AnchoredText
 from matplotlib import ticker
 
 import pickle
@@ -71,7 +71,7 @@ def run_unix_cmd(cmd):
 
 #-----------------------------------------------------------------------------------------------------------------------------
 def meshgrid_general(*args):
-   args = map(N.asarray,args)
+   args = list(map(N.asarray,args))
    return N.broadcast_arrays(*[x[(slice(None),)+(None,)*i] for i, x in enumerate(args)])
 
 #=======================================================================================================================
@@ -94,7 +94,7 @@ def FindRestartFiles(exper_filename, myDT, ret_exp=True, ret_DT=True):
     if type(myDT) == list:
         myDT = datetime.datetime(myDT[0],myDT[1],myDT[2],myDT[3],myDT[4],myDT[5])
         
-    print("\n ==> FindRestartFiles: Date and time supplied is %s" % (myDT.strftime("%Y_%m_%d %H:%M:%S")))
+    print(("\n ==> FindRestartFiles: Date and time supplied is %s" % (myDT.strftime("%Y_%m_%d %H:%M:%S"))))
 
     rfiles = []
 
@@ -132,7 +132,7 @@ def FindRestartFiles(exper_filename, myDT, ret_exp=True, ret_DT=True):
             f_time = f.variables['time'][0]
 
             if( N.abs(f_time - time) < 1.0 ):
-                print("\n ==> FindRestartFile:  Found time %d in file:  %s" % (f_time, file))
+                print(("\n ==> FindRestartFile:  Found time %d in file:  %s" % (f_time, file)))
                 for g in exper['fcst_members']:
                     rfiles.append(os.path.join(g, ("%s_rst_%6.6d.nc" % (fprefix,n))))
            
@@ -148,13 +148,13 @@ def FindRestartFiles(exper_filename, myDT, ret_exp=True, ret_DT=True):
                     return rfiles
 
         print("\n\n  ERROR!!!")
-        print("\n ==>!! FindRestartFile: A file with the restart time of %d cannot be found, exiting!!!" % time)
+        print(("\n ==>!! FindRestartFile: A file with the restart time of %d cannot be found, exiting!!!" % time))
         print("\n\n  ERROR!!!")
         sys.exit(-1)
 
     else:
         print("\n\n  ERROR!!!")
-        print("\n  ==>!! FindRestartFile: No files where found having the header:  %s, exiting" % fileheader)
+        print(("\n  ==>!! FindRestartFile: No files where found having the header:  %s, exiting" % fileheader))
         print("\n\n  ERROR!!!")
         sys.exit(-1)
         
@@ -235,20 +235,20 @@ class variable(object):
     try:    
       self.data[index] = value    
     except IndexError:    
-      print("setitem: VAR %s --> index %s not valid  %s shape: %s  " % (self.name, str(index), self.name, str(self.data.shape)))
+      print(("setitem: VAR %s --> index %s not valid  %s shape: %s  " % (self.name, str(index), self.name, str(self.data.shape))))
 
       
   def __getitem__(self, index):    
     try:      
       return self.data[index]    
     except IndexError:     
-      print("getitem VAR: %s --> index %s not valid  %s shape: %s  " % (self.name, str(index), self.name, str(self.data.shape)))
+      print(("getitem VAR: %s --> index %s not valid  %s shape: %s  " % (self.name, str(index), self.name, str(self.data.shape))))
 
   def keys(self):
     return self.__dict__
 
   def addattribute(self, name, attribute):
-    if debug:  print "VAR %s adding attribute:  %s " % (self.name, name)
+    if debug:  print("VAR %s adding attribute:  %s " % (self.name, name))
     setattr(self,name,attribute)
 
 #===============================================================================
@@ -283,14 +283,14 @@ class ensemble(variable):
       return self.__dict__
 
   def addvariable(self, name, **kwargs):
-    if debug:  print "ENS adding variable:  ", name
+    if debug:  print("ENS adding variable:  ", name)
     self.__dict__[name] = variable(name, **kwargs)
   
   def addattribute(self, key, name, attribute):
     if isinstance(self.__dict__[key], variable):
       self.__dict__[key].addattribute(name, attribute)
     else:
-      if debug:  print "ENS adding attribute:  ", name
+      if debug:  print("ENS adding attribute:  ", name)
       setattr(self,name,attribute)
 
 #===============================================================================
@@ -372,7 +372,7 @@ def mymap(x, y, glat, glon, scale = 1.0, ax = None, noticks = False, resolution=
             s = bmap.readshapefile(shapefile,'shapeinfo',drawbounds=False)
 
             for shape in bmap.shapeinfo:
-                xx, yy = zip(*shape)
+                xx, yy = list(zip(*shape))
                 bmap.plot(xx,yy,color=color,linewidth=linewidth,ax=ax)
 
     return bmap
@@ -394,7 +394,7 @@ def mymap_draw_shapes(bmap, shape_env=None, ax=None):
             s = bmap.readshapefile(shapefile,'shapeinfo',drawbounds=False)
 
             for shape in bmap.shapeinfo:
-                xx, yy = zip(*shape)
+                xx, yy = list(zip(*shape))
                 bmap.plot(xx,yy,color=color,linewidth=linewidth,ax=ax)
 
 #===============================================================================
@@ -434,7 +434,7 @@ def ens_quick4panel(ens, height = None, show=False, sfc=False, zoom=None, member
     zc = ens.zc[:]
     ze = ens.ze[:]
     
-    print("\n --> quick4panel:  Plotting member: %d at height: %4.0f" % (member, height))
+    print(("\n --> quick4panel:  Plotting member: %d at height: %4.0f" % (member, height)))
   
     if filename == None:
         filename = "%s_%4.2f_MEMBER_%2.2d.pdf" % (time.strftime("%Y_%m-%d_%H:%M:%S"), height, member)
@@ -567,7 +567,7 @@ def ens_quick4panel(ens, height = None, show=False, sfc=False, zoom=None, member
     fig.savefig(filename, format="pdf", dpi=300)
     
     if show:
-        print filename
+        print(filename)
         os.system("open %s" % filename)
 
     return fig
@@ -582,7 +582,7 @@ def plotskewts(ens):
     from matplotlib.ticker import ScalarFormatter, MultipleLocator
     from matplotlib.collections import LineCollection
   except:
-    print "\n ENS_PLOTSKEWTS ==> Could not import skewt.py, exiting"
+    print("\n ENS_PLOTSKEWTS ==> Could not import skewt.py, exiting")
     sys.exit(0)
   
 # Create a new figure. The dimensions here give a good aspect ratio
@@ -654,7 +654,7 @@ def plothodos(ens):
     v = (ens['V'][n,:m].mean(axis=2)).mean(axis=1)
     
     if n == 4:
-      print u, v
+      print(u, v)
 
     ax.plot(u, v, color = 'r', alpha=0.4)
 
@@ -683,13 +683,13 @@ def calcHx(ens, kind, lat, lon, height, elev, azimuth, missing=None):
   mlons = ens.lonc
   mlats = ens.latc
 
-  print 'OBS   LAT MIN/MAX:  ', lat.min(), lat.max()
-  print 'MODEL LAT MIN/MAX:  ', mlats.min(), mlats.max()
-  print 'OBS   LON MIN/MAX:  ', lon.min(), lon.max()
-  print 'MODEL LON MIN/MAX:  ', mlons.min(), mlons.max()
+  print('OBS   LAT MIN/MAX:  ', lat.min(), lat.max())
+  print('MODEL LAT MIN/MAX:  ', mlats.min(), mlats.max())
+  print('OBS   LON MIN/MAX:  ', lon.min(), lon.max())
+  print('MODEL LON MIN/MAX:  ', mlons.min(), mlons.max())
 
-  print 'OBS   HGT MIN/MAX:  ', height.min(), height.max()
-  print 'MODEL HGT MIN/MAX:  ', ens.hgt+ens.zc.data.min(), ens.hgt+ens.zc.data.max()
+  print('OBS   HGT MIN/MAX:  ', height.min(), height.max())
+  print('MODEL HGT MIN/MAX:  ', ens.hgt+ens.zc.data.min(), ens.hgt+ens.zc.data.max())
 
   b = N.zeros([5,ens.ne])
 
@@ -925,7 +925,7 @@ def ens_PLOT_9PANEL(ens, klevel = 4, obs=False, savefig=None, cparams = None, va
       PLOT_ONE(mfld, x2d, y2d, map, clevels=clevels, height=ens.zc[klevel], label = label, ax = ax, \
                counties=shapefiles, cmap=ctables.REF_default, zoom = zoom, **kwargs)
     else:
-      print("\n Plotting member %d" % (mem[n]+1))
+      print(("\n Plotting member %d" % (mem[n]+1)))
       if var == "DBZ":
           mfld = N.ma.masked_less_equal(ens['DBZ'][mem[n],klevel,:,:], 10.)
           label = "DBZ Mem: %2.2d" % (mem[n]+1)
@@ -981,7 +981,7 @@ def ens_create_backup_files(ens, newFileName=None):
         backup = "%s" % (os.path.join(os.path.dirname(file),cm1BackUpFileName))
         ens.BackUpFiles.append(backup)
         cmd = "cp %s %s" % (file, backup)
-        print cmd
+        print(cmd)
         os.system(cmd)
 
     print("\n ==> ens_create_backup_files:  CM1 backup files created")
@@ -1012,10 +1012,10 @@ def ens_IC_pertUV(ens, writeout=False):
     upert[:,k] = upert[:,k] * ramp[k]
     vpert[:,k] = vpert[:,k] * ramp[k]
 
-  print("\n ==> ens_IC_pertUV: Max/Min  u  perturbations:", upert.max(), upert.min())
-  print("\n ==> ens_IC_pertUV: Max/Min  v  perturbations:", vpert.max(), vpert.min())
-  print("\n ==> ens_IC_pertUV: Mean u/v perturbations (should be close to zero):", upert.mean(), vpert.mean())
-  print("\n ==> ens_IC_pertUV: StdD u/v perturbations:  %f  %f" % (upert.std(), vpert.std()))
+  print(("\n ==> ens_IC_pertUV: Max/Min  u  perturbations:", upert.max(), upert.min()))
+  print(("\n ==> ens_IC_pertUV: Max/Min  v  perturbations:", vpert.max(), vpert.min()))
+  print(("\n ==> ens_IC_pertUV: Mean u/v perturbations (should be close to zero):", upert.mean(), vpert.mean()))
+  print(("\n ==> ens_IC_pertUV: StdD u/v perturbations:  %f  %f" % (upert.std(), vpert.std())))
 
 # Loop over the ensemble members to re-initialize the files
 
@@ -1100,10 +1100,10 @@ def ens_IC_ZeroUV(ens, restore=False):
             f.variables['v0'][:,:,:] = f.variables['v0'][:,:,:] - vBs
             f.sync()
             f.close()
-            print n, "Max U/V zeros:    ",  ens['U'][n,:,:,:].max(), ens['V'][n,:,:,:].max(),
-            print n, "Max FU/FV zeros:  ",  fstate.u[n,:,:,:].max(), fstate.v[n,:,:,:].max(),
+            print(n, "Max U/V zeros:    ",  ens['U'][n,:,:,:].max(), ens['V'][n,:,:,:].max(), end=' ')
+            print(n, "Max FU/FV zeros:  ",  fstate.u[n,:,:,:].max(), fstate.v[n,:,:,:].max(), end=' ')
 
-        print "\n ==> ens_IC_ZeroUV: !!!OVERWRITING!!! CM1 Restart files for ZERO WINDS"
+        print("\n ==> ens_IC_ZeroUV: !!!OVERWRITING!!! CM1 Restart files for ZERO WINDS")
         
         write_CM1_ens(state, writeEns=True, overwrite=True)
 
@@ -1128,11 +1128,11 @@ def ens_IC_ZeroUV(ens, restore=False):
             f.sync()
             f.close()
             
-        print "\n ==> ens_IC_INIT0: !!!OVERWRITING!!! CM1 Restart files during RESTORE"
+        print("\n ==> ens_IC_INIT0: !!!OVERWRITING!!! CM1 Restart files during RESTORE")
         
         write_CM1_ens(state, writeEns=True, overwrite=True) 
             
-    if time_all:  print "\n Wallclock time to run ens_IC_INIT0", round(timer() - t0, 3), " sec"    
+    if time_all:  print("\n Wallclock time to run ens_IC_INIT0", round(timer() - t0, 3), " sec")    
            
 #===============================================================================
 #
@@ -1166,17 +1166,17 @@ def ens_GRID_RELECTIVITY(ens, ob_file=None, plot=False, composite=True):
   begin         = analysis_time - dt/2
   ending        = analysis_time + dt/2
 
-  print "\n ==> ens_GRID_REFL: Using pyDart to search with begin time of: ", begin.strftime("%Y-%m-%d %H:%M:%S")
-  print "\n ==> ens_GRID_REFL: Using pyDart to search with end   time of: ", ending.strftime("%Y-%m-%d %H:%M:%S")
+  print("\n ==> ens_GRID_REFL: Using pyDart to search with begin time of: ", begin.strftime("%Y-%m-%d %H:%M:%S"))
+  print("\n ==> ens_GRID_REFL: Using pyDart to search with end   time of: ", ending.strftime("%Y-%m-%d %H:%M:%S"))
  
   ob_f.search(start=begin.timetuple()[:6], end=ending.timetuple()[:6], condition = '(kind == 12) & (value > 15.) & (z < 10000.)')
 
 # number of observations, if there are none, stop program, something is wrong
 
   if len(ob_f.index) >= 50:
-    print "\n ==> ens_GRID_REFL:  Total number of obs found at search time: %s \n" % len(ob_f.index)
+    print("\n ==> ens_GRID_REFL:  Total number of obs found at search time: %s \n" % len(ob_f.index))
   else:
-    print "\n ==> ens_GRID_REFL:  Insufficient number of obs (<=50) found at search time:  %d obs \n" % (len(ob_f.index))
+    print("\n ==> ens_GRID_REFL:  Insufficient number of obs (<=50) found at search time:  %d obs \n" % (len(ob_f.index)))
     return None
 
 # using the search index generated from above, obtain the location, data, and type
@@ -1188,13 +1188,13 @@ def ens_GRID_RELECTIVITY(ens, ob_file=None, plot=False, composite=True):
   lons    = odata['lon'][:]
   hgts    = odata['height'][:]
 
-  print "\n ==> ens_GRID_REFL: Number of points found from initial search:      %d" % (data.size)
+  print("\n ==> ens_GRID_REFL: Number of points found from initial search:      %d" % (data.size))
 
 # The coordinate system here is based on the grid lat0/lon0/hgt0, and the offset grid stored in fstate
 #     ens stores the x/y grid in grid-internal coordinates
 
   map = mymap(fstate.xc, fstate.yc, glat, glon)
-  xob, yob = map(lons, lats)
+  xob, yob = list(map(lons, lats))
   xob, yob = xob+xoffset, yob+yoffset
 
 #   print xob.min(),  xob.max(),  fstate.xc.min(), fstate.xc.max()
@@ -1235,7 +1235,7 @@ def ens_GRID_RELECTIVITY(ens, ob_file=None, plot=False, composite=True):
 
   dbz3d = obs_2_grid3d(data, xob, yob, hgts, x_array, y_array, z_array, ii, jj, kk, 4000., 2000., 0.0)
   
-  print("\n ==> ens_GRID_REFL: 3D gridded DBZ:   Max:  %4.1f   Min:  %4.1f" % (dbz3d.max(), dbz3d.min()))
+  print(("\n ==> ens_GRID_REFL: 3D gridded DBZ:   Max:  %4.1f   Min:  %4.1f" % (dbz3d.max(), dbz3d.min())))
 
 # Create composite reflectivity, and then replicate it into a 3D array
   
@@ -1248,7 +1248,7 @@ def ens_GRID_RELECTIVITY(ens, ob_file=None, plot=False, composite=True):
     for k in N.arange(ens.nz):
       dbz3d[k] = dbz2d
       
-    print("\n ==> ens_GRID_REFL: 2D composite DBZ requested   Max:  %4.1f   Min:  %4.1f" % (dbz2d.max(), dbz2d.min()))
+    print(("\n ==> ens_GRID_REFL: 2D composite DBZ requested   Max:  %4.1f   Min:  %4.1f" % (dbz2d.max(), dbz2d.min())))
    
   del map, xyz_obs, x_array, y_array, z_array, xyz_grid, mytree, indices3D, ii, jj, kk, dbz2d
              
@@ -1294,7 +1294,7 @@ def ens_ADDITIVE_NOISE(ens, ob_file=None, plot=False, cref=True):
       return
 
     f3d_min = ens.experiment['ADD_NOISE']['min_dbz_4pert']
-    print("\n ==> ens_ADDITIVE_NOISE: Observed reflectivity gridded:  Max:  %4.2f  Min:  %4.2f" % (f3d.max(), f3d.min()))
+    print(("\n ==> ens_ADDITIVE_NOISE: Observed reflectivity gridded:  Max:  %4.2f  Min:  %4.2f" % (f3d.max(), f3d.min())))
 
   else:
   
@@ -1307,7 +1307,7 @@ def ens_ADDITIVE_NOISE(ens, ob_file=None, plot=False, cref=True):
     file_obj.close()
     f3d_min  = 2.0
     
-    print("\n ==> ens_ADDITIVE_NOISE: Inflation file read in:  Max:  %4.2f  Min:  %4.2f" % (f3d.max(), f3d.min()))
+    print(("\n ==> ens_ADDITIVE_NOISE: Inflation file read in:  Max:  %4.2f  Min:  %4.2f" % (f3d.max(), f3d.min())))
 
   for n in N.arange(ens.ne):
   
@@ -1318,7 +1318,7 @@ def ens_ADDITIVE_NOISE(ens, ob_file=None, plot=False, cref=True):
 #      p        = ndimage.gaussian_filter(pert, sigma=[gaussV,gaussH,gaussH], order=0)
       p        = 1.0 - 2.0*(p - p.min()) / (p.max()-p.min())
       ens['U'][n] = ens['U'][n] + upert*p
-      if debugAN:  print "\n ==> ens_ADD_NOISE: VAR:  %s  NE:  %d  Pert_Min:  %f  Pert_Max:  %f" % ("U", n, p.min(), p.max())
+      if debugAN:  print("\n ==> ens_ADD_NOISE: VAR:  %s  NE:  %d  Pert_Min:  %f  Pert_Max:  %f" % ("U", n, p.min(), p.max()))
 
     if vpert > 0:
       raw_pert = fnormal(N.random.RandomState([2+r_seed+n**2]), scale=1.0, size=(ens.nz,ens.ny,ens.nx))
@@ -1327,7 +1327,7 @@ def ens_ADDITIVE_NOISE(ens, ob_file=None, plot=False, cref=True):
 #     p        = ndimage.gaussian_filter(pert, sigma=[gaussV,gaussH,gaussH], order=0)
       p        = 1.0 - 2.0*(p - p.min()) / (p.max()-p.min())
       ens['V'][n] = ens['V'][n] + vpert*p
-      if debugAN:  print "\n ==> ens_ADD_NOISE: VAR:  %s  NE:  %d  Pert_Min:  %f  Pert_Max:  %f" % ("V", n, p.min(), p.max())
+      if debugAN:  print("\n ==> ens_ADD_NOISE: VAR:  %s  NE:  %d  Pert_Min:  %f  Pert_Max:  %f" % ("V", n, p.min(), p.max()))
 
     if wpert > 0:
       raw_pert = fnormal(N.random.RandomState([3+r_seed+n**2]), scale=1.0, size=(ens.nz,ens.ny,ens.nx))
@@ -1336,7 +1336,7 @@ def ens_ADDITIVE_NOISE(ens, ob_file=None, plot=False, cref=True):
 #      p        = ndimage.gaussian_filter(pert, sigma=[gaussV,gaussH,gaussH], order=0)
       p        = 1.0 - 2.0*(p - p.min()) / (p.max()-p.min())
       ens['W'][n] = ens['W'][n] + wpert*p
-      if debugAN:  print "\n ==> ens_ADD_NOISE: VAR:  %s  NE:  %d  Pert_Min:  %f  Pert_Max:  %f" % ("W", n, p.min(), p.max())
+      if debugAN:  print("\n ==> ens_ADD_NOISE: VAR:  %s  NE:  %d  Pert_Min:  %f  Pert_Max:  %f" % ("W", n, p.min(), p.max()))
 
     if tpert > 0:
       raw_pert = fnormal(N.random.RandomState([4+r_seed+n**2]), scale=1.0, size=(ens.nz,ens.ny,ens.nx))
@@ -1345,7 +1345,7 @@ def ens_ADDITIVE_NOISE(ens, ob_file=None, plot=False, cref=True):
 #      p        = ndimage.gaussian_filter(pert, sigma=[gaussV,gaussH,gaussH], order=0)
       p        = 1.0 - 2.0*(p - p.min()) / (p.max()-p.min())
       ens['TH'][n] = ens['TH'][n] + tpert*p
-      if debugAN:  print "\n ==> ens_ADD_NOISE: VAR:  %s  NE:  %d  Pert_Min:  %f  Pert_Max:  %f" % ("TH", n, p.min(), p.max())
+      if debugAN:  print("\n ==> ens_ADD_NOISE: VAR:  %s  NE:  %d  Pert_Min:  %f  Pert_Max:  %f" % ("TH", n, p.min(), p.max()))
       
 # If Tdpert > 0, add dewpoint perturbations to QV - do it in Td space
 
@@ -1368,7 +1368,7 @@ def ens_ADDITIVE_NOISE(ens, ob_file=None, plot=False, cref=True):
       e   = 6.112 * N.exp(17.67*tdc / (tdc+243.5) )                   # Bolton's approximation
       ens['QV'][n] = 0.622*e / (p0-e)
 
-      if debugAN:  print "\n ==> ens_ADD_NOISE: VAR:  %s  NE:  %d  Pert_Min:  %f  Pert_Max:  %f" % ("Td/QV", n, ens['QV'][n] .min(), ens['QV'][n] .max())
+      if debugAN:  print("\n ==> ens_ADD_NOISE: VAR:  %s  NE:  %d  Pert_Min:  %f  Pert_Max:  %f" % ("Td/QV", n, ens['QV'][n] .min(), ens['QV'][n] .max()))
 
 # If qvpert > 0, add noise to Qv, restricting the RH <= 99%.
 
@@ -1386,12 +1386,12 @@ def ens_ADDITIVE_NOISE(ens, ob_file=None, plot=False, cref=True):
       ens['QV'][n] = ens['QV'][n] + p*qvpert/100.      
       ens['QV'][n] = N.where(ens['QV'][n] >= qvs/100., 0.99*qvs/100., ens['QV'][n])     
         
-      if debugAN:  print "\n ==> ens_ADD_NOISE: VAR:  %s  NE:  %d  Pert_Min:  %f  Pert_Max:  %f" % ("QV", n, p.min(), p.max())
+      if debugAN:  print("\n ==> ens_ADD_NOISE: VAR:  %s  NE:  %d  Pert_Min:  %f  Pert_Max:  %f" % ("QV", n, p.min(), p.max()))
   
   if plot:
     ens_PLOT_MEAN_STDDEV(ens, klevel = 4, savefig="ADDITIVE_NOISE_PLOT.pdf")
        
-  if time_all:  print "\n Wallclock time to run ADDITIVE_NOISE:", round(timer() - t0, 3), " sec"
+  if time_all:  print("\n Wallclock time to run ADDITIVE_NOISE:", round(timer() - t0, 3), " sec")
 
 #===============================================================================#===============================================================================
 #
@@ -1441,8 +1441,8 @@ def ens_IC_pert_from_box(ens, plot=False, writeout=False):
     pospert = (pert - pert.min()) / (pert.max()-pert.min())
     neupert = 0.5 - pospert
 
-    print "\n ==> ens_IC_pert3D: NE:  %d  NegPert_Min:  %f  NegPert_Max:  %f" % (n, neupert.min(), neupert.max())
-    print "\n ==> ens_IC_pert3D: NE:  %d  PosPert_Min:  %f  PosPert_Max:  %f" % (n, pospert.min(), pospert.max())
+    print("\n ==> ens_IC_pert3D: NE:  %d  NegPert_Min:  %f  NegPert_Max:  %f" % (n, neupert.min(), neupert.max()))
+    print("\n ==> ens_IC_pert3D: NE:  %d  PosPert_Min:  %f  PosPert_Max:  %f" % (n, pospert.min(), pospert.max()))
 
     if tpert > 0.0:
         ens['TH'][n] = ens['TH'][n] + tpert*pospert
@@ -1612,28 +1612,28 @@ def ens_CM1_coords(ens):
   if debug_coords:
     print("\n  -------------------------------------------------")
     print("\n  ------> Debugging coordinates turned on")
-    print("\n  ENS  Xoffset:    %f " % ens.xg_pos)
-    print("\n  ENS  Yoffset:    %f " % ens.yg_pos)
-    print("\n  ENS  Zoffset:    %f " % ens.hgt)
-    print("\n  ENS  Lat0:       %f " % ens.lat0)
-    print("\n  ENS  Lon0:       %f " % ens.lon0)
+    print(("\n  ENS  Xoffset:    %f " % ens.xg_pos))
+    print(("\n  ENS  Yoffset:    %f " % ens.yg_pos))
+    print(("\n  ENS  Zoffset:    %f " % ens.hgt))
+    print(("\n  ENS  Lat0:       %f " % ens.lat0))
+    print(("\n  ENS  Lon0:       %f " % ens.lon0))
 
-    print("\n  ENS  Lat Cntrs:  %f  %f  DIM=%d" % (ens.latc[0], ens.latc[-1], len(ens.latc)))
-    print("\n  ENS  Lat Edges:  %f  %f  DIM=%d" % (ens.late[0], ens.late[-1], len(ens.late)))
-    print("\n  ENS  Lon Cntrs:  %f  %f  DIM=%d" % (ens.lonc[0], ens.lonc[-1], len(ens.lonc)))
-    print("\n  ENS  Lon Edges:  %f  %f  DIM=%d" % (ens.lone[0], ens.lone[-1], len(ens.lone)))
-    print("\n  ENS  XG  Cntrs:  %f  %f  DIM=%d" % (fstate.xc[0], fstate.xc[-1], len(fstate.xc)))
-    print("\n  ENS  XG  Edges:  %f  %f  DIM=%d" % (fstate.xe[0], fstate.xe[-1], len(fstate.xe)))
-    print("\n  ENS  YG  Cntrs:  %f  %f  DIM=%d" % (fstate.yc[0], fstate.yc[-1], len(fstate.yc)))
-    print("\n  ENS  YG  Edges:  %f  %f  DIM=%d" % (fstate.ye[0], fstate.ye[-1], len(fstate.ye)))
-    print("\n  ENS  ZG  Cntrs:  %f  %f  DIM=%d" % (fstate.zc[0], fstate.zc[-1], len(fstate.zc)))
-    print("\n  ENS  ZG  Edges:  %f  %f  DIM=%d" % (fstate.ze[0], fstate.ze[-1], len(fstate.ze)))
+    print(("\n  ENS  Lat Cntrs:  %f  %f  DIM=%d" % (ens.latc[0], ens.latc[-1], len(ens.latc))))
+    print(("\n  ENS  Lat Edges:  %f  %f  DIM=%d" % (ens.late[0], ens.late[-1], len(ens.late))))
+    print(("\n  ENS  Lon Cntrs:  %f  %f  DIM=%d" % (ens.lonc[0], ens.lonc[-1], len(ens.lonc))))
+    print(("\n  ENS  Lon Edges:  %f  %f  DIM=%d" % (ens.lone[0], ens.lone[-1], len(ens.lone))))
+    print(("\n  ENS  XG  Cntrs:  %f  %f  DIM=%d" % (fstate.xc[0], fstate.xc[-1], len(fstate.xc))))
+    print(("\n  ENS  XG  Edges:  %f  %f  DIM=%d" % (fstate.xe[0], fstate.xe[-1], len(fstate.xe))))
+    print(("\n  ENS  YG  Cntrs:  %f  %f  DIM=%d" % (fstate.yc[0], fstate.yc[-1], len(fstate.yc))))
+    print(("\n  ENS  YG  Edges:  %f  %f  DIM=%d" % (fstate.ye[0], fstate.ye[-1], len(fstate.ye))))
+    print(("\n  ENS  ZG  Cntrs:  %f  %f  DIM=%d" % (fstate.zc[0], fstate.zc[-1], len(fstate.zc))))
+    print(("\n  ENS  ZG  Edges:  %f  %f  DIM=%d" % (fstate.ze[0], fstate.ze[-1], len(fstate.ze))))
     print("\n  -------------------------------------------------")
 
 # Plot domain of model
 
   
-  if time_all:  print "\n Wallclock time to create coordinates:", round(timer() - t0, 3), " sec"
+  if time_all:  print("\n Wallclock time to create coordinates:", round(timer() - t0, 3), " sec")
     
   return
 
@@ -1708,7 +1708,7 @@ def ens_CM1_C2A(ens, var = 'ALL'):
   ens.addvariable("VA", data=fstate.xyz3d[ens.v_ptr,:,:,:,:], coords = ('MEMBER,NZ,NY,NX'))  
   ens.addvariable("WA", data=fstate.xyz3d[ens.w_ptr,:,:,:,:], coords = ('MEMBER,NZ,NY,NX'))  
   
-  if time_all:  print "\n Wallclock time to convert from C to A grid:", round(timer() - t0, 3), " sec"
+  if time_all:  print("\n Wallclock time to convert from C to A grid:", round(timer() - t0, 3), " sec")
 
   return
 
@@ -1827,7 +1827,7 @@ def ens_CM1_A2C(ens, var='ALL'):
       fstate.w[:,2:nz-1,:,:]  = fstate.w[:,2:nz-1,:,:] + \
                               (-tmp[:,0:nz-3,:,:]  + 7.0*(tmp[:,1:nz-2,:,:] + tmp[:,2:nz-1,:,:]) - tmp[:,3:nz,:,:] ) / 12.0  
  
-  if time_all:  print "\n Wallclock time to convert from A to C grid:", round(timer() - t0, 3), " sec"
+  if time_all:  print("\n Wallclock time to convert from A to C grid:", round(timer() - t0, 3), " sec")
 
   return
 
@@ -1845,7 +1845,7 @@ def ens_CM1_mean(ens):
   t0 = timer()
 
   if ens.addmean == 0:
-    print "\n ENS_CM1_MEAN ==> FATAL ERROR:  ADDMEAN == 0, cannot create mean - EXITING PROGRAM\n"
+    print("\n ENS_CM1_MEAN ==> FATAL ERROR:  ADDMEAN == 0, cannot create mean - EXITING PROGRAM\n")
     sys.exit(1)
 
   for m, key in enumerate(ens.state_vector['xyz3d']): 
@@ -1853,7 +1853,7 @@ def ens_CM1_mean(ens):
     fstate.xyz3d[m,ens.ne,:,:,:] = N.mean(fstate.xyz3d[m,0:ens.ne,:,:,:],0)
  
     if debug:  
-      print "\n ENS_CM1_MEAN:  Created mean for variable: %s " % (key)
+      print("\n ENS_CM1_MEAN:  Created mean for variable: %s " % (key))
 
 # Automatically compute mean fields for staggered fortran variables stored seperately
 
@@ -1865,7 +1865,7 @@ def ens_CM1_mean(ens):
     
     if key == "W":  fstate.w[ens.ne,:,:,:] = N.mean(fstate.w[0:ens.ne,:,:,:],0)
     
-  if time_all:  print "\n Wallclock time to create ensemble means:", round(timer() - t0, 3), " sec"
+  if time_all:  print("\n Wallclock time to create ensemble means:", round(timer() - t0, 3), " sec")
 
   return
 
@@ -1965,7 +1965,7 @@ def read_CM1_ens(files, experiment, state_vector=None, DateTime=None, time_index
 # Check input arguments....
 
   if DateTime == None and time_index == None:    
-    print "\n READ_CM1_ENS ==> FATAL ERROR:  No datetime or time_index supplied - EXITING PROGRAM\n"
+    print("\n READ_CM1_ENS ==> FATAL ERROR:  No datetime or time_index supplied - EXITING PROGRAM\n")
     sys.exit(1)
 
 # Create the ensemble dictionary with some already known or needed keys and/or dimensions/information.
@@ -2014,15 +2014,15 @@ def read_CM1_ens(files, experiment, state_vector=None, DateTime=None, time_index
 #    dictionary to the state vector dictionary....
 
   if state_vector == None:
-    print "\n ==> READ_CM1_ENS:  No state_vector supplied - trying to match microphysics schemes"
+    print("\n ==> READ_CM1_ENS:  No state_vector supplied - trying to match microphysics schemes")
     ens.state_vector = None
     try:
       ens.state_vector = state.__dict__[ens.microphysics]
-      print "\n ==> READ_CM1_ENS ==> Matching state_vector found !!! using %s" % ens.microphysics
+      print("\n ==> READ_CM1_ENS ==> Matching state_vector found !!! using %s" % ens.microphysics)
     except:
-      print "\n ==> READ_CM1_ENS:  No matching state_vector found, looking for %s" % ens.microphysics
-      print "\n ==> READ_CM1_ENS:  No matching state_vector found, current state vectors are" % states__dict__
-      print "\n ==> READ_CM1_ENS:  No matching state_vector found !!!  Exiting ENS.PY!!!\n"
+      print("\n ==> READ_CM1_ENS:  No matching state_vector found, looking for %s" % ens.microphysics)
+      print("\n ==> READ_CM1_ENS:  No matching state_vector found, current state vectors are" % states__dict__)
+      print("\n ==> READ_CM1_ENS:  No matching state_vector found !!!  Exiting ENS.PY!!!\n")
       sys.exit(-1)
   else:
     ens.state_vector = state_vector
@@ -2036,8 +2036,8 @@ def read_CM1_ens(files, experiment, state_vector=None, DateTime=None, time_index
 
   ens.time_index = time_index
   
-  print("\n%s  %d"  % (" ==> READ_CM1_ENS: reading from time INDEX:", time_index))
-  print("%s  %s \n" % (" ==> READ_CM1_ENS: reading from state TIME:", ens.datetime[time_index]))
+  print(("\n%s  %d"  % (" ==> READ_CM1_ENS: reading from time INDEX:", time_index)))
+  print(("%s  %s \n" % (" ==> READ_CM1_ENS: reading from state TIME:", ens.datetime[time_index])))
 
 ## Allocate the main fortran memory
 
@@ -2045,18 +2045,18 @@ def read_CM1_ens(files, experiment, state_vector=None, DateTime=None, time_index
         
 ## Now read in the state vector fields described above...
 
-  if debug_io:  print "\n READ_CM1_ENS:  Reading file: %s into index %d" % (files[0], ens.time_index)
+  if debug_io:  print("\n READ_CM1_ENS:  Reading file: %s into index %d" % (files[0], ens.time_index))
 
 ## Read in all the coordinate data from first file....
       
   for key in ens.state_vector["coords"]: 
 
-    if debug_io:  print "\n READ_CM1_ENS:  Reading coordinate: %s " % (key)
+    if debug_io:  print("\n READ_CM1_ENS:  Reading coordinate: %s " % (key))
 
     try: 
       d = f.variables[ens.state_vector[key]['name']]
     except KeyError:       
-      print "\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain coordinate: %s, skipping it\n" % (fi, key)
+      print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain coordinate: %s, skipping it\n" % (fi, key))
       break
 
 # Write coordinate data directly into ens object
@@ -2084,17 +2084,17 @@ def read_CM1_ens(files, experiment, state_vector=None, DateTime=None, time_index
     for m, key in enumerate(ens.state_vector['xyz3d']): 
 
       hkey = ens.state_vector[key]['name']
-      if debug_io:  print "\n READ_CM1_ENS:  Reading xyz3d array: %s into variable: %d and ensemble member: %d " % (key, m, n)
+      if debug_io:  print("\n READ_CM1_ENS:  Reading xyz3d array: %s into variable: %d and ensemble member: %d " % (key, m, n))
 
       if key == "U":    # Special processing for staggerd variables
         try: 
           fstate.u[n,:,:,:] = f[hkey][:]
           ens.u_ptr = m
         except KeyError:       
-          print "\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain variable: %s, skipping it\n" % (fi, key)
+          print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain variable: %s, skipping it\n" % (fi, key))
           break
         except IndexError:       
-          print "\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain time index: %d \n" % (fi, time_index)
+          print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain time index: %d \n" % (fi, time_index))
           sys.exit()
         
       elif key == "V":    # Special processing for staggerd variables        
@@ -2102,10 +2102,10 @@ def read_CM1_ens(files, experiment, state_vector=None, DateTime=None, time_index
           fstate.v[n,:,:,:] = f[hkey][:]
           ens.v_ptr = m        
         except KeyError:               
-          print "\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain variable: %s, skipping it\n" % (fi, key)         
+          print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain variable: %s, skipping it\n" % (fi, key))         
           break
         except IndexError:       
-          print "\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain time index:  %d \n" % (fi, time_index)
+          print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain time index:  %d \n" % (fi, time_index))
           sys.exit()
         
       elif key == "W":    # Special processing for staggerd variables        
@@ -2113,25 +2113,25 @@ def read_CM1_ens(files, experiment, state_vector=None, DateTime=None, time_index
           fstate.w[n,:,:,:] = f[hkey][:]
           ens.w_ptr = m        
         except KeyError:              
-          print "\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain variable: %s, skipping it\n" % (fi, key)       
+          print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain variable: %s, skipping it\n" % (fi, key))       
           break
         except IndexError:       
-          print "\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain time index:  %d \n" % (fi, time_index)
+          print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain time index:  %d \n" % (fi, time_index))
           sys.exit()
 
       else:        
         try:           
           fstate.xyz3d[m,n,:,:,:] = f[hkey][:]
         except KeyError:       
-          print "\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain variable: %s, skipping it\n" % (fi, key)
+          print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain variable: %s, skipping it\n" % (fi, key))
           break
         except IndexError:       
-          print "\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain time index:  %d \n" % (fi, time_index)
+          print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain time index:  %d \n" % (fi, time_index))
           sys.exit()
 
     f.close()
 
-  if time_all:  print "\n Wallclock time for serial read netCDF ensemble files:", round(timer()-t1, 3), " sec"
+  if time_all:  print("\n Wallclock time for serial read netCDF ensemble files:", round(timer()-t1, 3), " sec")
   
 # Now point the ensemble xyz3d variables at the fortran xyz3d array...
 
@@ -2166,7 +2166,7 @@ def read_CM1_ens(files, experiment, state_vector=None, DateTime=None, time_index
 
 # Finished reading the file....
 
-  if time_all:  print "\n Wallclock time to read arrays from netCDF ensemble files:", round(timer()-t0, 3), " sec"
+  if time_all:  print("\n Wallclock time to read arrays from netCDF ensemble files:", round(timer()-t0, 3), " sec")
 
   return ens
 
@@ -2213,7 +2213,7 @@ def write_CM1_ens(ens, writeEns=False, overwrite=False, writeFcstMean=False, wri
     time_index = ens.time_index
     t_index    = time_index
 
-    print("\n ==> WRITE_CM1_ENS:  Writing ensemble into time_index %d at time %d" % (time_index, time[time_index]))
+    print(("\n ==> WRITE_CM1_ENS:  Writing ensemble into time_index %d at time %d" % (time_index, time[time_index])))
 
     if overwrite == True:
 
@@ -2242,10 +2242,10 @@ def write_CM1_ens(ens, writeEns=False, overwrite=False, writeFcstMean=False, wri
         files = ens.files
     else:
         files = ens.files[HF::2]
-        print files
-        print("\n ==> WRITE_CM1_ENS HF on, starting at  %d" % (HF))
-        print("\n ==> WRITE_CM1_ENS HF on, First file to writeback  %s" % (files[0] ))
-        print("\n ==> WRITE_CM1_ENS HF on, Last file to writeback:  %s" % (files[-1]))
+        print(files)
+        print(("\n ==> WRITE_CM1_ENS HF on, starting at  %d" % (HF)))
+        print(("\n ==> WRITE_CM1_ENS HF on, First file to writeback  %s" % (files[0] )))
+        print(("\n ==> WRITE_CM1_ENS HF on, Last file to writeback:  %s" % (files[-1])))
 
     for n, file in enumerate(files):
 
@@ -2269,12 +2269,12 @@ def write_CM1_ens(ens, writeEns=False, overwrite=False, writeFcstMean=False, wri
    
         else:
           if debug_io:
-            print "\n ==> WRITE_CM1_ENS:  Did not writeback variable %s to netCDF file" % key
+            print("\n ==> WRITE_CM1_ENS:  Did not writeback variable %s to netCDF file" % key)
           
       f.close()
 
       if debug_io:
-        print "\n ==> WRITE_CM1_ENS:  Closed file %s" % files[n]
+        print("\n ==> WRITE_CM1_ENS:  Closed file %s" % files[n])
 
 # End writing out ensemble files to CM1 restart files.      
 #-----------------------------------------------------------------------------------------            
@@ -2297,10 +2297,10 @@ def write_CM1_ens(ens, writeEns=False, overwrite=False, writeFcstMean=False, wri
 
     if writeAnalMean == True:
       meanfile = os.path.join(member000_dir, os.path.basename(ens.files[0]).replace("_rst_", "_post_"))
-      print "\n ==> WRITE_CM1_ENS:  Now writing out posterior ensemble mean into %s" % (meanfile)
+      print("\n ==> WRITE_CM1_ENS:  Now writing out posterior ensemble mean into %s" % (meanfile))
     else:
       meanfile = os.path.join(member000_dir, os.path.basename(ens.files[0]).replace("_rst_", "_prior_"))
-      print "\n ==> WRITE_CM1_ENS:  Now writing out prior ensemble mean into %s" % (meanfile)
+      print("\n ==> WRITE_CM1_ENS:  Now writing out prior ensemble mean into %s" % (meanfile))
     
     cmd = "cp -f %s %s" % (ens.files[0], meanfile)
     os.system(cmd)
@@ -2309,7 +2309,7 @@ def write_CM1_ens(ens, writeEns=False, overwrite=False, writeFcstMean=False, wri
 
     for key in ens.state_vector["xyz3d"]: 
       
-      if f.variables.has_key(key):
+      if key in f.variables:
 
         if key == "U":        
           f[ens.state_vector[key]['name']][:,:,:] = fstate.u[ens.ne,:,:,:]
@@ -2326,12 +2326,12 @@ def write_CM1_ens(ens, writeEns=False, overwrite=False, writeFcstMean=False, wri
     f.sync()
     f.close()
 
-    print "\n ==> WRITE_CM1_ENS:  Closed file %s" % meanfile
+    print("\n ==> WRITE_CM1_ENS:  Closed file %s" % meanfile)
 
 # End writing out full ensemble forecast or analysis files.      
 #---------------------------------------------------------------------------------------------------
 #
-  if time_all:  print "\n ==> Wallclock time to write out fcst/anal to files:", round(timer() - t0, 3), " sec"
+  if time_all:  print("\n ==> Wallclock time to write out fcst/anal to files:", round(timer() - t0, 3), " sec")
 
   return
 
@@ -2345,65 +2345,65 @@ def ens_check(files,ens):
   """Dumps out some basic information to see if you read in the data correctly...."""
 
   if debug_io:
-    for key in ens.keys():
-      print "\n"
+    for key in list(ens.keys()):
+      print("\n")
       try:
         if ens[key]['data'].ndim > 0:
-          print key
-          print "Variable: %s  %s  %s  Max:  %8.2f  Min:  %8.2f" % \
-             (key, ens[key]['data'].shape, ens[key]['coords'], ens[key]['data'].max(), ens[key]['data'].min())
+          print(key)
+          print("Variable: %s  %s  %s  Max:  %8.2f  Min:  %8.2f" % \
+             (key, ens[key]['data'].shape, ens[key]['coords'], ens[key]['data'].max(), ens[key]['data'].min()))
         else:
-          print "Variable: %s = %8.2f" % (key, ens[key]['data'])
+          print("Variable: %s = %8.2f" % (key, ens[key]['data']))
       except:
-        print key, ens[key]
+        print(key, ens[key])
         pass
   
-    for key in ens['U'].keys():
-      if key != 'data':  print "\nU-Variable Attributes", key, ens['U'][key]
+    for key in list(ens['U'].keys()):
+      if key != 'data':  print("\nU-Variable Attributes", key, ens['U'][key])
   
-    for key in ens['TH'].keys():
-      if key != 'data':  print "\nTH-Variable Attributes", key, ens['TH'][key]
+    for key in list(ens['TH'].keys()):
+      if key != 'data':  print("\nTH-Variable Attributes", key, ens['TH'][key])
 
-  print "\n********************************************************************************************\n"
+  print("\n********************************************************************************************\n")
 
-  print "ENS_CHECK:  Checking to see if 3D variables are the same...."
+  print("ENS_CHECK:  Checking to see if 3D variables are the same....")
 
   for key in ["U", "V", "W", "TH"]:
 
     ne2 = max(ens.ne/2, 1)
-    print "\n     Checking %s for ensemble member %d" % (key, ne2)
-    print "------------------------------------------------"
+    print("\n     Checking %s for ensemble member %d" % (key, ne2))
+    print("------------------------------------------------")
 
     f = ncdf.Dataset(files[ne2], "r")
     d = f.variables[ens.state_vector[key]['name']][ens['time_index']]
    
     if key == "U":
-      print "\nENS  Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, fstate.u[ne2].max(), fstate.u[ne2].min())      
-      print "\nFile Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, d.max(), d.min())      
-      print "\nENS  Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, fstate.u[ne2].mean(), fstate.u[ne2].std())      
-      print "\nFile Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, d.mean(), d.std())
+      print("\nENS  Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, fstate.u[ne2].max(), fstate.u[ne2].min()))      
+      print("\nFile Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, d.max(), d.min()))      
+      print("\nENS  Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, fstate.u[ne2].mean(), fstate.u[ne2].std()))      
+      print("\nFile Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, d.mean(), d.std()))
     
     elif key == "V":      
-      print "\nENS  Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, fstate.v[ne2].max(), fstate.v[ne2].min())      
-      print "\nFile Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, d.max(), d.min())      
-      print "\nENS  Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, fstate.v[ne2].mean(), fstate.v[ne2].std())      
-      print "\nFile Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, d.mean(), d.std())
+      print("\nENS  Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, fstate.v[ne2].max(), fstate.v[ne2].min()))      
+      print("\nFile Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, d.max(), d.min()))      
+      print("\nENS  Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, fstate.v[ne2].mean(), fstate.v[ne2].std()))      
+      print("\nFile Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, d.mean(), d.std()))
   
     elif key == "W":      
-      print "\nENS  Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, fstate.w[ne2].max(), fstate.w[ne2].min())      
-      print "\nFile Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, d.max(), d.min())      
-      print "\nENS  Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, fstate.w[ne2].mean(), fstate.w[ne2].std())      
-      print "\nFile Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, d.mean(), d.std())
+      print("\nENS  Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, fstate.w[ne2].max(), fstate.w[ne2].min()))      
+      print("\nFile Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, d.max(), d.min()))      
+      print("\nENS  Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, fstate.w[ne2].mean(), fstate.w[ne2].std()))      
+      print("\nFile Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, d.mean(), d.std()))
     
     else: 
-      print "\nENS  Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, ens[key][ne2].max(), ens[key][ne2].min())     
-      print "\nFile Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, d.max(), d.min())     
-      print "\nENS  Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, ens[key][ne2].mean(), ens[key][ne2].std())     
-      print "\nFile Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, d.mean(), d.std())
+      print("\nENS  Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, ens[key][ne2].max(), ens[key][ne2].min()))     
+      print("\nFile Variable: %s  Max:   %10.4f  Min:   %10.4f" % (key, d.max(), d.min()))     
+      print("\nENS  Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, ens[key][ne2].mean(), ens[key][ne2].std()))     
+      print("\nFile Variable: %s  Mean:  %10.4f  Stdev:  %10.4f" % (key, d.mean(), d.std()))
 
     f.close()
 
-  print "\n********************************************************************************************\n"
+  print("\n********************************************************************************************\n")
 
   return
 
@@ -2488,7 +2488,7 @@ if __name__ == "__main__":
 
     if options.dir and options.exp == None:
         options.exp = glob.glob(os.path.join(options.dir, "*.exp" ))[0]
-        print("\n ==> ENS_MAIN: found experiment files %s" % options.exp)
+        print(("\n ==> ENS_MAIN: found experiment files %s" % options.exp))
 
     if options.exp == None:
         parser.print_help()
@@ -2511,7 +2511,7 @@ if __name__ == "__main__":
              myDTstring = "%s,%s,%s,%s,%s,%s" % (exper["YEAR"],exper["MONTH"],exper["DAY"],exper["HOUR"],exper["MINUTE"],exper["SECOND"])
              
     if options.obs != None:
-        print("\n ==> ENS_MAIN: Changing radar observation file to %s" % options.obs)
+        print(("\n ==> ENS_MAIN: Changing radar observation file to %s" % options.obs))
         exper['radar_obs'] = options.obs
 
 # Create the ensemble file list....
@@ -2523,7 +2523,7 @@ if __name__ == "__main__":
     if options.nens == 0:
         state = read_CM1_ens(files, exper, state_vector=None, DateTime=myDT, addmean=1)
     else:
-        print("\n ==> ENS_MAIN:  reading in only the first %d members" % options.nens)
+        print(("\n ==> ENS_MAIN:  reading in only the first %d members" % options.nens))
         state = read_CM1_ens(files[0:options.nens], exper, state_vector=None, DateTime=myDT, addmean=1)
 
     ens_CM1_coords(state)
@@ -2556,14 +2556,14 @@ if __name__ == "__main__":
 
     if options.plot8:
         savefile = "%s_%s_%s_OBS_%3.1fKM_%s.pdf" % (options.dir, state.experiment['microphysics'], options.var, state.zc[options.klevel]*.001, myDT.strftime("%H%M"))
-        print "  --> PLOT8 saving to file %s" % savefile
+        print("  --> PLOT8 saving to file %s" % savefile)
         fig = ens_PLOT_9PANEL(state, klevel=options.klevel, obs=True, cparams=options.cparams, var = options.var, zoom=options.zoom, savefig=savefile)
         P.close()
         sys.exit(0)
         
     if options.plot9:
         savefile = "%s_%s_%s_%3.1fKM_%s.pdf" % (options.dir, state.experiment['microphysics'], options.var, state.zc[options.klevel]*.001, myDT.strftime("%H%M"))
-        print "  --> PLOT9 saving to file %s" % savefile
+        print("  --> PLOT9 saving to file %s" % savefile)
         fig = ens_PLOT_9PANEL(state, klevel=options.klevel, cparams=options.cparams, var = options.var, zoom=options.zoom, savefig=savefile)
         P.close()
         sys.exit(0)

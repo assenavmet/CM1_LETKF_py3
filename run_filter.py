@@ -26,10 +26,10 @@ def run_unix_cmd(cmd, file_handle=None):
 
 if __name__ == "__main__":
 
-  print "\n  ----------------------------------------------------------------------"
-  print "\n               BEGIN PROGRAM RUN_FILTER                                 "
-  print "\n  This script sets the parameters to create Hx's and runs the letkf code"
-  print "\n  ----------------------------------------------------------------------\n"
+  print("\n  ----------------------------------------------------------------------")
+  print("\n               BEGIN PROGRAM RUN_FILTER                                 ")
+  print("\n  This script sets the parameters to create Hx's and runs the letkf code")
+  print("\n  ----------------------------------------------------------------------\n")
   
 # Parse input command options
 
@@ -51,7 +51,7 @@ if __name__ == "__main__":
 # Get experiment file
 
   if options.exper == None:
-    print "\n --> Run_Filter:  No experiment's run filename specified, exiting....\n"
+    print("\n --> Run_Filter:  No experiment's run filename specified, exiting....\n")
     parser.print_help()
     sys.exit(-1)
   else:
@@ -66,7 +66,7 @@ if __name__ == "__main__":
 # Get the time stamp
     
   if options.time == None:
-    print "\n --> Run_Filter:  No analysis time specified, exiting....\n"
+    print("\n --> Run_Filter:  No analysis time specified, exiting....\n")
     parser.print_help()
     sys.exit(-1)
   else:
@@ -77,10 +77,10 @@ if __name__ == "__main__":
 
   if options.window == None:
     window = int(exper['DA_PARAMS']['assim_window'])
-    print("\n --> Run_Filter:  using the window from the EXPER file:  +/- %d secs" % (window/2))
+    print(("\n --> Run_Filter:  using the window from the EXPER file:  +/- %d secs" % (window/2)))
   else:
     window = int(options.window)
-    print("\n --> Run_Filter:  using the window from the command line:  +/- %d secs" % (window/2))
+    print(("\n --> Run_Filter:  using the window from the command line:  +/- %d secs" % (window/2)))
 
 #-------------------------------------------------------------------------------
 # Set up frequency of assimilation (needed for asynchronous mostly)
@@ -88,45 +88,45 @@ if __name__ == "__main__":
   if options.freq == None:
     freq = int(exper['DA_PARAMS']['assim_freq'])
     if freq > 0:
-      print("\n --> Run_Filter:  using Asynchronous DA with freq from EXPER file:  %d secs" % (freq))
+      print(("\n --> Run_Filter:  using Asynchronous DA with freq from EXPER file:  %d secs" % (freq)))
     else:
-      print("\n --> Run_Filter:  using Synchronous DA with freq from EXPER file:  %d secs" % (freq))
+      print(("\n --> Run_Filter:  using Synchronous DA with freq from EXPER file:  %d secs" % (freq)))
   else:
     freq = options.freq
     if freq > 0:
-      print("\n --> Run_Filter:  using Asynchronous DA with freq from command line:  %d secs" % (freq))
+      print(("\n --> Run_Filter:  using Asynchronous DA with freq from command line:  %d secs" % (freq)))
     else:
-      print("\n --> Run_Filter:  using Synchronous DA with freq from command line:  %d secs" % (freq))
+      print(("\n --> Run_Filter:  using Synchronous DA with freq from command line:  %d secs" % (freq)))
 
 #-------------------------------------------------------------------------------
 # Observation file
 
   if options.obs == None:
     obs_file = exper['radar_obs']
-    print("\n --> Run_Filter:  using the observation file from the EXPER file:  %s" % obs_file)
+    print(("\n --> Run_Filter:  using the observation file from the EXPER file:  %s" % obs_file))
   else:
     obs_file = options.obs
-    print("\n --> Run_Filter:  using the observation file from the command line:  %s" % obs_file)
+    print(("\n --> Run_Filter:  using the observation file from the command line:  %s" % obs_file))
 
 #-------------------------------------------------------------------------------
 # Parallel Threading
 
   if options.nthreads != None:
     nthreads = options.nthreads
-    print("\n --> RUN_Filter:  Number of threads requested is from command line:  %d" % nthreads)
+    print(("\n --> RUN_Filter:  Number of threads requested is from command line:  %d" % nthreads))
   else:
     nthreads = exper['DA_PARAMS']['nthreads']
-    print("\n --> Run_Filter:  Number of threads requested is from EXPER file:  %d" % nthreads)
+    print(("\n --> Run_Filter:  Number of threads requested is from EXPER file:  %d" % nthreads))
 
 #-------------------------------------------------------------------------------
 # Inflation type
 
   if options.ainflate:
     aInflate = options.ainflate
-    print("\n --> Run_Filter:  using the inflation method from command line:  %d" % (aInflate))
+    print(("\n --> Run_Filter:  using the inflation method from command line:  %d" % (aInflate)))
   else:
     aInflate = exper['DA_PARAMS']['aInflate']
-    print("\n --> Run_Filter:  using the inflation method from EXPER file:  %d" % (aInflate))
+    print(("\n --> Run_Filter:  using the inflation method from EXPER file:  %d" % (aInflate)))
 
 #################################################################################################
 #
@@ -151,7 +151,7 @@ if __name__ == "__main__":
     dt      = DT.timedelta(seconds=N.int(sec))
     Hx_time = DT.datetime(int(time[0]),int(time[1]),int(time[2]),int(time[3]),int(time[4]),int(time[5])) + dt
 
-    print("\n  -->  Run_Filter calling computeHx for time %s  \n" % Hx_time.strftime("%Y,%m,%d,%H,%M,%S"))
+    print(("\n  -->  Run_Filter calling computeHx for time %s  \n" % Hx_time.strftime("%Y,%m,%d,%H,%M,%S")))
 
     cmd = "python ./computeHx.py --exper %s --time %s -o %s --window %d" % (options.exper, Hx_time.strftime("%Y,%m,%d,%H,%M,%S"), obs_file, freq)
                                
@@ -160,9 +160,9 @@ if __name__ == "__main__":
     if options.obserr:  cmd = "%s --obserr %s %s %s %s" % (cmd, \
                         options.obserr[0],options.obserr[1],options.obserr[2],options.obserr[3])
        
-    print("\n  "+cmd+"\n")
+    print(("\n  "+cmd+"\n"))
 
-    print(run_unix_cmd(cmd))
+    print((run_unix_cmd(cmd)))
 
   file_DT = DT.datetime(int(time[0]),int(time[1]),int(time[2]),int(time[3]),int(time[4]),int(time[5]))
 
@@ -170,22 +170,22 @@ if __name__ == "__main__":
 
   os.rename("Prior.nc", newPriorFile)
   
-  print("\n  --> Moved Prior.nc file to %s\n" % (newPriorFile))
+  print(("\n  --> Moved Prior.nc file to %s\n" % (newPriorFile)))
 
 #################################################################################################
 # Run LETKF 
 #
 
-  print("\n  >================ Run_Filter:  Running LETKF at time: %s ===================<  \n" % file_DT.strftime("%Y-%m-%d_%H:%M:%S"))
+  print(("\n  >================ Run_Filter:  Running LETKF at time: %s ===================<  \n" % file_DT.strftime("%Y-%m-%d_%H:%M:%S")))
 
   cmd = "python letkf.py --exper %s --time %s --nthreads %d " % (options.exper, options.time, nthreads)
   
   if aInflate:   cmd = "%s --aInflate %d" % (cmd, aInflate)
   if options.HF != None: cmd = "%s --HF %d" % (cmd, options.HF)
   
-  print("\n  "+cmd+"\n")
-  print(run_unix_cmd(cmd))
+  print(("\n  "+cmd+"\n"))
+  print((run_unix_cmd(cmd)))
 
-  print "\n  ----------------------------------------------------------------------"
-  print "\n                 END PROGRAM RUN_FILTER                                 "
-  print "\n  ----------------------------------------------------------------------"
+  print("\n  ----------------------------------------------------------------------")
+  print("\n                 END PROGRAM RUN_FILTER                                 ")
+  print("\n  ----------------------------------------------------------------------")

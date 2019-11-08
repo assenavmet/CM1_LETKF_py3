@@ -61,12 +61,12 @@ if options.init:
     for cmd in ic_cmds:
         newcmd = os.path.join(cwd, cmd)
         if RunIt:
-            print("Running  %s" % newcmd)
+            print(("Running  %s" % newcmd))
             master_output, master_error = run_unix_cmd(newcmd)
-            print "\n ==> run_Exper: ic_cmds:  STDOUT: %s " % master_output
-            print "\n ==> run_Exper: ic_cmds:  STDERR: %s " % master_error
+            print("\n ==> run_Exper: ic_cmds:  STDOUT: %s " % master_output)
+            print("\n ==> run_Exper: ic_cmds:  STDERR: %s " % master_error)
         else:
-           print("%s" % newcmd)
+           print(("%s" % newcmd))
 
 #----------------------------------------------------------------------------------------------------------------------------
 # Observation files:  (the ObFile can have more than one data file, add to list)
@@ -105,7 +105,7 @@ da_params = {
 
 if options.dir and options.exp == None:
     options.exp = glob.glob(os.path.join(options.dir, "*.exp" ))[0]
-    print("\n#==> run_Exper: found experiment files %s" % options.exp)
+    print(("\n#==> run_Exper: found experiment files %s" % options.exp))
 
 if options.exp == None:
     parser.print_help()
@@ -146,8 +146,8 @@ else:
 
 stop = DT.datetime(stop[0],stop[1],stop[2],stop[3],stop[4],stop[5])
 
-print("\n#==> run_Exper: start time for experiment is %s" % start.strftime("%Y-%m-%d %H:%M:%S"))
-print("\n#==> run_Exper: stop  time for experiment is %s" % stop.strftime("%Y-%m-%d %H:%M:%S"))
+print(("\n#==> run_Exper: start time for experiment is %s" % start.strftime("%Y-%m-%d %H:%M:%S")))
+print(("\n#==> run_Exper: stop  time for experiment is %s" % stop.strftime("%Y-%m-%d %H:%M:%S")))
 
 time = []
 
@@ -175,7 +175,7 @@ if fcst > 0:
   dt = DT.timedelta(seconds=fcst) 
   if time[-1][0] != stop:  
     time.append([time[-1][0]+dt, 0])
-    print "Error: (Stop-Start) time is not modulo assimilation freq time --> fixing this"
+    print("Error: (Stop-Start) time is not modulo assimilation freq time --> fixing this")
   else:
     time.append([stop+dt, 0])
 
@@ -187,18 +187,18 @@ for n, t in enumerate(time[:-1]):
   now_DT   = t[0]
   later_DT = time[n+1][0]
   if t[1] == -1:
-    print "#======>>> Step %d:  Run pre-cook from %s until %s" % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
-                                                                 later_DT.strftime("%Y_%m-%d %H:%M:%S"))
+    print("#======>>> Step %d:  Run pre-cook from %s until %s" % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
+                                                                 later_DT.strftime("%Y_%m-%d %H:%M:%S")))
   if t[1] == 0:
-    print "#======>>> Step %2d:  Run forecast from %s until %s" % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
-                                                                 later_DT.strftime("%Y_%m-%d %H:%M:%S"))
+    print("#======>>> Step %2d:  Run forecast from %s until %s" % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
+                                                                 later_DT.strftime("%Y_%m-%d %H:%M:%S")))
   if t[1] == 1:
-    print "#======>>> Step %2d:  Assimilate at %s, then run forecast until %s" % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
-                                                                                later_DT.strftime("%Y_%m-%d %H:%M:%S"))
+    print("#======>>> Step %2d:  Assimilate at %s, then run forecast until %s" % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
+                                                                                later_DT.strftime("%Y_%m-%d %H:%M:%S")))
   if t[1] == 2:
-    print "#======>>> Step %2d:  Assimilate and run additive noise at %s, then run forecast until %s"  \
+    print("#======>>> Step %2d:  Assimilate and run additive noise at %s, then run forecast until %s"  \
                                                                              % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
-                                                                                later_DT.strftime("%Y_%m-%d %H:%M:%S"))
+                                                                                later_DT.strftime("%Y_%m-%d %H:%M:%S")))
 
 #-------------------------------------------------------------------------------
 #
@@ -210,9 +210,9 @@ else:
   overshoot = 0
 
 if overshoot == 0:
-  print("\n#==> run_Exper: Synchronous DA is requested, local window = %d sec\n" % assim_freq)
+  print(("\n#==> run_Exper: Synchronous DA is requested, local window = %d sec\n" % assim_freq))
 else:
-  print("\n#==> run_Exper: Asynchronous DA is requested, overshoot = %d sec\n" % overshoot)
+  print(("\n#==> run_Exper: Asynchronous DA is requested, overshoot = %d sec\n" % overshoot))
 
 #-------------------------------------------------------------------------------
 # 
@@ -235,20 +235,20 @@ for n, t in enumerate(time[:-1]):
   else:
       later    = (later_DT - start).seconds + overshoot
     
-  print "\n#--------------------------------------------------------------------------"
-  print("\n#==> run_Exper: Now   Model TIME is  %s  seconds " % now)
-  print("\n#==> run_Exper: Later Model TIME is  %s  seconds " % later)
+  print("\n#--------------------------------------------------------------------------")
+  print(("\n#==> run_Exper: Now   Model TIME is  %s  seconds " % now))
+  print(("\n#==> run_Exper: Later Model TIME is  %s  seconds " % later))
 
   if t[1] == 0:
-    print("\n#==> run_Exper: Step %2d:  Run forecast from %s until %s" \
-           % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"), later_DT.strftime("%Y_%m-%d %H:%M:%S")))
+    print(("\n#==> run_Exper: Step %2d:  Run forecast from %s until %s" \
+           % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"), later_DT.strftime("%Y_%m-%d %H:%M:%S"))))
   if t[1] == 1:
-    print("\n#==> run_Exper: Step %2d:  Assimilate at %s, then run forecast until %s" 
-          % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"), later_DT.strftime("%Y_%m-%d %H:%M:%S")))
+    print(("\n#==> run_Exper: Step %2d:  Assimilate at %s, then run forecast until %s" 
+          % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"), later_DT.strftime("%Y_%m-%d %H:%M:%S"))))
           
   if t[1] == 2:
-    print("\n#==> run_Exper: Step %2d:  Assimilate and run additive noise at %s, then run forecast until %s"  \
-          % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"), later_DT.strftime("%Y_%m-%d %H:%M:%S")))
+    print(("\n#==> run_Exper: Step %2d:  Assimilate and run additive noise at %s, then run forecast until %s"  \
+          % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"), later_DT.strftime("%Y_%m-%d %H:%M:%S"))))
 #-------------------------------------------------------------------------------
 #     
 # Assimilate/if requested run additive noise
@@ -257,7 +257,7 @@ for n, t in enumerate(time[:-1]):
      
     c0 = cpu.time()
     
-    print("\n#==> run_Exper:  Assimilation is being called, the time:  %s" % now_DT.strftime("%Y-%m-%d %H:%M:%S"))
+    print(("\n#==> run_Exper:  Assimilation is being called, the time:  %s" % now_DT.strftime("%Y-%m-%d %H:%M:%S")))
       
     cmd = "run_filter.py --exper %s --time %s" % (options.exp, now_DT.strftime("%Y,%m,%d,%H,%M,%S"))
     
@@ -270,12 +270,12 @@ for n, t in enumerate(time[:-1]):
     cwd = os.getcwd()
     newcmd = os.path.join(cwd, cmd)
 
-    print("\n\n"+newcmd+"\n")
+    print(("\n\n"+newcmd+"\n"))
     
     if RunIt:  
       master_output, master_error = run_unix_cmd(newcmd)
-      print "\nSTDOUT: %s " % master_output 
-      print "\nSTDERR: %s " % master_error
+      print("\nSTDOUT: %s " % master_output) 
+      print("\nSTDERR: %s " % master_error)
     
     cpu_enkf = cpu_enkf + cpu.time() - c0
 
@@ -283,8 +283,8 @@ for n, t in enumerate(time[:-1]):
   
     c0 = cpu.time()
     
-    print("\n#==> run_Exper:  Additive noise is being called, the time: %s" % now_DT.strftime("%Y-%m-%d %H:%M:%S"))
-    print("\n#==> run_Exper:  Additive noise is being called, the time: %s" % now_DT.strftime("%Y-%m-%d %H:%M:%S"))
+    print(("\n#==> run_Exper:  Additive noise is being called, the time: %s" % now_DT.strftime("%Y-%m-%d %H:%M:%S")))
+    print(("\n#==> run_Exper:  Additive noise is being called, the time: %s" % now_DT.strftime("%Y-%m-%d %H:%M:%S")))
     
     if exper['DA_PARAMS']['additive_noise'][1] <= 1:
         print("\n#==> run_Exper:  Additive noise is based on composite reflectivity")
@@ -296,12 +296,12 @@ for n, t in enumerate(time[:-1]):
     cwd = os.getcwd()
     newcmd = os.path.join(cwd, cmd)
 
-    print("\n\n"+newcmd+"\n")
+    print(("\n\n"+newcmd+"\n"))
 
     if RunIt:  
       master_output, master_error = run_unix_cmd(newcmd)
-      print "\nSTDOUT: %s " % master_output 
-      print "\nSTDERR: %s " % master_error
+      print("\nSTDOUT: %s " % master_output) 
+      print("\nSTDERR: %s " % master_error)
 
     cpu_correct = cpu_correct + cpu.time() - c0
 
@@ -313,21 +313,21 @@ for n, t in enumerate(time[:-1]):
   
     c0 = cpu.time()
 
-    print("\n#==> run_Exper: Integrating ensemble members from date and time: %s" % (now_DT.strftime("%Y-%m-%d_%H:%M:%S")))
+    print(("\n#==> run_Exper: Integrating ensemble members from date and time: %s" % (now_DT.strftime("%Y-%m-%d_%H:%M:%S"))))
 
     runtime = (later_DT - now_DT).seconds + overshoot
     cmd = "run_fcst.py -e %s --run_time %d -t %s" % (options.exp, runtime, now_DT.strftime("%Y,%m,%d,%H,%M,%S"))
     cwd = os.getcwd()
     newcmd = os.path.join(cwd, cmd)
 
-    print("\n\n"+newcmd+"\n")
+    print(("\n\n"+newcmd+"\n"))
     
     if RunIt:  
       master_output, master_error = run_unix_cmd(newcmd)
-      print "\nSTDOUT: %s " % master_output 
-      print "\nSTDERR: %s " % master_error
+      print("\nSTDOUT: %s " % master_output) 
+      print("\nSTDERR: %s " % master_error)
 
-    print("\n#==> run_Exper: Integrated ensemble members to time: %s\n" % ( later_DT.strftime("%Y-%m-%d_%H:%M:%S")))
+    print(("\n#==> run_Exper: Integrated ensemble members to time: %s\n" % ( later_DT.strftime("%Y-%m-%d_%H:%M:%S"))))
     
     cpu_model = cpu_model + cpu.time() - c0
 
@@ -335,9 +335,9 @@ cpu_total = cpu.time() - cpu_total
 
 #-------------------------------------------------------------------------------
 
-print("\n#==> run_Exper:  Elapsed WALL CLOCK TIME FOR TOTAL EXPERIMENT: %f \n" % ( cpu_total ))
-print("\n#==> run_Exper:  Elapsed WALL CLOCK TIME FOR FILTER:           %f \n" % ( cpu_enkf ))
-print("\n#==> run_Exper:  Elapsed WALL CLOCK TIME FOR MODEL RUNS:       %f \n" % ( cpu_model ))
-print("\n#==> run_Exper:  Elapsed WALL CLOCK TIME FOR ADDITIVE NOISE:   %f \n" % ( cpu_correct ))
+print(("\n#==> run_Exper:  Elapsed WALL CLOCK TIME FOR TOTAL EXPERIMENT: %f \n" % ( cpu_total )))
+print(("\n#==> run_Exper:  Elapsed WALL CLOCK TIME FOR FILTER:           %f \n" % ( cpu_enkf )))
+print(("\n#==> run_Exper:  Elapsed WALL CLOCK TIME FOR MODEL RUNS:       %f \n" % ( cpu_model )))
+print(("\n#==> run_Exper:  Elapsed WALL CLOCK TIME FOR ADDITIVE NOISE:   %f \n" % ( cpu_correct )))
 
 #-------------------------------------------------------------------------------

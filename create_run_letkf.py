@@ -241,7 +241,7 @@ DIR_DICT= {
 
 def linkit(dir_from_target,dir_to_target,link_option):
 
-    if debug: print("LINKIT:  ARG[0]: %s  ARG[1]:  %s" % (dir_from_target,dir_to_target))
+    if debug: print(("LINKIT:  ARG[0]: %s  ARG[1]:  %s" % (dir_from_target,dir_to_target)))
 
     if link_option == 0:  return
 
@@ -254,15 +254,15 @@ def linkit(dir_from_target,dir_to_target,link_option):
 
         if os.system(LINK_CMD) != 0:
 
-            print "\nERROR!!! " 
+            print("\nERROR!!! ") 
 
-            print "ERROR!!!  Failed to EXECUTE: " + LINK_CMD
+            print("ERROR!!!  Failed to EXECUTE: " + LINK_CMD)
 
-            print "ERROR!!!\n" 
+            print("ERROR!!!\n") 
 
             sys.exit(1)
 
-        print "Linked " + dir_from_target + " to directory  " + dir_to_target
+        print("Linked " + dir_from_target + " to directory  " + dir_to_target)
 
     if link_option == 2:
 
@@ -270,34 +270,34 @@ def linkit(dir_from_target,dir_to_target,link_option):
 
         if os.system(CP_CMD) != 0:
 
-            print "\nERROR!!! " 
+            print("\nERROR!!! ") 
 
-            print "ERROR!!!  Failed to EXECUTE: " + CP_CMD
+            print("ERROR!!!  Failed to EXECUTE: " + CP_CMD)
 
             if not os.path.exists(dir_from_target):
 
-                print "\nCOMMAND FAILED because %s does not exist\n " % dir_from_target
+                print("\nCOMMAND FAILED because %s does not exist\n " % dir_from_target)
 
             elif not os.path.join(dir_to_target):
 
-                print "\nCOMMAND FAILED because %s does not exist\n " % dir_to_target
+                print("\nCOMMAND FAILED because %s does not exist\n " % dir_to_target)
 
             else:
 
-                print "\nBOTH FILE AND DIRECTORY EXISTS....something else f__ked up here....\n"
+                print("\nBOTH FILE AND DIRECTORY EXISTS....something else f__ked up here....\n")
 
-            print "ERROR!!!\n" 
+            print("ERROR!!!\n") 
 
             sys.exit(1)
 
-        print "Copied " + dir_from_target + " to directory  " + dir_to_target
+        print("Copied " + dir_from_target + " to directory  " + dir_to_target)
 
     return
 
 #===============================================================================================================
 # main script
 
-print "\n<<<<<===========================================================================================>>>>>>\n"
+print("\n<<<<<===========================================================================================>>>>>>\n")
 
 #///////////////////////////////////////////////////////////////////////////////////////////////////////
 # Section to parse command line arguments, and use information to create default data structure for run
@@ -353,7 +353,7 @@ else:
     timestamp  = datetime.datetime.fromtimestamp( os.path.getctime(defaults['base_path'] ) )     
     newbasedir = defaults['base_path'] + "_" + timestamp.isoformat().replace('T', '_')
 
-    print "\nERROR:  EXPERIMENT DIRECTORY ALREADY EXISTS, MOVING IT TO: %s \n" % (newbasedir)
+    print("\nERROR:  EXPERIMENT DIRECTORY ALREADY EXISTS, MOVING IT TO: %s \n" % (newbasedir))
 
     os.rename(defaults['base_path'], newbasedir)
     os.mkdir(defaults['base_path'])
@@ -381,7 +381,7 @@ for item in DIR_DICT['top']:
 # HANDY Python module:  f90nml  -->  this is why python is great, someone already did this!!!!!!
 
 namelist = f90nml.read(os.path.join(defaults['base_path'],"namelist.input"))
-print namelist
+print(namelist)
 
 # This uses the information at the top defaults level to alter the values of the default namelist.
 
@@ -403,7 +403,7 @@ for n in N.arange(1,defaults['ne']+1):
     
 # Copy needed stuff into directories
 
-    for key in DIR_DICT.keys():
+    for key in list(DIR_DICT.keys()):
         
         if (key == 'fcst'):
             for item in DIR_DICT[key]:

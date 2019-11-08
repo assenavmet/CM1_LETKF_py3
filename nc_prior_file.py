@@ -115,10 +115,10 @@ def write_prior(ne, kind, value, dates, error, x, y, z, Hxf, Hxfbar, lat, lon, e
   filename = "%s%s" % ("Prior", ".nc" )
     
   if os.path.isfile(filename) != True:
-      print "No Prior file found, creating %s \n" % filename
+      print("No Prior file found, creating %s \n" % filename)
       create_prior_file(ne)
   else:
-      print "Prior obs file found, opening %s \n" % filename
+      print("Prior obs file found, opening %s \n" % filename)
   
 # create the fileput filename and create new netCDF4 file
 
@@ -134,8 +134,8 @@ def write_prior(ne, kind, value, dates, error, x, y, z, Hxf, Hxfbar, lat, lon, e
 
   obs = N.size(value)
   
-  print "Previous number of obs %d \n" % oo 
-  print "Adding %d to netcdf file \n" % obs
+  print("Previous number of obs %d \n" % oo) 
+  print("Adding %d to netcdf file \n" % obs)
   
 # get kind then setup type and units
 
@@ -190,7 +190,7 @@ def write_prior(ne, kind, value, dates, error, x, y, z, Hxf, Hxfbar, lat, lon, e
  
   rootgroup.sync()
   
-  print "Total number of obs in %s file is %d \n" % (filename,len(rootgroup.dimensions['ob_num']))
+  print("Total number of obs in %s file is %d \n" % (filename,len(rootgroup.dimensions['ob_num'])))
   rootgroup.close()
 
 ##################################################################################################### 
@@ -202,10 +202,10 @@ def read_prior(file_DT, file=None, sort=False, dict=False):
     filename = "%s_%s%s" % ("Prior", file_DT.strftime("%Y-%m-%d_%H:%M:%S"), ".nc")
     
   if os.path.isfile(filename) != True:
-      print "\n==> No Prior file found:  %s ... exiting!!! \n" % filename
+      print("\n==> No Prior file found:  %s ... exiting!!! \n" % filename)
       sys.exit(-1)
   else:
-      print "Prior obs file found, opening %s \n" % filename
+      print("Prior obs file found, opening %s \n" % filename)
   
 # create the fileput filename and create new netCDF4 file
 
@@ -234,7 +234,7 @@ def read_prior(file_DT, file=None, sort=False, dict=False):
   kind   = rootgroup.variables['kind'][:]
   dates  = rootgroup.variables['dates'][...]
  
-  print "Total number of obs in %s file is %d \n" % (filename,oo)
+  print("Total number of obs in %s file is %d \n" % (filename,oo))
   
   rootgroup.close()
   
@@ -283,18 +283,18 @@ def read_prior_for_testing(analysis_time, prior_file):
   ne   = Hxf.shape[1]
 
   if nobs == 0:
-    print "---->Prior file is empty, exiting at analysis time %s \n" %  (analysis_time.strftime("%Y %m-%d %H:%M:%S"))
+    print("---->Prior file is empty, exiting at analysis time %s \n" %  (analysis_time.strftime("%Y %m-%d %H:%M:%S")))
     sys.exit(0)
   else:
-    print "---->Prior file has %d obs at analysis time %s \n" %  (nobs, analysis_time.strftime("%Y %m-%d %H:%M:%S"))
+    print("---->Prior file has %d obs at analysis time %s \n" %  (nobs, analysis_time.strftime("%Y %m-%d %H:%M:%S")))
 
-    print('n\test called with an outlier threshold of %d standard deviations' % outlier_threshold)
+    print(('n\test called with an outlier threshold of %d standard deviations' % outlier_threshold))
 
     mask = N.where( outlier <= outlier_threshold, True, False )
-    print nobs, N.count_nonzero(mask)
+    print(nobs, N.count_nonzero(mask))
     mask2 = N.where( kind == 11, True, False )
     mask  = mask | mask2
-    print nobs, N.count_nonzero(mask2), N.count_nonzero(mask)
+    print(nobs, N.count_nonzero(mask2), N.count_nonzero(mask))
 
 #####################################################################################################
 def compute_dbz_bias(time, prior_file, dbz_threshold=10., plot=False):
@@ -309,20 +309,20 @@ def compute_dbz_bias(time, prior_file, dbz_threshold=10., plot=False):
   ne   = Hxf.shape[1]
 
   if nobs == 0:
-    print "---->Prior file is empty, exiting at analysis time %s \n" %  (analysis_time.strftime("%Y %m-%d %H:%M:%S"))
+    print("---->Prior file is empty, exiting at analysis time %s \n" %  (analysis_time.strftime("%Y %m-%d %H:%M:%S")))
     sys.exit(0)
   else:
-    print "---->Prior file has %d obs at analysis time %s \n" %  (nobs, analysis_time.strftime("%Y %m-%d %H:%M:%S"))
+    print("---->Prior file has %d obs at analysis time %s \n" %  (nobs, analysis_time.strftime("%Y %m-%d %H:%M:%S")))
 
 
 #  BIAS CORRECTION
 #  FIND OUT WHERE DBZ exists and is greater than some threshold
     mask = N.where( kind == 12, True, False )
-    print("  --> COMPUTE_DBZ_BIAS:  Variable dBZ error:  Number of dBZ observations is %d" % N.count_nonzero(mask))
+    print(("  --> COMPUTE_DBZ_BIAS:  Variable dBZ error:  Number of dBZ observations is %d" % N.count_nonzero(mask)))
     mask2 = N.where(value > dbz_threshold, True, False)
-    print("  --> COMPUTE_DBZ_BIAS:  Variable dBZ error:  Number of obs where value > %d  %d" % (dbz_threshold, N.count_nonzero(mask2)))
+    print(("  --> COMPUTE_DBZ_BIAS:  Variable dBZ error:  Number of obs where value > %d  %d" % (dbz_threshold, N.count_nonzero(mask2))))
     mask  = mask & mask2
-    print("  -->  COMPUTE_DBZ_BIAS:  Number of Priors where Obs > %d and will be used for bias correction:  %d" % (dbz_threshold, N.count_nonzero(mask)))
+    print(("  -->  COMPUTE_DBZ_BIAS:  Number of Priors where Obs > %d and will be used for bias correction:  %d" % (dbz_threshold, N.count_nonzero(mask))))
 
 # CREATE BINS FOR GRIDDING
     z_bins   = N.arange(0., 11000., 1000.)    # Z-bins
@@ -373,10 +373,10 @@ if __name__ == "__main__":
 
   now = DT.datetime.now()
 
-  print "----------------------------------------------------------------------\n"
-  print "              BEGIN PROGRAM PRIOR_FILE                             \n "
-  print "  WALLCLOCK START TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M")  
-  print "  --------------------------------------------------------------------\n"
+  print("----------------------------------------------------------------------\n")
+  print("              BEGIN PROGRAM PRIOR_FILE                             \n ")
+  print("  WALLCLOCK START TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M"))  
+  print("  --------------------------------------------------------------------\n")
   
 
 # Parse input command options
@@ -396,20 +396,20 @@ if __name__ == "__main__":
  
   if options.bias:
     if options.time == None:
-      print "\n ====>No analysis time specified, exiting....\n"
+      print("\n ====>No analysis time specified, exiting....\n")
       parser.print_help()
       sys.exit(-1)
     else:
       time = options.time.split(",")
 
     if options.file == None:
-      print "\n ====>No netCDF Priors file specified, using default priors file\n"
+      print("\n ====>No netCDF Priors file specified, using default priors file\n")
       ftime      = DT.datetime(int(time[0]),int(time[1]),int(time[2]),int(time[3]),int(time[4]),int(time[5]))
       prior_file = "Prior_%s.nc" % ftime.strftime("%Y-%m-%d_%H:%M:%S")
       if os.path.isfile(prior_file):
-        print "\n Using prior file:  %s\n" % prior_file
+        print("\n Using prior file:  %s\n" % prior_file)
       else:
-        print "\n ====>Could not find prior file:  %s !!!!  Exiting LETKF....\n" % prior_file
+        print("\n ====>Could not find prior file:  %s !!!!  Exiting LETKF....\n" % prior_file)
         parser.print_help()
         sys.exit(-1)
     else:
@@ -422,20 +422,20 @@ if __name__ == "__main__":
 
   if options.test2 == True:
     if options.time == None:
-      print "\n ====>No analysis time specified, exiting....\n"
+      print("\n ====>No analysis time specified, exiting....\n")
       parser.print_help()
       sys.exit(-1)
     else:
       time = options.time.split(",")
 
     if options.file == None:
-      print "\n ====>No netCDF Priors file specified, using default priors file\n"
+      print("\n ====>No netCDF Priors file specified, using default priors file\n")
       ftime      = DT.datetime(int(time[0]),int(time[1]),int(time[2]),int(time[3]),int(time[4]),int(time[5]))
       prior_file = "Prior_%s.nc" % ftime.strftime("%Y-%m-%d_%H:%M:%S")
       if os.path.isfile(prior_file):
-        print "\n Using prior file:  %s\n" % prior_file
+        print("\n Using prior file:  %s\n" % prior_file)
       else:
-        print "\n ====>Could not find prior file:  %s !!!!  Exiting LETKF....\n" % prior_file
+        print("\n ====>Could not find prior file:  %s !!!!  Exiting LETKF....\n" % prior_file)
         parser.print_help()
         sys.exit(-1)
     else:
@@ -445,7 +445,7 @@ if __name__ == "__main__":
     read_prior_for_testing(time, prior_file)
 
   if options.test == True:
-    print "\n Testing nc_prior_file\n"
+    print("\n Testing nc_prior_file\n")
     ne = 20
     options.time = now
   
@@ -484,15 +484,15 @@ if __name__ == "__main__":
  
     newPriorFile = "%s_%s%s" % ("Prior", d.strftime("%Y-%m-%d_%H:%M:%S"), ".nc")
     os.rename("Prior.nc", newPriorFile)
-    print "\n==> Moved Prior.nc file to %s\n" % (newPriorFile)
+    print("\n==> Moved Prior.nc file to %s\n" % (newPriorFile))
   
 # read fake data in....
 
     kind0, value0, error0, lat0, lon0, x0, y0, z0, t0, Hxf0, Hxfbar0, outlier = read_prior(d)
   
-    print "Input Hxf - Output Hxf == Zero?"
+    print("Input Hxf - Output Hxf == Zero?")
   
-    print Hxf - Hxf0
+    print(Hxf - Hxf0)
 
-    print "Kinds:  ", kind0
+    print("Kinds:  ", kind0)
 

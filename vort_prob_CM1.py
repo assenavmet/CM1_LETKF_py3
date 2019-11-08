@@ -160,13 +160,13 @@ def CM1_get_Wz(files, exper):
 
 fig_type = 'pdf'                         # Figure type (pdf, png, eps, etc.)
 
-print
-print "<<<<<===========================================================================================>>>>>>"
-print
-print "                                        "
-print
-print "                 VORT SWATH PLOT         "
-print
+print()
+print("<<<<<===========================================================================================>>>>>>")
+print()
+print("                                        ")
+print()
+print("                 VORT SWATH PLOT         ")
+print()
 
 usage = "usage: %prog [options] arg"
 parser = OptionParser(usage)
@@ -182,7 +182,7 @@ parser.add_option(       "--noshow", dest="noshow",   default=False, action="sto
 
 if options.dir and options.exp == None:
     options.exp = glob.glob(os.path.join(options.dir, "*.exp" ))[0]
-    print("\n ==> ENS_MAIN: found experiment files %s" % options.exp)
+    print(("\n ==> ENS_MAIN: found experiment files %s" % options.exp))
 
 if options.exp == None:
     parser.print_help()
@@ -217,11 +217,11 @@ else:
      fcstlen, dt_files = options.fcst[0], options.fcst[1]
      ntimes =  1 + fcstlen/dt_files
 
-print("\nStarting time of the forecast:     %s" % myDT.strftime("%H:%M:%S"))
-print("\nEndding time of the forecast:      %d" % fcstlen)
-print("\nTime between files to be read in:  %d" % dt_files)
-print("\nNumber of files to be read in:     %d" % ntimes)
-print("\nSize of the ensemble be read in:   %d" % ens_size)
+print(("\nStarting time of the forecast:     %s" % myDT.strftime("%H:%M:%S")))
+print(("\nEndding time of the forecast:      %d" % fcstlen))
+print(("\nTime between files to be read in:  %d" % dt_files))
+print(("\nNumber of files to be read in:     %d" % ntimes))
+print(("\nSize of the ensemble be read in:   %d" % ens_size))
 
 # Create masterlist of files and date and times
 
@@ -240,7 +240,7 @@ vvort  = N.zeros((ntimes,ens_size,level,ny,nx))
 vvmean = N.zeros((ntimes,ens_size,ny,nx))
 
 for n in N.arange(ntimes):
-  print("Reading and computing Vert. Vort for ensemble at time %s" % master_DT[n].strftime("%H:%M:%S"))
+  print(("Reading and computing Vert. Vort for ensemble at time %s" % master_DT[n].strftime("%H:%M:%S")))
   vvort[n], xc, yc = CM1_get_Wz(master_list[n], exper)
   vvmean[n]        = vvort[n].mean(axis=1)
   
@@ -283,8 +283,8 @@ for n in N.arange(ens_size):
 
 prob1 = (vort.transpose()/ens_size)*100.
 # 
-print "\nMax probability is:  ",prob1.max(),"\n"
-print "\nMin probability is:  ",prob1.min(),"\n"
+print("\nMax probability is:  ",prob1.max(),"\n")
+print("\nMin probability is:  ",prob1.min(),"\n")
 
 # if obs2.size > 0:
 #   print "\nNumber of obs > %4.4f is %d\n" % (_threshold2, obs2.size)
@@ -316,7 +316,7 @@ if _yes_plot:
 
   if _threshold2 > 0.0:
     vlat, vlon = cbook.dxy_2_dll(xobs2, yobs2, lat0, lon0, degrees=True)
-    xx2, yy2 = map(vlon, vlat)
+    xx2, yy2 = list(map(vlon, vlat))
     map.plot(xx2, yy2, 'o', markersize=2, markerfacecolor='blue')
     
 

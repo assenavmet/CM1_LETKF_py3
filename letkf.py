@@ -57,10 +57,10 @@ if __name__ == "__main__":
   stime = timer()
   now = DT.datetime.now()
 
-  print "----------------------------------------------------------------------\n"
-  print "              BEGIN PROGRAM LETKF                                     \n "
-  print "  WALLCLOCK START TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M")  
-  print "  --------------------------------------------------------------------\n"
+  print("----------------------------------------------------------------------\n")
+  print("              BEGIN PROGRAM LETKF                                     \n ")
+  print("  WALLCLOCK START TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M"))  
+  print("  --------------------------------------------------------------------\n")
   
 # Create timers for the code...
 
@@ -133,10 +133,10 @@ if __name__ == "__main__":
 
   if options.nthreads != None:
     nthreads = options.nthreads
-    print("\n --> LETKF:  Number of threads requested is from command line:  %d" % nthreads)
+    print(("\n --> LETKF:  Number of threads requested is from command line:  %d" % nthreads))
   else:
     nthreads = exper['DA_PARAMS']['nthreads']
-    print("\n --> LETKF:  Number of threads requested is from EXPER file:  %d" % nthreads)
+    print(("\n --> LETKF:  Number of threads requested is from EXPER file:  %d" % nthreads))
     
 
 #-------------------------------------------------------------------------------
@@ -147,9 +147,9 @@ if __name__ == "__main__":
     ftime      = DT.datetime(int(time[0]),int(time[1]),int(time[2]),int(time[3]),int(time[4]),int(time[5]))
     prior_file = os.path.join(path, "Prior_%s.nc" % ftime.strftime("%Y-%m-%d_%H:%M:%S"))
     if os.path.isfile(prior_file):
-      print("\n --> LETKF:  Using prior file:  %s\n" % prior_file)
+      print(("\n --> LETKF:  Using prior file:  %s\n" % prior_file))
     else:
-      print("\n  --> LETKF:  Could not find prior file:  %s !!!!  Exiting LETKF...." % prior_file)
+      print(("\n  --> LETKF:  Could not find prior file:  %s !!!!  Exiting LETKF...." % prior_file))
       parser.print_help()
       sys.exit(-1)
   else:
@@ -169,10 +169,10 @@ if __name__ == "__main__":
     dt = DT.timedelta(0,inflation_deltaT)
     in_time = DT.datetime(int(time[0]),int(time[1]),int(time[2]),int(time[3]),int(time[4]),int(time[5])) - dt
     inflate_file = os.path.join(path, "Inflation_%s.nc" % in_time.strftime("%Y-%m-%d_%H:%M:%S"))
-    print("\n --> LETKF:  Trying to find inflation file: %s" % inflate_file)
+    print(("\n --> LETKF:  Trying to find inflation file: %s" % inflate_file))
     if os.path.isfile(inflate_file):
       inflate_file_exists = True
-      print("\n --> LETKF:  Using inflation file: %s" % inflate_file)
+      print(("\n --> LETKF:  Using inflation file: %s" % inflate_file))
     else:
       inflate_file_exists = False
       print("\n --> LETKF:  Could not find inflation file....none will be used.")
@@ -182,17 +182,17 @@ if __name__ == "__main__":
 
   if options.saveW:
     saveWeights = options.saveW
-    print("\n --> LETKF: saveWeights is from command line:  %s" % saveWeights)
+    print(("\n --> LETKF: saveWeights is from command line:  %s" % saveWeights))
   else:  
     saveWeights = exper['DA_PARAMS']['saveWeights']
-    print("\n --> LETKF: saveWeights is from EXPER file:  %s" % saveWeights)
+    print(("\n --> LETKF: saveWeights is from EXPER file:  %s" % saveWeights))
 
   if options.readW:
     readWeights = options.readW
-    print("\n --> LETKF: readWeights is from command line:  %s" % readWeights)
+    print(("\n --> LETKF: readWeights is from command line:  %s" % readWeights))
   else:  
     readWeights = exper['DA_PARAMS']['readWeights']
-    print("\n --> LETKF: readWeights is from EXPER file:  %s" % readWeights)
+    print(("\n --> LETKF: readWeights is from EXPER file:  %s" % readWeights))
    
 #-------------------------------------------------------------------------------
 # Update flag which is useful when debugging (does not overwrite files
@@ -208,10 +208,10 @@ if __name__ == "__main__":
 
   if options.outl == None:
     outlier_threshold = exper['DA_PARAMS']['outlier']
-    print("\n --> LETKF: obs outlier is from EXPER file:  %d" % outlier_threshold)
+    print(("\n --> LETKF: obs outlier is from EXPER file:  %d" % outlier_threshold))
   else:
     outlier_threshold = options.outl
-    print("\n --> LETKF: obs outlier is from command line:  %d" % outlier_threshold)
+    print(("\n --> LETKF: obs outlier is from command line:  %d" % outlier_threshold))
 
 ########################################################################################################################
 #
@@ -223,7 +223,7 @@ if __name__ == "__main__":
   
   files, exper = ens.FindRestartFiles(exper, analysis_time, ret_DT=False)
   
-  print "\n  ---->LETKF:  Reading in model state for analysis at %s \n" %  (analysis_time.strftime("%Y %m-%d %H:%M:%S"))
+  print("\n  ---->LETKF:  Reading in model state for analysis at %s \n" %  (analysis_time.strftime("%Y %m-%d %H:%M:%S")))
   
   state = ens.read_CM1_ens(files, exper, state_vector = None, DateTime=analysis_time, addmean=1)   
   ens.ens_CM1_coords(state)
@@ -231,8 +231,8 @@ if __name__ == "__main__":
   
   tanalysis = date2num(analysis_time,units=_time_units,calendar=_calendar)
   
-  print "\n  ---->Analysis state read in for time %s " % (analysis_time.strftime("%Y %m-%d %H:%M:%S"))
-  print "\n  ---->Analysis state universal time %f" % (tanalysis)
+  print("\n  ---->Analysis state read in for time %s " % (analysis_time.strftime("%Y %m-%d %H:%M:%S")))
+  print("\n  ---->Analysis state universal time %f" % (tanalysis))
 
   if debug:
     print("WARNING WARNING WARNING:  LETKF is in DEBUG mode!!!")
@@ -253,7 +253,7 @@ if __name__ == "__main__":
   
   analysis_sec = date2num(analysis_time,units=_time_units,calendar=_calendar)
      
-  print("\n  ----> LETKF:  Reading in Prior file:  %s \n" %  (prior_file))
+  print(("\n  ----> LETKF:  Reading in Prior file:  %s \n" %  (prior_file)))
     
   kind, value, error, lat, lon, xob, yob, zob, tob, Hxf, Hxfbar, outlier = read_prior(analysis_time, file=prior_file, sort=True)
 
@@ -261,21 +261,21 @@ if __name__ == "__main__":
   ne   = Hxf.shape[1]
   
   if nobs == 0:  
-    print "\n  ----> LETKF:  Prior file is empty, exiting at analysis time %s \n" %  (analysis_time.strftime("%Y %m-%d %H:%M:%S"))
+    print("\n  ----> LETKF:  Prior file is empty, exiting at analysis time %s \n" %  (analysis_time.strftime("%Y %m-%d %H:%M:%S")))
     sys.exit(0)
   else:
-    print "\n  ----> LETKF:  Prior file has %d obs at analysis time %s \n" %  (nobs, analysis_time.strftime("%Y %m-%d %H:%M:%S"))
+    print("\n  ----> LETKF:  Prior file has %d obs at analysis time %s \n" %  (nobs, analysis_time.strftime("%Y %m-%d %H:%M:%S")))
 
     tob = N.array(tob - analysis_sec, dtype=N.float64)   # departure time for temporation localization
 
     if (outlier_threshold > 0):
-      print('\n  --> LETKF called with an outlier threshold of %d standard deviations' % outlier_threshold)
+      print(('\n  --> LETKF called with an outlier threshold of %d standard deviations' % outlier_threshold))
 
       mask  = N.where( outlier <= outlier_threshold, True, False )
       mask2 = N.where( kind == 11, True, False )
-      print "Mask before Vr mask:  ", N.count_nonzero(mask)
+      print("Mask before Vr mask:  ", N.count_nonzero(mask))
       mask  = mask | mask2
-      print "Mask after Vr mask:  ", N.count_nonzero(mask)
+      print("Mask after Vr mask:  ", N.count_nonzero(mask))
 
       kind   = kind[mask]
       value  = value[mask]
@@ -290,9 +290,9 @@ if __name__ == "__main__":
       lon    = lon[mask]
 
       print('\n  >=====================================================================<')
-      print('\n  --> LETKF:  Number of total    obs = %d' % nobs)
-      print('\n  --> LETKF:  Number of rejected obs = %d' % (nobs - N.count_nonzero(mask) ))
-      print('\n  --> LETKF:  Max outlier: %f  Min outlier:  %f\n' % (outlier.max(), outlier.min()))
+      print(('\n  --> LETKF:  Number of total    obs = %d' % nobs))
+      print(('\n  --> LETKF:  Number of rejected obs = %d' % (nobs - N.count_nonzero(mask) )))
+      print(('\n  --> LETKF:  Max outlier: %f  Min outlier:  %f\n' % (outlier.max(), outlier.min())))
     
 # Reset number of obs
 
@@ -302,11 +302,11 @@ if __name__ == "__main__":
 
       if _variable_dbz_error:
           mask = N.where( kind == 12, True, False )
-          print("  --> LETKF:  Variable dBZ error:  Number of dBZ observations is %d" % N.count_nonzero(mask))
+          print(("  --> LETKF:  Variable dBZ error:  Number of dBZ observations is %d" % N.count_nonzero(mask)))
           mask2 = N.where(value > 20., True, False)
-          print("  --> LETKF:  Variable dBZ error:  Number of obs where value > 20  %d" % N.count_nonzero(mask2))
+          print(("  --> LETKF:  Variable dBZ error:  Number of obs where value > 20  %d" % N.count_nonzero(mask2)))
           mask  = mask & mask2
-          print("  -->  LETKF:  Number of Priors where Obs > 20 and will have their values increased:  %d" % N.count_nonzero(mask))
+          print(("  -->  LETKF:  Number of Priors where Obs > 20 and will have their values increased:  %d" % N.count_nonzero(mask)))
           Hxfbar[mask] = Hxfbar[mask] + 10.
           Hxf[mask,:] = Hxf[mask,:] + 10.
 
@@ -325,14 +325,14 @@ if __name__ == "__main__":
 
 # Print some stats...
 
-  print "\n  >==============================================================================================<"
-  print "\n  LETKF:  %s  Total number of observations:  %d" % (analysis_time.strftime("%Y-%m-%d_%H:%M:%S"),value.size)
-  print "\n  <==============================================================================================<"
-  print "\n  LETKF:  Obs Space Diagnostic for forecast computed via Dowell and Wicker, MWR 2009, Additive Noise\n"
-  print "\n  LETKF:  Obs Std  |  Root-Mean-Sq-Error  |    Bias    |  Spread (obsErr^2+Hxf_var^2)  |   Consistency Ratio"
-  print "\n  >==============================================================================================<\n"
+  print("\n  >==============================================================================================<")
+  print("\n  LETKF:  %s  Total number of observations:  %d" % (analysis_time.strftime("%Y-%m-%d_%H:%M:%S"),value.size))
+  print("\n  <==============================================================================================<")
+  print("\n  LETKF:  Obs Space Diagnostic for forecast computed via Dowell and Wicker, MWR 2009, Additive Noise\n")
+  print("\n  LETKF:  Obs Std  |  Root-Mean-Sq-Error  |    Bias    |  Spread (obsErr^2+Hxf_var^2)  |   Consistency Ratio")
+  print("\n  >==============================================================================================<\n")
 
-  for key in obs_diag.keys():
+  for key in list(obs_diag.keys()):
     index_kind  = getIndexEqual(kind, key)
     d           = dep[index_kind]
     
@@ -350,11 +350,11 @@ if __name__ == "__main__":
           inno_var    = N.mean((d - d.mean())**2)
           consi_ratio = (ob_err + Hxf_var) / inno_var
 
-          print("\n -->  LETKF:  %s  NOBS: %5.5d  %3.3s>0: %3.1f  RMSI: %6.3f  M-Innov: %7.3f  Spread: %6.3f  CRatio: %7.4f " \
+          print(("\n -->  LETKF:  %s  NOBS: %5.5d  %3.3s>0: %3.1f  RMSI: %6.3f  M-Innov: %7.3f  Spread: %6.3f  CRatio: %7.4f " \
                 % (analysis_time.strftime("%Y-%m-%d_%H:%M:%S"), N.sum(index_dbz), obs_diag[key][0], N.sqrt(ob_err), \
-                   N.sqrt(inno_var), d.mean(), N.sqrt(ob_err + Hxf_var), consi_ratio))
+                   N.sqrt(inno_var), d.mean(), N.sqrt(ob_err + Hxf_var), consi_ratio)))
         else:
-          print("\n -->  LETKF:  %3.3s>0: is not present in observations" % (obs_diag[key][0]))
+          print(("\n -->  LETKF:  %3.3s>0: is not present in observations" % (obs_diag[key][0])))
 
   # zero dBZ obs      
 
@@ -366,11 +366,11 @@ if __name__ == "__main__":
           Hxf_var     = Hxftmp.var(ddof=1, axis=1).mean()
           inno_var    = N.mean((d - d.mean())**2)
           consi_ratio = (ob_err + Hxf_var) / inno_var
-          print("\n --> LETKF:%s  NOBS: %5.5d  %3.3s<0: %3.1f  RMSI: %6.3f  M-Innov: %7.3f  Spread: %6.3f  CRatio: %7.4f " \
+          print(("\n --> LETKF:%s  NOBS: %5.5d  %3.3s<0: %3.1f  RMSI: %6.3f  M-Innov: %7.3f  Spread: %6.3f  CRatio: %7.4f " \
                 % (analysis_time.strftime("%Y-%m-%d_%H:%M:%S"), N.sum(index_dbz), obs_diag[key][0], N.sqrt(ob_err), \
-                   N.sqrt(inno_var), d.mean(), N.sqrt(ob_err + Hxf_var), consi_ratio))
+                   N.sqrt(inno_var), d.mean(), N.sqrt(ob_err + Hxf_var), consi_ratio)))
         else:
-          print("\n -->  LETKF:  %3.3s<=0: is not present in observations" % (obs_diag[key][0]))
+          print(("\n -->  LETKF:  %3.3s<=0: is not present in observations" % (obs_diag[key][0])))
 
   # other obs
 
@@ -382,13 +382,13 @@ if __name__ == "__main__":
       Hxf_var     = Hxftmp.var(ddof=1, axis=1).mean()
       inno_var    = N.mean((d - d.mean())**2)
       consi_ratio = (ob_err + Hxf_var) / inno_var
-      print("\n -->  LETKF:  %s  NOBS: %5.5d    %3.3s: %3.1f  RMSI: %6.3f  M-Innov: %7.3f  Spread: %6.3f  CRatio: %7.4f " \
+      print(("\n -->  LETKF:  %s  NOBS: %5.5d    %3.3s: %3.1f  RMSI: %6.3f  M-Innov: %7.3f  Spread: %6.3f  CRatio: %7.4f " \
                 % (analysis_time.strftime("%Y-%m-%d_%H:%M:%S"), N.sum(index_kind), obs_diag[key][0], N.sqrt(ob_err), \
-                   N.sqrt(inno_var), d.mean(), N.sqrt(ob_err + Hxf_var), consi_ratio))
+                   N.sqrt(inno_var), d.mean(), N.sqrt(ob_err + Hxf_var), consi_ratio)))
     else:
-      print "\n -->  LETKF:  %s is not present in observations" % (obs_diag[key][0])
+      print("\n -->  LETKF:  %s is not present in observations" % (obs_diag[key][0]))
 
-  print "\n  >============================================================================================<\n"
+  print("\n  >============================================================================================<\n")
 
   timeHxF.stop()
   
@@ -402,7 +402,7 @@ if __name__ == "__main__":
   else:
     print("\n -->  LETKF:  Adaptive inflation is turned on....\n")
     if inflate_file_exists:
-      print("\n -->  LETKF:  Adaptive inflation is using prior file:  %s\n" % inflate_file)
+      print(("\n -->  LETKF:  Adaptive inflation is using prior file:  %s\n" % inflate_file))
       inflate = read_inflation_file(file=inflate_file)
     else:
       print("\n -->  LETKF: Adaptive inflation cannot find the previous inflation file, initializing inflation array to 1.0 \n") 
@@ -423,7 +423,7 @@ if __name__ == "__main__":
   if mpass == True:
 
     print("\n -->  LETKF:  MultiPASS algorithm turned on, assimilating VR THEN DBZ\n")
-    for key in obs_diag.keys():
+    for key in list(obs_diag.keys()):
 
       index_kind  = getIndexEqual(kind, key)
       if obs_diag[key][0] == "DBZ":  
@@ -432,13 +432,13 @@ if __name__ == "__main__":
         update_theta = _update_theta
 
       if N.sum(index_kind) > 0:
-        print("\n-->  LETKF:  %d observations of %3.3s is now being assimilated!\n" % (N.sum(index_kind), obs_diag[key][0]))
+        print(("\n-->  LETKF:  %d observations of %3.3s is now being assimilated!\n" % (N.sum(index_kind), obs_diag[key][0])))
         inflateN = fstate.compute_letkf(xob[index_kind], yob[index_kind], zob[index_kind], tob[index_kind], tanalysis,
                                         value[index_kind], Hxf[index_kind], dep[index_kind], rdiag[index_kind], rloc[index_kind], 
                                         rhoriz, rvert, rtime, nthreads, cutoff, zcutoff, update_theta, aInflate, inflate,
                                         saveWeights, readWeights)
       else:
-        print("\n -->  LETKF:%3.3s: NO OBSERVATIONS FOUND!\n" % (obs_diag[key][0]))
+        print(("\n -->  LETKF:%3.3s: NO OBSERVATIONS FOUND!\n" % (obs_diag[key][0])))
 
   else:
 
@@ -452,13 +452,13 @@ if __name__ == "__main__":
 # inflateN always has the adaptive inflation field produced by LETKF core. Write it out...
 
   if aInflate > 0:
-    print("\n -->  LETKF:  Adaptive Inflation stats:  Max AI:  %3.1f  Min AI %3.1f  Mean AI: %3.1f  StdDev:  %4.3f\n" % \
-        (inflateN.max(), inflateN.min(), inflateN.mean(), inflateN.std()))
+    print(("\n -->  LETKF:  Adaptive Inflation stats:  Max AI:  %3.1f  Min AI %3.1f  Mean AI: %3.1f  StdDev:  %4.3f\n" % \
+        (inflateN.max(), inflateN.min(), inflateN.mean(), inflateN.std())))
 
   InflationFile = write_inflation_file(inflateN,fstate.xc,fstate.yc,fstate.zc,analysis_time)
   newInflationFile = os.path.join(path, InflationFile)
   os.rename(InflationFile, newInflationFile)
-  print("\n -->  LETKF:  Moved %s file to directory %s" %(InflationFile, path))
+  print(("\n -->  LETKF:  Moved %s file to directory %s" %(InflationFile, path)))
 
 # If saveWeights == True, rename the netCDF4 file dumped out by the fortran code
 
@@ -467,7 +467,7 @@ if __name__ == "__main__":
 
   timeFilter.stop()
 
-  print "\n  >=======================  >>END FILTER<< ===========================================<\n"    
+  print("\n  >=======================  >>END FILTER<< ===========================================<\n")    
 
   if print_state_stats: print_state_diagnostics(state, header=True)   
   
@@ -503,7 +503,7 @@ if __name__ == "__main__":
 
   now = DT.datetime.now()
 
-  print "\n  ----------------------------------------------------------------------"
-  print "\n                END PROGRAM LETKF                                        "
-  print "\n  WALLCLOCK END TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M")  
-  print "\n  -----------------------------------------------------------------------\n"
+  print("\n  ----------------------------------------------------------------------")
+  print("\n                END PROGRAM LETKF                                        ")
+  print("\n  WALLCLOCK END TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M"))  
+  print("\n  -----------------------------------------------------------------------\n")

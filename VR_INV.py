@@ -73,13 +73,13 @@ def getIndexNotEqual(field, value):
 
 if __name__ == "__main__":
 
-    print
-    print "<<<<<===========================================================================================>>>>>>"
-    print
-    print "                                        "
-    print
-    print "     INNOVATION PLOTS         "
-    print
+    print()
+    print("<<<<<===========================================================================================>>>>>>")
+    print()
+    print("                                        ")
+    print()
+    print("     INNOVATION PLOTS         ")
+    print()
 
     usage = "usage: %prog [options] arg"
     parser = OptionParser(usage)
@@ -93,7 +93,7 @@ if __name__ == "__main__":
     if options.dir:
       dirname = os.path.join(options.dir,_prior_files)
     else:
-      print "\n  ====>  No directory supplied, using %s as prefix \n" % _prior_files
+      print("\n  ====>  No directory supplied, using %s as prefix \n" % _prior_files)
       dirname = os.path.join("./",_prior_files)
 
     if options.title:
@@ -102,8 +102,8 @@ if __name__ == "__main__":
       plotfilename = _plotfilename
 
     file_list = glob.glob(dirname)[1:]
-    print "\nFirst file:  %s" % file_list[0]
-    print "Last file:   %s\n" % file_list[-1]
+    print("\nFirst file:  %s" % file_list[0])
+    print("Last file:   %s\n" % file_list[-1])
 
     bin_delta = _bin_delta
 
@@ -168,9 +168,9 @@ if __name__ == "__main__":
                     sdHxf       = Hxftmp.std(ddof=1, axis=1).mean()
                     fcst_msi    = N.mean((d - d.mean())**2)
                     consi_ratio = (obs_var[1]**2 + sdHxf**2) / fcst_msi
-                    print "%s  NOBS: %5.5d    %3.3s: %3.1f  ZBIN:  %f  %f  RMSI: %6.3f  M-Innov: %7.3f  Spread: %6.3f  CRatio: %7.4f " \
+                    print("%s  NOBS: %5.5d    %3.3s: %3.1f  ZBIN:  %f  %f  RMSI: %6.3f  M-Innov: %7.3f  Spread: %6.3f  CRatio: %7.4f " \
                     % (file[-22:-3], d.size, "VR", obs_var[1], zbins[k], zbins[k+1], \
-                    N.sqrt(fcst_msi), d.mean(), N.sqrt(obs_var[1]**2 + sdHxf**2), consi_ratio)
+                    N.sqrt(fcst_msi), d.mean(), N.sqrt(obs_var[1]**2 + sdHxf**2), consi_ratio))
                     CR_TZ[k,m] = consi_ratio
                     IN_TZ[k,m] = d.mean()
           
@@ -262,9 +262,9 @@ if __name__ == "__main__":
                 sdHxf       = Hxftmp.std(ddof=1, axis=1).mean()
                 fcst_msi    = N.mean((d - d.mean())**2)
                 consi_ratio = (obs_var[1]**2 + sdHxf**2) / fcst_msi
-                print "%s  NOBS: %5.5d    %3.3s: %3.1f  ZBIN:  %f  %f  RMSI: %6.3f  M-Innov: %7.3f  Spread: %6.3f  CRatio: %7.4f " \
+                print("%s  NOBS: %5.5d    %3.3s: %3.1f  ZBIN:  %f  %f  RMSI: %6.3f  M-Innov: %7.3f  Spread: %6.3f  CRatio: %7.4f " \
                 % (file[-22:-3], d.size, "VR", obs_var[1], 0.0, zbins.max(), \
-                N.sqrt(fcst_msi), d.mean(), N.sqrt(obs_var[1]**2 + sdHxf**2), consi_ratio)
+                N.sqrt(fcst_msi), d.mean(), N.sqrt(obs_var[1]**2 + sdHxf**2), consi_ratio))
                 CR_T[m] = consi_ratio
                 IN_T[m] = d.mean()
       
@@ -335,9 +335,9 @@ if __name__ == "__main__":
             sdHxf       = Hxftmp.std(ddof=1, axis=1).mean()
             fcst_msi    = N.mean((d - d.mean())**2)
             consi_ratio = (obs_var[1]**2 + sdHxf**2) / fcst_msi
-            print "%s  NOBS: %5.5d    %3.3s: %3.1f  ZBIN:  %05.0f  %05.5f  RMSI: %6.3f  M-Innov: %7.3f  Spread: %6.3f  CRatio: %7.4f " \
+            print("%s  NOBS: %5.5d    %3.3s: %3.1f  ZBIN:  %05.0f  %05.5f  RMSI: %6.3f  M-Innov: %7.3f  Spread: %6.3f  CRatio: %7.4f " \
             % (file[-22:-3], d.size, "VR", obs_var[1], zbins[k], zbins[k+1], \
-            N.sqrt(fcst_msi), d.mean(), N.sqrt(obs_var[1]**2 + sdHxf**2), consi_ratio)
+            N.sqrt(fcst_msi), d.mean(), N.sqrt(obs_var[1]**2 + sdHxf**2), consi_ratio))
             CR_Z[k] = consi_ratio
             IN_Z[k] = d.mean()
     

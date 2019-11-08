@@ -160,11 +160,11 @@ CONTAINS
       mean_wgt3D  = 0.0
     ENDIF
 
-    IF( read_weights ) THEN
-      allocate(trans3D(ne-1,ne-1,fnz,fny,fnx))
-      allocate(mean_wgt3D(ne-1,fnz,fny,fnx))
-      CALL READ_LETKF_WEIGHTS(mean_wgt3d, trans3D, nx, ny, nz, ne-1)
-    ENDIF
+!   IF( read_weights ) THEN
+!     allocate(trans3D(ne-1,ne-1,fnz,fny,fnx))
+!     allocate(mean_wgt3D(ne-1,fnz,fny,fnx))
+!     CALL READ_LETKF_WEIGHTS(mean_wgt3d, trans3D, nx, ny, nz, ne-1)
+!   ENDIF
 
     gp_update_count = 0
     total_valid_obs = 0
@@ -414,12 +414,11 @@ CONTAINS
     deallocate(obwgt)
     deallocate(obindex)
 
-    IF( save_weights) THEN
-     CALL WRITE_LETKF_WEIGHTS(mean_wgt3d, trans3D, xc, yc, zc, tanalysis, nx, ny, nz, ne-1)
-     deallocate(trans3D)
-     deallocate(mean_wgt3D)
-
-   ENDIF
+!   IF( save_weights) THEN
+!    CALL WRITE_LETKF_WEIGHTS(mean_wgt3d, trans3D, xc, yc, zc, tanalysis, nx, ny, nz, ne-1)
+!    deallocate(trans3D)
+!    deallocate(mean_wgt3D)
+!  ENDIF
 
    CALL FLUSH(6)
     

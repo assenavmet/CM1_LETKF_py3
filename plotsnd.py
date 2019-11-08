@@ -62,7 +62,7 @@ class sound:
     def __init__(self, filename='',  x=0,  y=0, time=0 ):
 
         if filename == '':
-            print "No netcdf file or COMMAS input sounding file (e.g., may20.sound) supplied, please enter:"
+            print("No netcdf file or COMMAS input sounding file (e.g., may20.sound) supplied, please enter:")
             self.filename = sys.stdin.readline()
         else: 
             self.filename = filename
@@ -82,7 +82,7 @@ class sound:
         self.xi   = 0
         self.yi   = 0
 
-        if x == 0:  print "Sounding:  No location supplied, base state sounding to be printed"
+        if x == 0:  print("Sounding:  No location supplied, base state sounding to be printed")
 
         self.base_variables   = base_variables
         self.threed_variables = threed_variables
@@ -112,24 +112,24 @@ class sound:
         self.ri = None
 
     def info(self):
-        print
-        print 'Filename:  ',self.filename
-        print 'X-location:',self.x, " ",self.input_units
-        print 'Y-location:',self.y, " ",self.input_units
-        print 'T-location:',self.time, "  seconds"
-        print
+        print()
+        print('Filename:  ',self.filename)
+        print('X-location:',self.x, " ",self.input_units)
+        print('Y-location:',self.y, " ",self.input_units)
+        print('T-location:',self.time, "  seconds")
+        print()
 
         if self.u == None:
             self.read()
 
         n = self.nz - 1
-        print      "  Z(m)      P(mb)    T(K)   Td(K)    Theta(K)  Qv(g/kg)   U(m/s)   V(m/s)   SPD      WDIR     RI"
-        print      "================================================================================================="
+        print("  Z(m)      P(mb)    T(K)   Td(K)    Theta(K)  Qv(g/kg)   U(m/s)   V(m/s)   SPD      WDIR     RI")
+        print("=================================================================================================")
         while n > -1:
-            print "%007.1f     %05.1f   %05.1f   %05.1f     %4.1f     %0004.1f       %004.1f     %004.1f    %004.1f     %004.1f    %004.1f" % \
-                  (self.zc[n], self.p[n], self.t[n], self.td[n], self.th[n], self.qv[n]*1000., self.u[n], self.v[n], self.spd[n], self.dir[n], self.ri[n])
+            print("%007.1f     %05.1f   %05.1f   %05.1f     %4.1f     %0004.1f       %004.1f     %004.1f    %004.1f     %004.1f    %004.1f" % \
+                  (self.zc[n], self.p[n], self.t[n], self.td[n], self.th[n], self.qv[n]*1000., self.u[n], self.v[n], self.spd[n], self.dir[n], self.ri[n]))
             n -= 1
-        print
+        print()
 
     def set(self,x=0, y=0, time=0):
         if x:
@@ -144,7 +144,7 @@ class sound:
         
     def read(self):
 
-        print "Reading from file.....  ", self.filename
+        print("Reading from file.....  ", self.filename)
 
 #----------------------------------------------------------------------------
 # Read from commas text file
@@ -178,14 +178,14 @@ class sound:
             if self.qv[1] >= 0.1:  self.qv = self.qv/1000.
 
             if debug:
-                print
-                print 'READING SOUND FILE:  '
-                print 'INPUT ZC', self.zc
-                print 'INPUT TH', self.th
-                print 'INPUT QV', self.qv
-                print 'INPUT U', self.u
-                print 'INPUT V', self.v
-                print
+                print()
+                print('READING SOUND FILE:  ')
+                print('INPUT ZC', self.zc)
+                print('INPUT TH', self.th)
+                print('INPUT QV', self.qv)
+                print('INPUT U', self.u)
+                print('INPUT V', self.v)
+                print()
 
             self.tv  = self.th*(1.0 + 0.61*self.qv)
 
@@ -380,8 +380,8 @@ class sound:
 
         elif self.filename.find(".gaus") != -1:      # Input is from a GAUS sounding file
             if debug:
-                print
-                print 'READING GAUS SOUNDING FILE:  '
+                print()
+                print('READING GAUS SOUNDING FILE:  ')
                 
             self.qscale = 1./1000.
 
@@ -405,12 +405,12 @@ class sound:
             self.qsfc = self.qv[0] / self.qscale
 
             if debug:
-                print 'INPUT ZC', self.zc
-                print 'INPUT TH', self.th
-                print 'INPUT QV', self.qv
-                print 'INPUT U',  self.u
-                print 'INPUT V',  self.v
-                print
+                print('INPUT ZC', self.zc)
+                print('INPUT TH', self.th)
+                print('INPUT QV', self.qv)
+                print('INPUT U',  self.u)
+                print('INPUT V',  self.v)
+                print()
 
             self.tv  = self.th*(1.0 + 0.61*self.qv*self.qscale)
 
@@ -475,11 +475,11 @@ class sound:
                 self.t  = self.tc[t0[-1][-1]]  # this syntax first extracts the array from the tuple, then the last index from array
 
                 if debug:
-                   print 
-                   print 'sound.read()'
-                   print 'self.x= ',self.x, 'self.y= ',self.y, 'self.t= ',self.t
-                   print self.xi, self.yi, self.ti
-                   print 'self.xindex= ',self.x, 'self.yindex= ',self.y, 'self.tindex= ',self.t
+                   print() 
+                   print('sound.read()')
+                   print('self.x= ',self.x, 'self.y= ',self.y, 'self.t= ',self.t)
+                   print(self.xi, self.yi, self.ti)
+                   print('self.xindex= ',self.x, 'self.yindex= ',self.y, 'self.tindex= ',self.t)
 
                 self.u  = cdf_file.variables[self.threed_variables[0]][self.ti,:,self.yi,self.xi] 
                 self.v  = cdf_file.variables[self.threed_variables[1]][self.ti,:,self.yi,self.xi]
@@ -516,29 +516,29 @@ class sound:
 
         else:   # PROBLEM -> dont know what type of file you are reading!!!
 
-            print "SOUND.READ:  FILE SUFFIX IS NOT RECOGNIZED"
-            print "SOUND.READ:  NO INPUT"
-            print "SOUND.READ:  ERROR"
-            print "SOUND.READ:  Returning -1"
+            print("SOUND.READ:  FILE SUFFIX IS NOT RECOGNIZED")
+            print("SOUND.READ:  NO INPUT")
+            print("SOUND.READ:  ERROR")
+            print("SOUND.READ:  Returning -1")
             sys.exit(-1)
             
 # Debug code....
 
         if debug:
-            print 'Time Index:  ', self.ti
-            print 'X-Index:     ', self.xi
-            print 'Y-Index:     ', self.yi
-            print 'U:  ', self.u[:]
-            print 'V:  ', self.v[:]
-            print 'PI:  ', self.pi[:]
-            print 'TH:  ', self.th[:]
-            print 'QV:  ', self.qv[:]
+            print('Time Index:  ', self.ti)
+            print('X-Index:     ', self.xi)
+            print('Y-Index:     ', self.yi)
+            print('U:  ', self.u[:])
+            print('V:  ', self.v[:])
+            print('PI:  ', self.pi[:])
+            print('TH:  ', self.th[:])
+            print('QV:  ', self.qv[:])
 
         if debug:
-            print 'Temp: ', self.t[:]
-            print 'Dewpt:', self.td[:]
-            print 'SPD:  ', self.spd[:]
-            print 'DIR:  ', self.dir[:]
+            print('Temp: ', self.t[:])
+            print('Dewpt:', self.td[:])
+            print('SPD:  ', self.spd[:])
+            print('DIR:  ', self.dir[:])
 
     def write(self, filename=None, sharpPY=None, sheader=None):
 
@@ -547,7 +547,7 @@ class sound:
         if sharpPY:
             filename = filename+".sharpPY"
 
-        if debug:  print "Writing file.....  ", filename
+        if debug:  print("Writing file.....  ", filename)
 
         if sharpPY == None:
 #           N.savetxt(filename, N.transpose((self.p, self.zc, self.th, self.qv*1000., self.u, self.v)), fmt='%8.2f')
@@ -735,11 +735,11 @@ class sound:
 
         if znew == None:
           z = N.arange(bot,top+dz,dz)
-          print "\nInterpolating sounding, bottom/top/dz of data is....", bot, top, dz, "\n"
+          print("\nInterpolating sounding, bottom/top/dz of data is....", bot, top, dz, "\n")
 
         else:
           z = znew
-          print "\nInterpolating sounding to supplied heights \n"
+          print("\nInterpolating sounding to supplied heights \n")
 
         self.u  = scipy.interp(z,self.zc,self.u.copy())
         self.v  = scipy.interp(z,self.zc,self.v.copy())
@@ -761,7 +761,7 @@ class sound:
         if outfile == None:
             outfile = "arps.snd"
 
-        if debug:  print "Writing file.....  ", outfile
+        if debug:  print("Writing file.....  ", outfile)
 
         if options.arpssfcz:
             sfcz=options.arpssfcz
@@ -791,9 +791,9 @@ class sound:
         f.close()
 
     def smooth(self):
-        print "\nSmoothing winds with 100 pt Hamming filter....\n"
-        self.u = filter(self.u.copy())
-        self.v = filter(self.v.copy())
+        print("\nSmoothing winds with 100 pt Hamming filter....\n")
+        self.u = list(filter(self.u.copy()))
+        self.v = list(filter(self.v.copy()))
 
     def edit_winds(self, unew=None, vnew=None):
 
@@ -826,29 +826,29 @@ if __name__ == "__main__":
     options.dir = os.getcwd()
 
     if options.file == None and options.mfile == None:
-        print
+        print()
         parser.print_help()
-        print
-        print "ERROR:  file not defined...EXITING PLOTTING"
-        print
+        print()
+        print("ERROR:  file not defined...EXITING PLOTTING")
+        print()
         sys.exit(0)
 
     if options.wks == None:
-        print
-        print "Setting workstation to PDF"
-        print
+        print()
+        print("Setting workstation to PDF")
+        print()
         options.wks = "pdf"
 
     if options.xc == None:
-        print
-        print "X-coordinate not specified, plotting base state sounding"
-        print
+        print()
+        print("X-coordinate not specified, plotting base state sounding")
+        print()
         options.xc = 0
 
     if options.yc == None:
-        print
-        print "y-coordinate not specified, plotting base state sounding"
-        print
+        print()
+        print("y-coordinate not specified, plotting base state sounding")
+        print()
         options.yc = 0
 
     if options.time == None:
@@ -871,9 +871,9 @@ if __name__ == "__main__":
 
     if options.mfile:
       files = glob.glob(options.mfile)
-      print files
+      print(files)
       for file in files:
-        print "Processing: %s " % file
+        print("Processing: %s " % file)
         a = sound(filename=file)
         a.wks = Ngl.open_wks(options.wks, file)
         a.info()
