@@ -3,7 +3,7 @@
 #
 # each set of shape files can have its own color, and linethickness.  
 
-import fpython2
-import recursive2d
-import cressman
+import fsrc.fpython2
+#import recursive2d
+import fsrc.cressman
 

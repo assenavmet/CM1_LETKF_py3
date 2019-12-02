@@ -9,12 +9,17 @@
 #  Note:  you may need to remove -DNCFPLUS if you use an old version of netcdf
 #
 
-NETCDF    = "/usr/local/Cellar/netcdf/4.3.3.1"
-OUTPUTINC = -I/usr/local/Cellar/netcdf/4.3.3.1/include
-OUTPUTLIB = -L/usr/local/Cellar/netcdf/4.3.3.1/lib -lnetcdff -L/usr/local/Cellar/netcdf/4.3.3.1/lib -lnetcdf -lnetcdf
-OUTPUTOPT = -DNETCDF -DNCFPLUS
+NETCDF    = "/opt/local"
+#OUTPUTINC = -I/usr/local/Cellar/netcdf/4.3.3.1/include
+#OUTPUTLIB = -L/usr/local/Cellar/netcdf/4.3.3.1/lib -lnetcdff -L/usr/local/Cellar/netcdf/#4.3.3.1/lib -lnetcdf -lnetcdf
+#OUTPUTOPT = -DNETCDF -DNCFPLUS
 
-LINKOPTS  = 
+#LINKOPTS  = 
+OUTPUTINC = -I$(NETCDF)/include
+OUTPUTLIB = -L$(NETCDF)/lib
+OUTPUTOPT = -DNETCDF -DNCFPLUS
+LINKOPTS  = -lnetcdf -lnetcdff
+
 #-----------------------------------------------------------------------------
 #                         HDF SECTION
 #              NEW for cm1r15:  CM1 now supports HDF5
@@ -112,14 +117,16 @@ CPP  = cpp -C -P -traditional -Wno-invalid-pp-token
 #DM   = -DMPI
 #-----------------------------------------------------------------------------
 #  single processor, gfortran compiler
-FC   = gfortran
+FC   = /opt/local/bin/gfortran-mp-6
 OPTS = -ffree-form -ffree-line-length-none -I../include -O3
 CPP  = cpp -C -P -traditional
+CPP  = cpp -C -P -traditional -Wno-invalid-pp-token
 #-----------------------------------------------------------------------------
 #  single processor, g95 compiler
 #FC   = g95
 #OPTS = -ffree-form -ffree-line-length-huge -I../include -O2
 #CPP  = cpp -C -P -traditional
+
 #-----------------------------------------------------------------------------
 #  multiple processors, distributed memory (MPI), g95 compiler
 #FC = mpif90

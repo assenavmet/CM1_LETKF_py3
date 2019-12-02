@@ -7,7 +7,7 @@ from optparse import OptionParser
 import glob
 import subprocess
 import pickle 
-
+import json
 ########################################################################################################################
 #
 # This helps return the correct pipes from the parallel threading...
@@ -56,8 +56,9 @@ if __name__ == "__main__":
     sys.exit(-1)
   else:
     with open(options.exper, 'rb') as p:
-        exper = pickle.load(p)
-        
+        #        exper = pickle.load(p)
+        exper = json.load(p)
+
 # get path for file creation and location
 
   path = exper['base_path']
@@ -139,7 +140,6 @@ if __name__ == "__main__":
     h_width = ((int(window/freq))/2)*freq
 
 # If freq is less than zero, that is a flag to use only one history file for Hxfs.  Essentially, the code runs synchronous
-
   else:
      h_width = 0
      freq    = -freq
@@ -150,7 +150,8 @@ if __name__ == "__main__":
   
     dt      = DT.timedelta(seconds=N.int(sec))
     Hx_time = DT.datetime(int(time[0]),int(time[1]),int(time[2]),int(time[3]),int(time[4]),int(time[5])) + dt
-
+    print("TESTE")
+    print(Hx_time)
     print(("\n  -->  Run_Filter calling computeHx for time %s  \n" % Hx_time.strftime("%Y,%m,%d,%H,%M,%S")))
 
     cmd = "python ./computeHx.py --exper %s --time %s -o %s --window %d" % (options.exper, Hx_time.strftime("%Y,%m,%d,%H,%M,%S"), obs_file, freq)

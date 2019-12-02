@@ -3,8 +3,8 @@
 #
 # each set of shape files can have its own color, and linethickness.  
 import os
-import pltbook
-from cbook2 import *
+#import pltbook
+from Plotting.cbook2 import *
 
 cwd = os.getcwd()
 

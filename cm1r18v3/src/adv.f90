@@ -167,6 +167,7 @@
     elseif(hadvordrs.eq.5)then
       do j=1,nj
       do i=i1,i2
+
         ! this seems to be faster on most other platforms:
         if(rru(i,j,k).ge.0.)then
           dum(i,j,k)=rru(i,j,k)*( 2.*s(i-3,j,k)-13.*s(i-2,j,k)   &
@@ -175,6 +176,7 @@
           dum(i,j,k)=rru(i,j,k)*( 2.*s(i+2,j,k)-13.*s(i+1,j,k)   &
                 +47.*s(i,j,k)+27.*s(i-1,j,k)-3.*s(i-2,j,k) )*onedsixty
         endif
+
       enddo
       enddo
     elseif(hadvordrs.eq.6)then
@@ -313,6 +315,7 @@
     elseif(hadvordrs.eq.5)then
       do j=j1,j2
       do i=1,ni
+
         ! this seems to be faster on most other platforms:
         if(rrv(i,j,k).ge.0.)then
           dum(i,j,k)=rrv(i,j,k)*( 2.*s(i,j-3,k)-13.*s(i,j-2,k)   &
@@ -321,6 +324,7 @@
           dum(i,j,k)=rrv(i,j,k)*( 2.*s(i,j+2,k)-13.*s(i,j+1,k)   &
                 +47.*s(i,j,k)+27.*s(i,j-1,k)-3.*s(i,j-2,k) )*onedsixty
         endif
+
       enddo
       enddo
     elseif(hadvordrs.eq.6)then
@@ -2853,5 +2857,6 @@
  
       return
       end
+
 
 

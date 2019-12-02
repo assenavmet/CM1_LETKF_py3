@@ -17,7 +17,7 @@ from mpl_toolkits.axes_grid1.anchored_artists import AnchoredText
 import time as timeit
 from cbook2 import *
 from Plotting import shapefiles
-
+import json
 _debug_timing = False
 
 # Plotting defaults
@@ -338,7 +338,7 @@ figure, filename = plot_W_DBZ_T_WZ(wplot, dplot, tplot, wzplot, xc, yc, height, 
 
 newfilename = os.path.join(newBasePath,'Plots',filename)
 if output_format: 
-    print("\n Saving file %s" % (newfilename))
+    print(("\n Saving file %s" % (newfilename)))
     figure.savefig(newfilename, format=output_format)
 
 if not options.nodisplay:

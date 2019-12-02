@@ -13,10 +13,11 @@ import re
 import matplotlib
 import matplotlib.pyplot as P
 from mpl_toolkits.basemap import Basemap
+#from matplotlib.offsetbox import AnchoredText
 from matplotlib.offsetbox import AnchoredText
 from matplotlib import ticker
 
-import pickle
+import mypickle as pickle
 from time import time as timer
 from pyDart import dll_2_dxy, dxy_2_dll
 import pyDart
@@ -31,14 +32,15 @@ import scipy.spatial
 
 from fsrc.fpython2 import fstate, addbubbles_box, obs_2_grid3d
 from fsrc.fpython2 import add_smooth_perts
-import fsrc.recursive2d as recursive2d
+#import fsrc.recursive2d as recursive2d
 
 import state_vector as state
+import json
 
 #-----------------------------------------------------------------------------------------------------------------------------
 # Debug settings
 
-debug        = False
+debug        = True
 debug_io     = False
 debug_coords = False
 time_all     = True
@@ -84,7 +86,8 @@ def FindRestartFiles(exper_filename, myDT, ret_exp=True, ret_DT=True):
         exper = exper_filename
     else:
         with open(exper_filename, 'rb') as p:
-            exper = pickle.load(p)
+#            exper = pickle.load(p)
+            exper = json.load(p)
 
 # Figure out how myDT is being passed, and then convert to DT object
 
@@ -1040,8 +1043,8 @@ def ens_IC_pertUV(ens, writeout=False):
       f = ncdf.Dataset(ens.files[n], "r+")
 
       for k in N.arange(ens.nz):
-        f.variables['u0'][k,:,:] = f.variables['u0'][k,:,:] + upert[n,k]
-        f.variables['v0'][k,:,:] = f.variables['v0'][k,:,:] + vpert[n,k]
+        f.variables['ua'][k,:,:] = f.variables['ua'][k,:,:] + upert[n,k]
+        f.variables['ua'][k,:,:] = f.variables['ua'][k,:,:] + vpert[n,k]
 
       f.sync()
       f.close()
@@ -1193,7 +1196,7 @@ def ens_GRID_RELECTIVITY(ens, ob_file=None, plot=False, composite=True):
 # The coordinate system here is based on the grid lat0/lon0/hgt0, and the offset grid stored in fstate
 #     ens stores the x/y grid in grid-internal coordinates
 
-  map = mymap(fstate.xc, fstate.yc, glat, glon)
+  map = mymap(fstate.xc, fstate.yc, glat, glon )
   xob, yob = list(map(lons, lats))
   xob, yob = xob+xoffset, yob+yoffset
 
@@ -1290,7 +1293,9 @@ def ens_ADDITIVE_NOISE(ens, ob_file=None, plot=False, cref=True):
   
     f3d     = ens_GRID_RELECTIVITY(ens, ob_file=ob_file)
 
-    if f3d == None:
+    #    if f3d == None:
+    if len(f3d) > 0:
+
       return
 
     f3d_min = ens.experiment['ADD_NOISE']['min_dbz_4pert']
@@ -2088,7 +2093,7 @@ def read_CM1_ens(files, experiment, state_vector=None, DateTime=None, time_index
 
       if key == "U":    # Special processing for staggerd variables
         try: 
-          fstate.u[n,:,:,:] = f[hkey][:]
+          fstate.u[n,:,:,:] = f.variables[hkey][:]
           ens.u_ptr = m
         except KeyError:       
           print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain variable: %s, skipping it\n" % (fi, key))
@@ -2099,7 +2104,7 @@ def read_CM1_ens(files, experiment, state_vector=None, DateTime=None, time_index
         
       elif key == "V":    # Special processing for staggerd variables        
         try:         
-          fstate.v[n,:,:,:] = f[hkey][:]
+          fstate.v[n,:,:,:] = f.variables[hkey][:]
           ens.v_ptr = m        
         except KeyError:               
           print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain variable: %s, skipping it\n" % (fi, key))         
@@ -2110,7 +2115,7 @@ def read_CM1_ens(files, experiment, state_vector=None, DateTime=None, time_index
         
       elif key == "W":    # Special processing for staggerd variables        
         try:          
-          fstate.w[n,:,:,:] = f[hkey][:]
+          fstate.w[n,:,:,:] = f.variables[hkey][:]
           ens.w_ptr = m        
         except KeyError:              
           print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain variable: %s, skipping it\n" % (fi, key))       
@@ -2121,7 +2126,8 @@ def read_CM1_ens(files, experiment, state_vector=None, DateTime=None, time_index
 
       else:        
         try:           
-          fstate.xyz3d[m,n,:,:,:] = f[hkey][:]
+       #  fstate.xyz3d[m,n,:,:,:] = f[hkey][:]
+          fstate.xyz3d[m,n,:,:,:] = f.variables[hkey][:]
         except KeyError:       
           print("\n READ_CM1_ENS ==> WARNING:  netCDF file: %s DOES NOT contain variable: %s, skipping it\n" % (fi, key))
           break
@@ -2496,7 +2502,8 @@ if __name__ == "__main__":
         sys.exit(-1)
     else:
         with open(options.exp, 'rb') as f:
-            exper = pickle.load(f)
+        #            exper = pickle.load(f)
+            exper = json.load(f)
         if options.dir:
             exper['base_dir'] = options.dir
 

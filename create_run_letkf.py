@@ -4,7 +4,8 @@
 # System imports
 #
 
-import sys, os, pickle
+import sys, os
+import mypickle as pickle
 
 import datetime
 
@@ -13,6 +14,7 @@ from optparse import OptionParser
 import numpy as N
 
 import f90nml
+import json
 
 # these will change parameters in the namelist file for microphysics
 
@@ -26,10 +28,10 @@ defaults = {
             "base_dir":  "RUN_LETKF",
             "fprefix":   "cm1out",
             "ne":        20,
-            "model":     "cm1r18/run/cm1.exe",
-            "src":       "cm1r18/run/oneFile.F",
-            "namelist":  "cm1r18/run/namelist.input",
-            "landsfc":   "cm1r18/run/LANDUSE.TBL",
+            "model":     "cm1r18v3/run/cm1.exe",
+            "src":       "cm1r18v3/run/oneFile.F",
+            "namelist":  "cm1r18v3/run/namelist.input",
+            "landsfc":   "cm1r18v3/run/LANDUSE.TBL",
             "sounding":  "Obs/input_sounding",
             "radar_obs": "Obs/obs_seq_8may03_2km.h5",
 
@@ -114,8 +116,8 @@ defaults = {
                            "nthreads":            12,       # type(int):  number of threads used to run the ensemble members and enkf (if parallel)
                            "assim_window":       300,       # type(int):  window for assimilation
                                                             #             (note that the assim window will be +/- (assim_window/2) )
-                           "assim_freq":         300,       # type(int):  used to set asynchronous DA assimilation
-                           "async_freq":          60,
+                           "assim_freq":        -300,       # type(int):  used to set asynchronous DA assimilation
+                           "async_freq":         300,
                            "cook":              1200,       # type(int): time to pre-cook initial perturbations
                            "additive_noise":    [True,1],   # type(list): whether to add noise based on 1=cref, 2 = adaptive-inflation field
                            "mpass":             False,
@@ -256,13 +258,13 @@ def linkit(dir_from_target,dir_to_target,link_option):
 
             print("\nERROR!!! ") 
 
-            print("ERROR!!!  Failed to EXECUTE: " + LINK_CMD)
+            print(("ERROR!!!  Failed to EXECUTE: " + LINK_CMD))
 
             print("ERROR!!!\n") 
 
             sys.exit(1)
 
-        print("Linked " + dir_from_target + " to directory  " + dir_to_target)
+        print(("Linked " + dir_from_target + " to directory  " + dir_to_target))
 
     if link_option == 2:
 
@@ -272,15 +274,15 @@ def linkit(dir_from_target,dir_to_target,link_option):
 
             print("\nERROR!!! ") 
 
-            print("ERROR!!!  Failed to EXECUTE: " + CP_CMD)
+            print(("ERROR!!!  Failed to EXECUTE: " + CP_CMD))
 
             if not os.path.exists(dir_from_target):
 
-                print("\nCOMMAND FAILED because %s does not exist\n " % dir_from_target)
+                print(("\nCOMMAND FAILED because %s does not exist\n " % dir_from_target))
 
             elif not os.path.join(dir_to_target):
 
-                print("\nCOMMAND FAILED because %s does not exist\n " % dir_to_target)
+                print(("\nCOMMAND FAILED because %s does not exist\n " % dir_to_target))
 
             else:
 
@@ -290,7 +292,7 @@ def linkit(dir_from_target,dir_to_target,link_option):
 
             sys.exit(1)
 
-        print("Copied " + dir_from_target + " to directory  " + dir_to_target)
+        print(("Copied " + dir_from_target + " to directory  " + dir_to_target))
 
     return
 
@@ -353,7 +355,7 @@ else:
     timestamp  = datetime.datetime.fromtimestamp( os.path.getctime(defaults['base_path'] ) )     
     newbasedir = defaults['base_path'] + "_" + timestamp.isoformat().replace('T', '_')
 
-    print("\nERROR:  EXPERIMENT DIRECTORY ALREADY EXISTS, MOVING IT TO: %s \n" % (newbasedir))
+    print(("\nERROR:  EXPERIMENT DIRECTORY ALREADY EXISTS, MOVING IT TO: %s \n" % (newbasedir)))
 
     os.rename(defaults['base_path'], newbasedir)
     os.mkdir(defaults['base_path'])
@@ -411,5 +413,12 @@ for n in N.arange(1,defaults['ne']+1):
                 to_target   = os.path.join(fcst_member,os.path.basename(defaults[item[0]]))
                 ret         = linkit(from_target, to_target, item[1])
 
-with open("%s/%s.exp" % (defaults['base_path'],defaults['base_dir']), 'wb') as handle:
-  pickle.dump(defaults, handle)
+#with open("%s/%s.exp" % (defaults['base_path'],defaults['base_dir']), 'wb') as handle:
+# pickle.dump(defaults, handle, protocol=0)
+#pickle.write("%s/%s.exp" % (defaults['base_path'],defaults['base_dir']), 'w')
+
+def myconverter(o):
+    if isinstance(o, datetime.datetime):
+        return o.__str__()
+with open("%s/%s.exp" % (defaults['base_path'],defaults['base_dir']), 'w') as handle:
+    json.dump(defaults, handle, default = myconverter)

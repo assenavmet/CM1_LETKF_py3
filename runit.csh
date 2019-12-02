@@ -7,26 +7,26 @@ echo "running job "$dir
 
 date
 
-run_exper.py -d RUN_LETKF -i >& out_$dir
+python run_exper.py -d RUN_LETKF -i >& out_$dir
 mv RUN_LETKF $dir
 
 date
 
-ens.py -d $dir -t 2011,5,24,20,40,0 -v W --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,20,50,0 -v W --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,0,0 -v W --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,10,0 -v W --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,20,0 -v W --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,30,0 -v W --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,20,40,0 -v W --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,20,50,0 -v W --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,0,0 -v W --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,10,0 -v W --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,20,0 -v W --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,30,0 -v W --plot9 --zoom 80 160 80 160
 
-ens.py -d $dir -t 2011,5,24,20,40,0 -v DBZ --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,20,50,0 -v DBZ --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,0,0 -v DBZ --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,10,0 -v DBZ --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,20,0 -v DBZ --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,30,0 -v DBZ --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,20,40,0 -v DBZ --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,20,50,0 -v DBZ --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,0,0 -v DBZ --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,10,0 -v DBZ --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,20,0 -v DBZ --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,30,0 -v DBZ --plot9 --zoom 80 160 80 160
 
-vort_prob_CM1.py -d $dir -t 2011,5,24,20,35,0 --fcst 3000 60 --noshow
+python vort_prob_CM1.py -d $dir -t 2011,5,24,20,35,0 --fcst 3000 60 --noshow
 
 cp $dir*.pdf $dir/Plots/.
 
@@ -45,26 +45,26 @@ echo "running job "$dir
 
 date
 
-run_exper.py -d RUN_LETKF -i >& out_$dir
+python run_exper.py -d RUN_LETKF -i >& out_$dir
 mv RUN_LETKF $dir
 
 date
 
-ens.py -d $dir -t 2011,5,24,20,40,0 -v W --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,20,50,0 -v W --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,0,0 -v W --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,10,0 -v W --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,20,0 -v W --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,30,0 -v W --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,20,40,0 -v W --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,20,50,0 -v W --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,0,0 -v W --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,10,0 -v W --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,20,0 -v W --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,30,0 -v W --plot9 --zoom 80 160 80 160
 
-ens.py -d $dir -t 2011,5,24,20,40,0 -v DBZ --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,20,50,0 -v DBZ --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,0,0 -v DBZ --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,10,0 -v DBZ --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,20,0 -v DBZ --plot9 --zoom 80 160 80 160
-ens.py -d $dir -t 2011,5,24,21,30,0 -v DBZ --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,20,40,0 -v DBZ --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,20,50,0 -v DBZ --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,0,0 -v DBZ --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,10,0 -v DBZ --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,20,0 -v DBZ --plot9 --zoom 80 160 80 160
+python ens.py -d $dir -t 2011,5,24,21,30,0 -v DBZ --plot9 --zoom 80 160 80 160
 
-vort_prob_CM1.py -d $dir -t 2011,5,24,20,35,0 --fcst 3000 60 --noshow
+python vort_prob_CM1.py -d $dir -t 2011,5,24,20,35,0 --fcst 3000 60 --noshow
 
 cp $dir*.pdf $dir/Plots/.
 

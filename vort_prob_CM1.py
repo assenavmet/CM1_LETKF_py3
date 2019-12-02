@@ -21,14 +21,15 @@ import matplotlib.cm as cm
 from matplotlib import ticker
 from matplotlib.mlab import griddata
 from mpl_toolkits.basemap import Basemap
-from mpl_toolkits.axes_grid import AxesGrid
+from mpl_toolkits.axes_grid1 import AxesGrid
 from mpl_toolkits.axes_grid.inset_locator import inset_axes
 import ctables
-from mpl_toolkits.axes_grid1.anchored_artists import AnchoredText
+#from mpl_toolkits.axes_grid1.anchored_artists import AnchoredText
+from matplotlib.offsetbox import AnchoredText
 from scipy import signal
 
-from matplotlib import mpl
-import cbook2 as cbook
+#from matplotlib import mpl
+import Plotting.cbook2 as cbook
 import ctables
 import ens
 from matplotlib.colors import BoundaryNorm
@@ -37,7 +38,7 @@ from state_vector import vswath
 from Plotting import shapefiles
 
 import fsrc.cressman as cress
-
+import json
 #===================================================================================================
 def gauss_kern(size, sizey=None):
     """ Returns a normalized 2D gauss kernel array for convolutions """
@@ -190,7 +191,8 @@ if options.exp == None:
     sys.exit(-1)
 else:
     with open(options.exp, 'rb') as f:
-        exper = pickle.load(f)
+        #        exper = pickle.load(f)
+        exper = json.load(f)
     if options.dir:
       exper['base_dir'] = options.dir
 
@@ -283,8 +285,8 @@ for n in N.arange(ens_size):
 
 prob1 = (vort.transpose()/ens_size)*100.
 # 
-print("\nMax probability is:  ",prob1.max(),"\n")
-print("\nMin probability is:  ",prob1.min(),"\n")
+print(("\nMax probability is:  ",prob1.max(),"\n"))
+print(("\nMin probability is:  ",prob1.min(),"\n"))
 
 # if obs2.size > 0:
 #   print "\nNumber of obs > %4.4f is %d\n" % (_threshold2, obs2.size)

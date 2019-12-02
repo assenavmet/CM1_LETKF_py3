@@ -14,7 +14,7 @@ from nc_prior_file import *
 from assim_util import *
 import state_vector as state
 import pickle
-
+import json
 # Fortran functions
 sys.path.append( "./fsrc" )
 from fpython2 import fstate
@@ -59,7 +59,7 @@ if __name__ == "__main__":
 
   print("----------------------------------------------------------------------\n")
   print("              BEGIN PROGRAM LETKF                                     \n ")
-  print("  WALLCLOCK START TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M"))  
+  print(("  WALLCLOCK START TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M")))  
   print("  --------------------------------------------------------------------\n")
   
 # Create timers for the code...
@@ -99,7 +99,8 @@ if __name__ == "__main__":
     sys.exit(-1)
   else:
     with open(options.exper, 'rb') as p:
-        exper = pickle.load(p)
+        #        exper = pickle.load(p)
+        exper = json.load(p)
 
 #-------------------------------------------------------------------------------
 # Get the time stamp
@@ -223,7 +224,7 @@ if __name__ == "__main__":
   
   files, exper = ens.FindRestartFiles(exper, analysis_time, ret_DT=False)
   
-  print("\n  ---->LETKF:  Reading in model state for analysis at %s \n" %  (analysis_time.strftime("%Y %m-%d %H:%M:%S")))
+  print(("\n  ---->LETKF:  Reading in model state for analysis at %s \n" %  (analysis_time.strftime("%Y %m-%d %H:%M:%S"))))
   
   state = ens.read_CM1_ens(files, exper, state_vector = None, DateTime=analysis_time, addmean=1)   
   ens.ens_CM1_coords(state)
@@ -231,8 +232,8 @@ if __name__ == "__main__":
   
   tanalysis = date2num(analysis_time,units=_time_units,calendar=_calendar)
   
-  print("\n  ---->Analysis state read in for time %s " % (analysis_time.strftime("%Y %m-%d %H:%M:%S")))
-  print("\n  ---->Analysis state universal time %f" % (tanalysis))
+  print(("\n  ---->Analysis state read in for time %s " % (analysis_time.strftime("%Y %m-%d %H:%M:%S"))))
+  print(("\n  ---->Analysis state universal time %f" % (tanalysis)))
 
   if debug:
     print("WARNING WARNING WARNING:  LETKF is in DEBUG mode!!!")
@@ -261,10 +262,10 @@ if __name__ == "__main__":
   ne   = Hxf.shape[1]
   
   if nobs == 0:  
-    print("\n  ----> LETKF:  Prior file is empty, exiting at analysis time %s \n" %  (analysis_time.strftime("%Y %m-%d %H:%M:%S")))
+    print(("\n  ----> LETKF:  Prior file is empty, exiting at analysis time %s \n" %  (analysis_time.strftime("%Y %m-%d %H:%M:%S"))))
     sys.exit(0)
   else:
-    print("\n  ----> LETKF:  Prior file has %d obs at analysis time %s \n" %  (nobs, analysis_time.strftime("%Y %m-%d %H:%M:%S")))
+    print(("\n  ----> LETKF:  Prior file has %d obs at analysis time %s \n" %  (nobs, analysis_time.strftime("%Y %m-%d %H:%M:%S"))))
 
     tob = N.array(tob - analysis_sec, dtype=N.float64)   # departure time for temporation localization
 
@@ -273,9 +274,9 @@ if __name__ == "__main__":
 
       mask  = N.where( outlier <= outlier_threshold, True, False )
       mask2 = N.where( kind == 11, True, False )
-      print("Mask before Vr mask:  ", N.count_nonzero(mask))
+      print(("Mask before Vr mask:  ", N.count_nonzero(mask)))
       mask  = mask | mask2
-      print("Mask after Vr mask:  ", N.count_nonzero(mask))
+      print(("Mask after Vr mask:  ", N.count_nonzero(mask)))
 
       kind   = kind[mask]
       value  = value[mask]
@@ -326,7 +327,7 @@ if __name__ == "__main__":
 # Print some stats...
 
   print("\n  >==============================================================================================<")
-  print("\n  LETKF:  %s  Total number of observations:  %d" % (analysis_time.strftime("%Y-%m-%d_%H:%M:%S"),value.size))
+  print(("\n  LETKF:  %s  Total number of observations:  %d" % (analysis_time.strftime("%Y-%m-%d_%H:%M:%S"),value.size)))
   print("\n  <==============================================================================================<")
   print("\n  LETKF:  Obs Space Diagnostic for forecast computed via Dowell and Wicker, MWR 2009, Additive Noise\n")
   print("\n  LETKF:  Obs Std  |  Root-Mean-Sq-Error  |    Bias    |  Spread (obsErr^2+Hxf_var^2)  |   Consistency Ratio")
@@ -386,7 +387,7 @@ if __name__ == "__main__":
                 % (analysis_time.strftime("%Y-%m-%d_%H:%M:%S"), N.sum(index_kind), obs_diag[key][0], N.sqrt(ob_err), \
                    N.sqrt(inno_var), d.mean(), N.sqrt(ob_err + Hxf_var), consi_ratio)))
     else:
-      print("\n -->  LETKF:  %s is not present in observations" % (obs_diag[key][0]))
+      print(("\n -->  LETKF:  %s is not present in observations" % (obs_diag[key][0])))
 
   print("\n  >============================================================================================<\n")
 
@@ -505,5 +506,5 @@ if __name__ == "__main__":
 
   print("\n  ----------------------------------------------------------------------")
   print("\n                END PROGRAM LETKF                                        ")
-  print("\n  WALLCLOCK END TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M"))  
+  print(("\n  WALLCLOCK END TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M")))  
   print("\n  -----------------------------------------------------------------------\n")

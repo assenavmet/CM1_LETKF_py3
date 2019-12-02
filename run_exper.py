@@ -11,13 +11,14 @@ import numpy as N
 from optparse import OptionParser
 import datetime as DT
 from subprocess import *
-
+import json
+#-t 2003,5,8,20,40,0 --write
 #-----------------------------------------------------------------------------------------------------------------------------
 # Define initialization strings - not needed if you run them yourself
 
 ic_cmds = ["create_run_letkf.py",
            "run_fcst.py -e RUN_LETKF/RUN_LETKF.exp -i",
-           "ens.py -e RUN_LETKF/RUN_LETKF.exp --init0 -t 2011,5,24,19,40,0 --write"]
+           "ens.py -e RUN_LETKF/RUN_LETKF.exp --init0 -t 2003,5,8,20,40,0 --write"]
 
 #-----------------------------------------------------------------------------------------------------------------------------
 #
@@ -63,8 +64,8 @@ if options.init:
         if RunIt:
             print(("Running  %s" % newcmd))
             master_output, master_error = run_unix_cmd(newcmd)
-            print("\n ==> run_Exper: ic_cmds:  STDOUT: %s " % master_output)
-            print("\n ==> run_Exper: ic_cmds:  STDERR: %s " % master_error)
+            print(("\n ==> run_Exper: ic_cmds:  STDOUT: %s " % master_output))
+            print(("\n ==> run_Exper: ic_cmds:  STDERR: %s " % master_error))
         else:
            print(("%s" % newcmd))
 
@@ -73,9 +74,10 @@ if options.init:
 
 ObFile   = ["Obs/obs_seq_PAR_4km_1min.h5"]      # HDF5 file for observations to be used for assimilation (not used currently)
 
-newstart = [False, 2011,5,24,20,0,0 ]          # If True, restart run to begin at this or next time defined by loop
-stop     = [2011,5,24,20,35,0]
-fcst     = 3600 
+newstart = [False, 2003,5,8,20,40,0 ]
+stop     = [2003,5,8,21,5,0]
+
+fcst     = 300
 
 HF       = [False,2]
 assim_count = 0
@@ -113,8 +115,9 @@ if options.exp == None:
     sys.exit(-1)
 else:
     with open(options.exp, 'rb') as f:
-        exper = pickle.load(f)
-                                           
+        #        exper = pickle.load(f)
+        exper = json.load(f)
+
 
 cpu_enkf     = 0.0
 cpu_model    = 0.0
@@ -145,7 +148,6 @@ else:
                          exper['SECOND'])
 
 stop = DT.datetime(stop[0],stop[1],stop[2],stop[3],stop[4],stop[5])
-
 print(("\n#==> run_Exper: start time for experiment is %s" % start.strftime("%Y-%m-%d %H:%M:%S")))
 print(("\n#==> run_Exper: stop  time for experiment is %s" % stop.strftime("%Y-%m-%d %H:%M:%S")))
 
@@ -163,10 +165,11 @@ else:
      else:
          time.append([start, 2])
          time.append([start+dt_window, 2])
-  
+
 while time[-1][0] < stop:
     t = time[-1][0]
     time.append([t+dt_window,2])
+#
 
 # dont want to do correct ens last time before forecast, so always set last value to assim only
 time[-1][1] = 1
@@ -187,18 +190,18 @@ for n, t in enumerate(time[:-1]):
   now_DT   = t[0]
   later_DT = time[n+1][0]
   if t[1] == -1:
-    print("#======>>> Step %d:  Run pre-cook from %s until %s" % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
-                                                                 later_DT.strftime("%Y_%m-%d %H:%M:%S")))
+    print(("#======>>> Step %d:  Run pre-cook from %s until %s" % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
+                                                                 later_DT.strftime("%Y_%m-%d %H:%M:%S"))))
   if t[1] == 0:
-    print("#======>>> Step %2d:  Run forecast from %s until %s" % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
-                                                                 later_DT.strftime("%Y_%m-%d %H:%M:%S")))
+    print(("#======>>> Step %2d:  Run forecast from %s until %s" % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
+                                                                 later_DT.strftime("%Y_%m-%d %H:%M:%S"))))
   if t[1] == 1:
-    print("#======>>> Step %2d:  Assimilate at %s, then run forecast until %s" % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
-                                                                                later_DT.strftime("%Y_%m-%d %H:%M:%S")))
+    print(("#======>>> Step %2d:  Assimilate at %s, then run forecast until %s" % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
+                                                                                later_DT.strftime("%Y_%m-%d %H:%M:%S"))))
   if t[1] == 2:
-    print("#======>>> Step %2d:  Assimilate and run additive noise at %s, then run forecast until %s"  \
+    print(("#======>>> Step %2d:  Assimilate and run additive noise at %s, then run forecast until %s"  \
                                                                              % (n,now_DT.strftime("%Y_%m-%d %H:%M:%S"),
-                                                                                later_DT.strftime("%Y_%m-%d %H:%M:%S")))
+                                                                                later_DT.strftime("%Y_%m-%d %H:%M:%S"))))
 
 #-------------------------------------------------------------------------------
 #
@@ -274,8 +277,8 @@ for n, t in enumerate(time[:-1]):
     
     if RunIt:  
       master_output, master_error = run_unix_cmd(newcmd)
-      print("\nSTDOUT: %s " % master_output) 
-      print("\nSTDERR: %s " % master_error)
+      print(("\nSTDOUT: %s " % master_output)) 
+      print(("\nSTDERR: %s " % master_error))
     
     cpu_enkf = cpu_enkf + cpu.time() - c0
 
@@ -300,8 +303,8 @@ for n, t in enumerate(time[:-1]):
 
     if RunIt:  
       master_output, master_error = run_unix_cmd(newcmd)
-      print("\nSTDOUT: %s " % master_output) 
-      print("\nSTDERR: %s " % master_error)
+      print(("\nSTDOUT: %s " % master_output)) 
+      print(("\nSTDERR: %s " % master_error))
 
     cpu_correct = cpu_correct + cpu.time() - c0
 
@@ -324,8 +327,8 @@ for n, t in enumerate(time[:-1]):
     
     if RunIt:  
       master_output, master_error = run_unix_cmd(newcmd)
-      print("\nSTDOUT: %s " % master_output) 
-      print("\nSTDERR: %s " % master_error)
+      print(("\nSTDOUT: %s " % master_output)) 
+      print(("\nSTDERR: %s " % master_error))
 
     print(("\n#==> run_Exper: Integrated ensemble members to time: %s\n" % ( later_DT.strftime("%Y-%m-%d_%H:%M:%S"))))
     

@@ -20,7 +20,7 @@ from Plotting import shapefiles, viridis
 
 interactive = True
 output_format = "png"
-
+import json
 # default time and z-level for plotting
 
 # Other plotting stuff....
@@ -226,7 +226,7 @@ fig.suptitle(title, fontsize=16)
 newbase = os.path.join("./", os.path.split(newfile)[0], "Plots", os.path.split(newfile)[1][:-2])
 
 filename = "%s%s" % (newbase, "pdf")
-print("\n Saving file %s" % (filename))
+print(("\n Saving file %s" % (filename)))
 fig.savefig(filename, format="pdf", dpi=300)
  
 if options.show:

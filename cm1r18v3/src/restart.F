@@ -1640,7 +1640,9 @@ CONTAINS
     if( myid.eq.0 )then
 
     IF(     restart_filetype.eq.1 )THEN
-      string(totlen+1:totlen+22) = '_rst.nc               '
+      string(totlen+1:totlen+22) = '_rst_XXXXXX.nc        '
+      write(string(totlen+6:totlen+11),100) rstnum
+!     string(totlen+1:totlen+22) = '_rst.nc               '
       time_index = rstnum
     ELSEIF( restart_filetype.eq.2 )THEN
       string(totlen+1:totlen+22) = '_rst_XXXXXX.nc        '

@@ -1,5 +1,5 @@
 !<arch>
-adv.F           1439330648  502   20    100644  87020     `
+adv.F           1573253965  3360  20    100644  87020     `
 
 
       subroutine advs(nrk,wflag,bflag,bsq,xh,rxh,arh1,arh2,uh,ruh,xf,vh,rvh,gz,rgz,mh,rmh,  &
@@ -2877,7 +2877,7 @@ adv.F           1439330648  502   20    100644  87020     `
       end
 
 
-advaxi.F        1439429884  502   20    100644  35546     `
+advaxi.F        1573253965  3360  20    100644  35546     `
 
 
       subroutine advsaxi(doweno,bflag,bsq,xh,rxh,arh1,arh2,uh,ruh,xf,vh,rvh,rmh,gz,rgz, &
@@ -3939,7 +3939,7 @@ advaxi.F        1439429884  502   20    100644  35546     `
       end
 
 
-anelp.F         1437181273  502   20    100644  7703      `
+anelp.F         1573253965  3360  20    100644  7703      `
 
 
       subroutine anelp(xh,uh,xf,uf,yh,vh,yf,vf,                     &
@@ -4202,7 +4202,7 @@ anelp.F         1437181273  502   20    100644  7703      `
 
 
 
-base.F          1439560248  502   20    100644  63933     `
+base.F          1573253965  3360  20    100644  63933     `
 
       subroutine base(zh,mh,c1,c2,zf,mf,rho0s,pi0s,prs0s,rth0s,             &
                       pi0,prs0,rho0,thv0,th0,rth0,qv0,u0,v0,                &
@@ -6325,7 +6325,7 @@ base.F          1439560248  502   20    100644  63933     `
     end subroutine revthe
 
 
-bc.F            1437273731  502   20    100644  71278     `
+bc.F            1573253965  3360  20    100644  71278     `
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -9183,7 +9183,7 @@ bc.F            1437273731  502   20    100644  71278     `
       end
 
 
-cm1.F           1440439099  502   20    100644  75312     `
+cm1.F           1573253965  3360  20    100644  75312     `
 
 
       program cm1
@@ -11229,7 +11229,7 @@ cm1.F           1440439099  502   20    100644  75312     `
       end program cm1
 
 
-comm.F          1439062076  502   20    100644  174434    `
+comm.F          1573253965  3360  20    100644  174434    `
 !-----------------------------------------------------------------------
 !  message passing routines
 !-----------------------------------------------------------------------
@@ -18975,7 +18975,7 @@ comm.F          1439062076  502   20    100644  174434    `
       end
 
 #endif
-diff2.F         1439434994  502   20    100644  33190     `
+diff2.F         1573253965  3360  20    100644  33190     `
 
 
       subroutine diff2u(flag,rxh,arh1,arh2,uh,xf,arf1,arf2,uf,vh,vf,mh,mf,  &
@@ -20124,7 +20124,7 @@ diff2.F         1439434994  502   20    100644  33190     `
       return
       end
 
-goddard.F       1433699442  502   20    100644  61869     `
+goddard.F       1573253965  3360  20    100644  61869     `
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -21498,7 +21498,7 @@ goddard.F       1433699442  502   20    100644  61869     `
       END
 
 
-init3d.F        1441925477  502   20    100644  53492     `
+init3d.F        1573253965  3360  20    100644  53492     `
 
       subroutine init3d(xh,rxh,uh,ruh,xf,rxf,uf,ruf,yh,vh,rvh,yf,vf,rvf,  &
                         xfref,yfref,sigma,c1,c2,gz,                       &
@@ -23197,7 +23197,7 @@ init3d.F        1441925477  502   20    100644  53492     `
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
-init_physics.F  1439060422  502   20    100644  10520     `
+init_physics.F  1573253965  3360  20    100644  10520     `
 
       subroutine init_physics(prs0,rf0,dum1,dum2,dum3,u0,ua,v0,va,o30,   &
                              lu_index,xland,emiss,thc,albd,znt,mavail,f2d,tsk,u1,v1,s1, &
@@ -23548,7 +23548,7 @@ init_physics.F  1439060422  502   20    100644  10520     `
       call stopcm1
       end subroutine getlanduse
 
-init_surface.F  1436906776  502   20    100644  7907      `
+init_surface.F  1573253965  3360  20    100644  7907      `
 
       subroutine init_surface(num_soil_layers,dosfcflx,xh,ruh,xf,yh,rvh,yf,   &
            lu_index,xland,tsk,slab_zs,slab_dzs,tslb, &
@@ -23819,7 +23819,7 @@ init_surface.F  1436906776  502   20    100644  7907      `
       end subroutine init_surface
 
 
-init_terrain.F  1439473747  502   20    100644  8952      `
+init_terrain.F  1573253965  3360  20    100644  8952      `
 
       subroutine init_terrain(xh,uh,xf,uf,yh,vh,yf,vf,rds,sigma,rdsf,sigmaf,  &
                               zh,zf,zs,gz,rgz,gzu,rgzu,gzv,rgzv,         &
@@ -24101,7 +24101,7 @@ init_terrain.F  1439473747  502   20    100644  8952      `
 
       end subroutine init_terrain
 
-kessler.F       1433699313  502   20    100644  15604     `
+kessler.F       1573253965  3360  20    100644  15604     `
 
 
       subroutine kessler(dt,tauto,taccr,tevar,ruh,rvh,rmh,pi0,th0,tmp,   &
@@ -24667,7 +24667,7 @@ kessler.F       1433699313  502   20    100644  15604     `
       END
 
 
-lfoice.F        1371143161  502   20    100644  66907     `
+lfoice.F        1573253965  3360  20    100644  66907     `
 !-------------------------------------------------------------------------------
 !   lfo_ice_drive
 !
@@ -26601,7 +26601,7 @@ lfoice.F        1371143161  502   20    100644  66907     `
 
 !--------------------------------------------------------------------------
 
-maxmin.F        1437182193  502   20    100644  6009      `
+maxmin.F        1573253965  3360  20    100644  6009      `
 MODULE maxminmod
 
 CONTAINS
@@ -26835,7 +26835,7 @@ CONTAINS
 
 END MODULE maxminmod
 
-misclibs.F      1439439007  502   20    100644  112091    `
+misclibs.F      1573253965  3360  20    100644  112091    `
 
 
       subroutine dtsmall(dt)
@@ -30669,7 +30669,7 @@ misclibs.F      1439439007  502   20    100644  112091    `
 
 
 
-morrison.F      1435780158  502   20    100644  213658    `
+morrison.F      1573253965  3360  20    100644  213658    `
 !WRF:MODEL_LAYER:PHYSICS
 !
 ! Current version is tagged as V3.5
@@ -36922,7 +36922,7 @@ END SUBROUTINE MP_GRAUPEL
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 
 END MODULE module_mp_GRAUPEL
-#1/24           1437755304  502   20    100644  546795    `
+#1/24           1573253965  3360  20    100644  546795    `
 module_mp_nssl_2mom.F   !WRF:MODEL_LAYER:PHYSICS
 
 
@@ -53662,7 +53662,7 @@ END SUBROUTINE nssl_2mom_driver
 
 END MODULE module_mp_nssl_2mom
 
-param.F         1440439099  502   20    100644  197539    `
+param.F         1573253965  3360  20    100644  197675    `
 
       subroutine param(dt,dtlast,stattim,taptim,rsttim,radtim,prcltim,  &
                        cloudvar,rhovar,qname,budname,                   &
@@ -57966,6 +57966,10 @@ param.F         1440439099  502   20    100644  197539    `
         if(dowr) write(outfile,*)
         if(dowr) write(outfile,*) ' stretch_x = 1 ... stretching on both west and east sides of domain:'
         if(dowr) write(outfile,*)
+!
+!       ni1 = nint( (tot_x_len-nos_x_len) / (dx_inner + dx_outer))
+!       dx_outer = (tot_x_len-nos_x_len) / float(ni1) - dx_inner
+!
         ni1 = nint( (tot_x_len-nos_x_len)*0.5/nominal_dx )
         ni2 = nint( nos_x_len/dx_inner )
         ni3 = ni1
@@ -59496,7 +59500,7 @@ param.F         1440439099  502   20    100644  197539    `
  END FUNCTION ZHEIGHT
 
 
-parcel.F        1439252945  502   20    100644  50298     `
+parcel.F        1573253965  3360  20    100644  50298     `
 
 
       subroutine parcel_driver(dt,xh,uh,ruh,xf,yh,vh,rvh,yf,zh,mh,rmh,zf,mf,    &
@@ -61101,7 +61105,7 @@ parcel.F        1439252945  502   20    100644  50298     `
 
     end subroutine get2d
 
-pdef.F          1435846574  502   20    100644  15285     `
+pdef.F          1573253965  3360  20    100644  15285     `
 !cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -61615,7 +61619,7 @@ pdef.F          1435846574  502   20    100644  15285     `
 
 
 
-poiss.F         1325010707  502   20    100644  4838      `
+poiss.F         1573253965  3360  20    100644  4838      `
 
 
       subroutine poiss(uh,vh,mh,rmh,mf,rmf,pi0,thv0,rho0,rf0,   &
@@ -61813,7 +61817,7 @@ poiss.F         1325010707  502   20    100644  4838      `
       end
 
 
-sfcphys.F       1439496265  502   20    100644  13281     `
+sfcphys.F       1573253965  3360  20    100644  13281     `
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
@@ -62196,7 +62200,7 @@ sfcphys.F       1439496265  502   20    100644  13281     `
 
 
 
-singleton.F     1155928930  502   20    100644  38594     `
+singleton.F     1573253965  3360  20    100644  38594     `
 MODULE singleton
   !-----------------------------------------------------------------------------
   ! Multivariate Fast Fourier Transform
@@ -63268,7 +63272,7 @@ CONTAINS
   END SUBROUTINE fftradix
 
 END MODULE singleton
-solve.F         1440439099  502   20    100644  150353    `
+solve.F         1573253965  3360  20    100644  150353    `
 !-----------------------------------------------------------------------
 !
 !  CM1 Numerical Model, Release 18  (cm1r18)
@@ -67324,7 +67328,7 @@ solve.F         1440439099  502   20    100644  150353    `
       end subroutine solve
 
 
-sounde.F        1439223168  502   20    100644  27283     `
+sounde.F        1573253965  3360  20    100644  27283     `
 
 
       subroutine sounde(dt,xh,arh1,arh2,uh,ruh,xf,uf,yh,vh,rvh,yf,vf,     &
@@ -68142,7 +68146,7 @@ sounde.F        1439223168  502   20    100644  27283     `
 
 
 
-sound.F         1439223154  502   20    100644  35196     `
+sound.F         1573253965  3360  20    100644  35196     `
 
 
       subroutine sound( dt,xh,arh1,arh2,uh,ruh,xf,uf,yh,vh,rvh,yf,vf,     &
@@ -69188,7 +69192,7 @@ sound.F         1439223154  502   20    100644  35196     `
       end subroutine sound
 
 
-soundns.F       1439223188  502   20    100644  12867     `
+soundns.F       1573253965  3360  20    100644  12867     `
 
 
       subroutine soundns(xh,rxh,arh1,arh2,uh,xf,uf,yh,vh,yf,vf,           &
@@ -69625,7 +69629,7 @@ soundns.F       1439223188  502   20    100644  12867     `
 
 
 
-soundcb.F       1439414548  502   20    100644  25185     `
+soundcb.F       1573253965  3360  20    100644  25185     `
 
 
       subroutine soundcb(dt,xh,arh1,arh2,uh,ruh,xf,uf,yh,vh,rvh,yf,vf,    &
@@ -70407,7 +70411,7 @@ soundcb.F       1439414548  502   20    100644  25185     `
 
 
 
-statpack.F      1439404819  502   20    100644  15551     `
+statpack.F      1573253965  3360  20    100644  15551     `
 
       subroutine statpack(nrec,ndt,dt,dtlast,rtime,adt,acfl,cloudvar,qname,budname,qbudget,asq,bsq, &
                           xh,rxh,uh,ruh,xf,uf,yh,vh,rvh,vf,zh,mh,rmh,mf,    &
@@ -70930,7 +70934,7 @@ statpack.F      1439404819  502   20    100644  15551     `
       end subroutine statpack
 
 
-thompson.F      1433699500  502   20    100644  183130    `
+thompson.F      1573253965  3360  20    100644  183130    `
 !+---+-----------------------------------------------------------------+
 !.. This subroutine computes the moisture tendencies of water vapor,
 !.. cloud droplets, rain, cloud ice (pristine), snow, and graupel.
@@ -75733,7 +75737,7 @@ thompson.F      1433699500  502   20    100644  183130    `
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 END MODULE module_mp_thompson
-turb.F          1439485807  502   20    100644  143555    `
+turb.F          1573253965  3360  20    100644  143555    `
 
       subroutine sfc_and_turb(getsfc,nstep,dt,dosfcflx,cloudvar,qbudget,    &
                    xh,rxh,arh1,arh2,uh,ruh,xf,rxf,arf1,arf2,uf,ruf,  &
@@ -80246,7 +80250,7 @@ turb.F          1439485807  502   20    100644  143555    `
       end subroutine turbw
 
 
-writeout.F      1440439099  502   20    100644  146181    `
+writeout.F      1573253965  3360  20    100644  146181    `
 
       subroutine setup_output(tdef,qname,budname,xh,xf,yh,yf,xfref,yfref,sigma,sigmaf,zh,zf)
 #ifdef MPI
@@ -83836,7 +83840,7 @@ writeout.F      1440439099  502   20    100644  146181    `
       end subroutine writeo
 
 
-restart.F       1440441938  502   20    100644  170268    `
+restart.F       1573253965  3360  20    100644  170268    `
 MODULE module_restart
 
     ! 150820:  The following parameters allow users to include extra variables in 
@@ -87487,7 +87491,7 @@ CONTAINS
 #endif
 
 END MODULE module_restart
-writeout_nc.F   1440543533  502   20    100644  146200    `
+writeout_nc.F   1573253965  3360  20    100644  167953    `
 
 !-------------------------------------------------------------
 !
@@ -87556,7 +87560,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
 
       integer, parameter :: shuffle       = 1
       integer, parameter :: deflate       = 1
-      integer, parameter :: deflate_level = 1
+      integer, parameter :: deflate_level = 2
 
       integer :: chkx,chky,chkxp1,chkyp1
 
@@ -87672,7 +87676,8 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
       if( myid.eq.0 ) print *,'  calling nf90_create '
 #ifdef NCFPLUS
 !--- works with netcdf 4.2, but not 4.0 (grumble)
-      call disp_err( nf90_create(string,IOR(nf90_netcdf4, nf90_classic_model),ncid) , .true. )
+!!     call disp_err( nf90_create(string,IOR(nf90_netcdf4, nf90_classic_model),ncid) , .true. )
+       call disp_err( nf90_create(string,nf90_netcdf4,ncid) , .true. )
 #else
       ! must do this for netcdf 4.0 (it seems) !
       call disp_err( nf90_create(path=string,cmode=0,ncid=ncid) , .true. )
@@ -87790,7 +87795,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_svs.eq.1) then
@@ -87799,7 +87804,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","s-1")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_sps.eq.1) then
@@ -87808,7 +87813,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","Pa")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_srs.eq.1) then
@@ -87817,7 +87822,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","kg/kg")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_sgs.eq.1) then
@@ -87826,7 +87831,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","kg/kg")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_sus.eq.1) then
@@ -87835,7 +87840,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_shs.eq.1) then
@@ -87844,7 +87849,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m2/s2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       IF(nrain.eq.2)THEN
@@ -87854,6 +87859,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","cm")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
         if(output_sws.eq.1) then
@@ -87862,6 +87868,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
         if(output_svs.eq.1) then
@@ -87870,6 +87877,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","s-1")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
         if(output_sps.eq.1) then
@@ -87878,6 +87886,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","Pa")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
         if(output_srs.eq.1) then
@@ -87886,6 +87895,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","kg/kg")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
         if(output_sgs.eq.1) then
@@ -87894,6 +87904,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","kg/kg")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
         if(output_sus.eq.1) then
@@ -87902,6 +87913,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
         if(output_shs.eq.1) then
@@ -87910,6 +87922,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","m2/s2")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
       ENDIF
@@ -87920,7 +87933,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m2/s2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       ENDIF
 
@@ -87930,14 +87943,14 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         status = nf90_def_var(ncid,"cph",nf90_float,(/niid,njid,timeid/),varid)
         status = nf90_put_att(ncid,varid,"long_name","cold pool depth h")
         status = nf90_put_att(ncid,varid,"units","m AGL")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       ENDIF
 
@@ -87947,7 +87960,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K m s^{-1}")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"qvflux",nf90_float,(/niid,njid,timeid/),varid)
@@ -87955,7 +87968,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","kg kg^{-1} m s^{-1}")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"tsk",nf90_float,(/niid,njid,timeid/),varid)
@@ -87963,7 +87976,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -87973,7 +87986,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","nondimensional")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"ch",nf90_float,(/niid,njid,timeid/),varid)
@@ -87981,7 +87994,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","nondimensional")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"cq",nf90_float,(/niid,njid,timeid/),varid)
@@ -87989,7 +88002,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","nondimensional")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"tlh",nf90_float,(/niid,njid,timeid/),varid)
@@ -87997,7 +88010,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88007,6 +88020,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","Pa")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88016,6 +88030,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88025,7 +88040,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","dBZ")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       ENDIF
 
@@ -88035,7 +88050,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","integer flag")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"lu",nf90_float,(/niid,njid,timeid/),varid)
@@ -88043,7 +88058,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","integer flag")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"mavail",nf90_float,(/niid,njid,timeid/),varid)
@@ -88051,7 +88066,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","integer flag")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88061,6 +88076,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"hfx",nf90_float,(/niid,njid,timeid/),varid)
@@ -88068,6 +88084,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","W/m^2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"qfx",nf90_float,(/niid,njid,timeid/),varid)
@@ -88075,6 +88092,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","W/m^2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"gsw",nf90_float,(/niid,njid,timeid/),varid)
@@ -88082,6 +88100,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","W/m^2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"glw",nf90_float,(/niid,njid,timeid/),varid)
@@ -88089,6 +88108,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","W/m^2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88098,6 +88118,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"tslb2",nf90_float,(/niid,njid,timeid/),varid)
@@ -88105,6 +88126,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"tslb3",nf90_float,(/niid,njid,timeid/),varid)
@@ -88112,6 +88134,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"tslb4",nf90_float,(/niid,njid,timeid/),varid)
@@ -88119,6 +88142,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"tslb5",nf90_float,(/niid,njid,timeid/),varid)
@@ -88126,6 +88150,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88135,6 +88160,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"hml",nf90_float,(/niid,njid,timeid/),varid)
@@ -88142,6 +88168,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"huml",nf90_float,(/niid,njid,timeid/),varid)
@@ -88156,6 +88183,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88165,6 +88193,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","w/m^2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"rnflx",nf90_float,(/niid,njid,timeid/),varid)
@@ -88172,6 +88201,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","W/m^2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"radswnet",nf90_float,(/niid,njid,timeid/),varid)
@@ -88179,6 +88209,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","W/m^2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"radlwin",nf90_float,(/niid,njid,timeid/),varid)
@@ -88186,6 +88217,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","W/m^2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         ! MS add
@@ -88194,14 +88226,15 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","W/m^2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         status = nf90_def_var(ncid,"dsr",nf90_float,(/niid,njid,timeid/),varid)
         status = nf90_put_att(ncid,varid,"long_name","TOA net incoming solar radiation")
         status = nf90_put_att(ncid,varid,"units","W/m^2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
-        ! MS add
       endif
 
       IF(output_sfcdiags.eq.1)THEN
@@ -88210,7 +88243,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"v10",nf90_float,(/niid,njid,timeid/),varid)
@@ -88218,7 +88251,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"t2",nf90_float,(/niid,njid,timeid/),varid)
@@ -88226,7 +88259,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"q2",nf90_float,(/niid,njid,timeid/),varid)
@@ -88234,7 +88267,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","kg/kg")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"znt",nf90_float,(/niid,njid,timeid/),varid)
@@ -88242,7 +88275,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"ust",nf90_float,(/niid,njid,timeid/),varid)
@@ -88250,7 +88283,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"hpbl",nf90_float,(/niid,njid,timeid/),varid)
@@ -88262,7 +88295,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"zol",nf90_float,(/niid,njid,timeid/),varid)
@@ -88270,7 +88303,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","   ")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"mol",nf90_float,(/niid,njid,timeid/),varid)
@@ -88278,7 +88311,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
 
@@ -88287,16 +88320,15 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","dimensionless")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
-
 
         status = nf90_def_var(ncid,"psim",nf90_float,(/niid,njid,timeid/),varid)
         status = nf90_put_att(ncid,varid,"long_name","similarity stability function for momentum")
         status = nf90_put_att(ncid,varid,"units","dimensionless")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"psih",nf90_float,(/niid,njid,timeid/),varid)
@@ -88304,7 +88336,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","dimensionless")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
       ENDIF
@@ -88318,7 +88350,8 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"long_name","height (above sea level) of scalar grid points")
         status = nf90_put_att(ncid,varid,"units","m")
 #ifdef NCFPLUS
-        call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88328,7 +88361,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_thpert.eq.1)then
@@ -88336,7 +88369,8 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"long_name","perturbation potential temperature")
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
-        call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88346,7 +88380,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","Pa")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_prspert.eq.1)then
@@ -88355,6 +88389,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","Pa")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88364,6 +88399,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","dimensionless")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_pipert.eq.1)then
@@ -88372,6 +88408,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","dimensionless")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_rho.eq.1)then
@@ -88380,6 +88417,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","kg/m^3")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_rhopert.eq.1)then
@@ -88388,6 +88426,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","kg/m^3")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
     IF(iptra.eq.1)THEN
@@ -88416,7 +88455,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","kg/kg")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_qvpert.eq.1)then
@@ -88425,6 +88464,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","kg/kg")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
         if(output_q.eq.1)then
@@ -88468,6 +88508,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m s^-2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88477,7 +88518,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_vinterp.eq.1)then
@@ -88486,7 +88527,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_winterp.eq.1)then
@@ -88495,7 +88536,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88505,6 +88546,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","s^-1")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"yvort",nf90_float,(/niid,njid,nkid,timeid/),varid)
@@ -88512,6 +88554,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","s^-1")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"zvort",nf90_float,(/niid,njid,nkid,timeid/),varid)
@@ -88519,6 +88562,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","s^-1")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88528,6 +88572,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K m^2 kg^-1 s^-1")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88538,6 +88583,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","dimensionless")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"th0",nf90_float,(/niid,njid,nkid,timeid/),varid)
@@ -88545,6 +88591,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"prs0",nf90_float,(/niid,njid,nkid,timeid/),varid)
@@ -88552,6 +88599,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","Pa")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"qv0",nf90_float,(/niid,njid,nkid,timeid/),varid)
@@ -88559,6 +88607,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","kg/kg")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
       endif
@@ -88568,6 +88617,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"long_name","pbl tendency: theta")
         status = nf90_put_att(ncid,varid,"units","    ")
 #ifdef NCFPLUS
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
 #endif
 
@@ -88576,6 +88626,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","    ")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"qcpten",nf90_float,(/niid,njid,nkid,timeid/),varid)
@@ -88583,6 +88634,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","    ")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"qipten",nf90_float,(/niid,njid,nkid,timeid/),varid)
@@ -88590,6 +88642,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","    ")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"upten",nf90_float,(/niid,njid,nkid,timeid/),varid)
@@ -88597,6 +88650,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","    ")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"vpten",nf90_float,(/niid,njid,nkid,timeid/),varid)
@@ -88604,6 +88658,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","    ")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88613,6 +88668,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","    ")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
 
         status = nf90_def_var(ncid,"lwten",nf90_float,(/niid,njid,nkid,timeid/),varid)
@@ -88620,6 +88676,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88630,6 +88687,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         IF(imoist.eq.1)THEN
           status = nf90_def_var(ncid,"ftq",nf90_float,(/niid,njid,nkid,timeid/),varid)
@@ -88637,10 +88695,10 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","kg/kg/s")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         ENDIF
       ENDIF
-
 
       IF( output_dissheat.eq.1 )THEN
         status = nf90_def_var(ncid,"dissheat",nf90_float,(/niid,njid,nkid,timeid/),varid)
@@ -88648,6 +88706,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       ENDIF
 
@@ -88658,9 +88717,9 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","K/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       ENDIF
-
 
       IF( output_fallvel.eq.1 )THEN
         if( qd_vtc.gt.0 )then
@@ -88669,6 +88728,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
         if( qd_vtr.gt.0 )then
@@ -88677,6 +88737,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
         if( qd_vts.gt.0 )then
@@ -88685,6 +88746,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
         if( qd_vtg.gt.0 )then
@@ -88693,6 +88755,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
         if( qd_vti.gt.0 )then
@@ -88701,10 +88764,10 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
           call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+          call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         endif
       ENDIF
-
 
       if(output_u.eq.1)then
         status = nf90_def_var(ncid,"u",nf90_float,(/nip1id,njid,nkid,timeid/),varid)
@@ -88712,7 +88775,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkxp1,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_upert.eq.1)then
@@ -88721,6 +88784,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkxp1,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if (output_basestate.eq.1) then
@@ -88729,6 +88793,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkxp1,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_turbten.eq.1)then
@@ -88737,6 +88802,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkxp1,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_impdiften.eq.1)then
@@ -88745,6 +88811,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkxp1,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88754,7 +88821,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chkyp1,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_vpert.eq.1)then
@@ -88763,6 +88830,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chkyp1,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if (output_basestate.eq.1) then
@@ -88771,6 +88839,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chkyp1,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_turbten.eq.1)then
@@ -88779,6 +88848,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chkyp1,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_impdiften.eq.1)then
@@ -88787,6 +88857,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chkyp1,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -88796,7 +88867,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       IF((iturb.eq.1).and.(output_tke.eq.1))THEN
@@ -88805,7 +88876,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m^2/s^2")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       ENDIF
       IF(output_km.eq.1)THEN
@@ -88815,7 +88886,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m^2/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         !----
         status = nf90_def_var(ncid,"kmv",nf90_float,(/niid,njid,nkp1id,timeid/),varid)
@@ -88823,7 +88894,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m^2/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         !----
       ENDIF
@@ -88834,7 +88905,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m^2/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         !----
         status = nf90_def_var(ncid,"khv",nf90_float,(/niid,njid,nkp1id,timeid/),varid)
@@ -88842,7 +88913,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m^2/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
-!!!        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         !----
       ENDIF
@@ -88853,6 +88924,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m^2/s^3")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_nm.eq.1)then
@@ -88861,6 +88933,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","s^{-2}")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_def.eq.1)then
@@ -88869,12 +88942,14 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","s^{-2}")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
         status = nf90_def_var(ncid,"defh",nf90_float,(/niid,njid,nkp1id,timeid/),varid)
         status = nf90_put_att(ncid,varid,"long_name","horizontal deformation")
         status = nf90_put_att(ncid,varid,"units","s^{-2}")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_turbten.eq.1)then
@@ -88883,6 +88958,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
       if(output_impdiften.eq.1)then
@@ -88891,6 +88967,7 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         status = nf90_put_att(ncid,varid,"units","m/s/s")
 #ifdef NCFPLUS
         call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
 #endif
       endif
 
@@ -89052,6 +89129,10 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
     integer :: nbudgetid,numqid,plocid,nparcelsid
     character*8 :: text1
 
+    integer, parameter :: shuffle       = 1
+    integer, parameter :: deflate       = 1
+    integer, parameter :: deflate_level = 2
+
     chkx = nx
     chky = ny
 
@@ -89083,11 +89164,14 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
 !  if this is the start of a file, then do this stuff:
 
 #ifdef NCFPLUS
+
 !--- works with netcdf 4.2, but not 4.0 (grumble)
       call disp_err( nf90_create(string,IOR(nf90_netcdf4, nf90_classic_model),ncid) , .true. )
+      IF(myid.eq.0) print *,' USING COMPRESSED netCDF4 '
 #else
       ! must do this for netcdf 4.0 (it seems) !
       call disp_err( nf90_create(path=string,cmode=0,ncid=ncid) , .true. )
+	  
 #endif
 
 !-----------------------------------------------------------------------
@@ -89143,8 +89227,8 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
       call disp_err( nf90_put_att(ncid,varid,"long_name","nominal height of staggered w grid points") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m") , .true. )
 
-      !------------------
-      ! vars:
+  !------------------
+  ! vars:
 
       call disp_err( nf90_def_var(ncid,"nstep"   ,nf90_int,varid) , .true. )
       call disp_err( nf90_def_var(ncid,"nrec"    ,nf90_int,varid) , .true. )
@@ -89186,114 +89270,216 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
       call disp_err( nf90_def_var(ncid,"asq"     ,nf90_double,(/numqid/),varid) , .true. )
       call disp_err( nf90_def_var(ncid,"bsq"     ,nf90_double,(/numqid/),varid) , .true. )
 
-      !------------------
-      ! 2d/3d vars:
+  !------------------
+  ! 2d/3d vars:
 
       call disp_err( nf90_def_var(ncid,"rain"    ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","accumulated surface rainfall") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","cm") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"sws"     ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","max windspeed at lowest level") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"svs"     ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","max vert vorticity at lowest level") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","s^(-1)") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"sps"     ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","min pressure at lowest level") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","Pa") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"srs"     ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","max surface rainwater") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","kg/kg") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"sgs"     ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","max surface graupel/hail") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","kg/kg") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"sus"     ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","max w at 5 km AGL") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"shs"     ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","max integrated updraft helicity") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m2/s2") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
     if( nrain.eq.2 )then
 
       call disp_err( nf90_def_var(ncid,"rain2"   ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","accumulated surface rainfall (translated)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","cm") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"sws2"    ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","max windspeed at lowest level (translated)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"svs2"    ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","max vert vorticity at lowest level (translated)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","s^(-1)") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"sps2"    ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","min pressure at lowest level (translated)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","Pa") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"srs2"    ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","max surface rainwater (translated)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","kg/kg") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"sgs2"    ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","max surface graupel/hail (translated)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","kg/kg") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"sus2"    ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","max w at 5 km AGL (translated)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"shs2"    ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","max integrated updraft helicity (translated)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m2/s2") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
     endif
 
       call disp_err( nf90_def_var(ncid,"tsk"     ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","soil/ocean temperature") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","K") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
+
+! 3D VARS
 
       call disp_err( nf90_def_var(ncid,"rho"     ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","dry-air density") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","kg/m^3") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"prs"     ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","pressure") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","Pa") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"ua"      ,nf90_float,(/nip1id,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","west-east velocity (at u points)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkxp1,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"va"      ,nf90_float,(/niid,njp1id,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","south-north velocity (at v points)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chkyp1,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"wa"      ,nf90_float,(/niid,njid,nkp1id/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","vertical velocity (at w points)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"ppi"     ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","perturbation non-dimensional pressure") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","nondimensional") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"tha"     ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","perturbation potential temperature") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","K") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
       call disp_err( nf90_def_var(ncid,"ppx"     ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","change in nondimensional pressure used for forward-time-weighting on small steps") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","nondimensional") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
 
-    if( imoist.eq.1 )then
+    IF( imoist.eq.1 )THEN
       do n=1,numq
         text1 = '        '
         write(text1(1:3),156) qname(n)
@@ -89315,38 +89501,93 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           call disp_err( nf90_put_att(ncid,varid,"long_name","mixing ratio") , .true. )
           call disp_err( nf90_put_att(ncid,varid,"units","kg/kg") , .true. )
         endif
+#ifdef NCFPLUS
+        call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       enddo
-    endif
+    ENDIF
     if(imoist.eq.1.and.eqtset.eq.2)then
       call disp_err( nf90_def_var(ncid,"qpten"   ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","ppi tendency from microphysics on previous timestep (related to h_diabatic in WRF)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","s^(-1)") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       !---
       call disp_err( nf90_def_var(ncid,"qtten"   ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","theta tendency from microphysics on previous timestep (related to h_diabatic in WRF)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","K/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       !---
       call disp_err( nf90_def_var(ncid,"qvten"   ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","qv tendency from microphysics on previous timestep (related to qv_diabatic in WRF)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","kg/kg/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       !---
       call disp_err( nf90_def_var(ncid,"qcten"   ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","qc tendency from microphysics on previous timestep (related to qc_diabatic in WRF)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","kg/kg/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     endif
     if(iturb.eq.1)then
       call disp_err( nf90_def_var(ncid,"tkea"    ,nf90_float,(/niid,njid,nkp1id/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","subgrid turbulence kinetic energy") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m^2/s^2") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     endif
 
     if( radopt.eq.1 )then
+
       call disp_err( nf90_def_var(ncid,"lwten"   ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
+
       call disp_err( nf90_def_var(ncid,"swten"   ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
+
       call disp_err( nf90_def_var(ncid,"radsw"   ,nf90_float,(/niid,njid/),varid) , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
+
       call disp_err( nf90_def_var(ncid,"rnflx"   ,nf90_float,(/niid,njid/),varid) , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
+
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+#ifdef NCFPLUS
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
       call disp_err( nf90_def_var(ncid,"radswnet",nf90_float,(/niid,njid/),varid) , .true. )
+#endif
+
       call disp_err( nf90_def_var(ncid,"radlwin" ,nf90_float,(/niid,njid/),varid) , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
+
       do n=1,nrad2d
         if( n.lt.10 )then
           text1 = 'radX    '
@@ -89368,12 +89609,43 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
      endif
 
     if( radopt.ge.1 .and. ptype.eq.5 )then
+
       call disp_err( nf90_def_var(ncid,"effc"    ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
+
       call disp_err( nf90_def_var(ncid,"effi"    ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
+
       call disp_err( nf90_def_var(ncid,"effs"    ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
+
       call disp_err( nf90_def_var(ncid,"effr"    ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
+
       call disp_err( nf90_def_var(ncid,"effg"    ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
+
       call disp_err( nf90_def_var(ncid,"effis"   ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
+
     endif
 
     if((oceanmodel.eq.2).or.(ipbl.eq.1).or.(sfcmodel.ge.1))then
@@ -89531,6 +89803,10 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
           stop 11511
         endif
         call disp_err( nf90_def_var(ncid,text1,nf90_float,(/niid,njid,nkid/),varid) , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       enddo
     endif
 
@@ -89543,138 +89819,231 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
         call disp_err( nf90_def_var(ncid,"radbcw"  ,nf90_float,(/njid,nkid/),varid) , .true. )
         call disp_err( nf90_put_att(ncid,varid,"long_name","estimated gravity wave phase speed on west boundary") , .true. )
         call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/ny,nz/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       endif
       if( ebc.eq.2 )then
         call disp_err( nf90_def_var(ncid,"radbce"  ,nf90_float,(/njid,nkid/),varid) , .true. )
         call disp_err( nf90_put_att(ncid,varid,"long_name","estimated gravity wave phase speed on east boundary") , .true. )
         call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/ny,nz/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       endif
       if( sbc.eq.2 )then
         call disp_err( nf90_def_var(ncid,"radbcs"  ,nf90_float,(/niid,nkid/),varid) , .true. )
         call disp_err( nf90_put_att(ncid,varid,"long_name","estimated gravity wave phase speed on south boundary") , .true. )
         call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/nx,nz/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       endif
       if( nbc.eq.2 )then
         call disp_err( nf90_def_var(ncid,"radbcn"  ,nf90_float,(/niid,nkid/),varid) , .true. )
         call disp_err( nf90_put_att(ncid,varid,"long_name","estimated gravity wave phase speed on north boundary") , .true. )
         call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/nx,nz/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       endif
     endif
 
-      !------------------
-      ! 150820:  optionals
+  !------------------
+  ! 150820:  optionals
 
     !-----
     IF( restart_file_theta )THEN
       call disp_err( nf90_def_var(ncid,"theta"   ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","potential temperature") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","K") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     ENDIF
     IF( restart_file_dbz )THEN
       call disp_err( nf90_def_var(ncid,"dbz"     ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","reflectivity") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","dBZ") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     ENDIF
     !-----
     IF( restart_file_th0 )THEN
       call disp_err( nf90_def_var(ncid,"th0"     ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","base-state potential temperature") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","K") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     ENDIF
     IF( restart_file_prs0 )THEN
       call disp_err( nf90_def_var(ncid,"prs0"    ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","base-state pressure") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","Pa") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     ENDIF
     IF( restart_file_pi0 )THEN
       call disp_err( nf90_def_var(ncid,"pi0"     ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","base-state nondimensional pressure") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","nondimensional") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     ENDIF
     IF( restart_file_rho0 )THEN
       call disp_err( nf90_def_var(ncid,"rho0"    ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","base-state dry-air density") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","kg/m^3") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     ENDIF
     IF( restart_file_qv0 )THEN
       call disp_err( nf90_def_var(ncid,"qv0"     ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","base-state water vapor mixing ratio") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","kg/kg") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     ENDIF
     IF( restart_file_u0 )THEN
       call disp_err( nf90_def_var(ncid,"u0"      ,nf90_float,(/nip1id,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","base-state x-component velocity") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkxp1,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     ENDIF
     IF( restart_file_v0 )THEN
       call disp_err( nf90_def_var(ncid,"v0"      ,nf90_float,(/niid,njp1id,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","base-state y-component velocity") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chkyp1,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     ENDIF
     !-----
     IF( restart_file_zs )THEN
       call disp_err( nf90_def_var(ncid,"zs"      ,nf90_float,(/niid,njid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","terrain height") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     ENDIF
     IF( restart_file_zh )THEN
       call disp_err( nf90_def_var(ncid,"zhalf"   ,nf90_float,(/niid,njid,nkid/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","height of half (scalar) grid points (3d array)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     ENDIF
     IF( restart_file_zf )THEN
       call disp_err( nf90_def_var(ncid,"zfull"   ,nf90_float,(/niid,njid,nkp1id/),varid) , .true. )
       call disp_err( nf90_put_att(ncid,varid,"long_name","height of full (w) grid points (3d array)") , .true. )
       call disp_err( nf90_put_att(ncid,varid,"units","m") , .true. )
+#ifdef NCFPLUS
+      call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+      call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
     ENDIF
-    !-----
+	
+!-----
     IF( restart_file_diags )THEN
       if( td_diss.gt.0 )then
         call disp_err( nf90_def_var(ncid,"dissheat",nf90_float,(/niid,njid,nkid/),varid) , .true. )
         call disp_err( nf90_put_att(ncid,varid,"long_name","dissipative heating (potential temperature tendency)") , .true. )
         call disp_err( nf90_put_att(ncid,varid,"units","K/s") , .true. )
+#ifdef NCFPLUS
+        call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       endif
       if( td_mptend.gt.0 )then
         call disp_err( nf90_def_var(ncid,"mptend",nf90_float,(/niid,njid,nkid/),varid) , .true. )
         call disp_err( nf90_put_att(ncid,varid,"long_name","potential temperature tendency from microphysics scheme") , .true. )
         call disp_err( nf90_put_att(ncid,varid,"units","K/s") , .true. )
+#ifdef NCFPLUS
+        call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       endif
       if( qd_vtc.gt.0 )then
         call disp_err( nf90_def_var(ncid,"vtc",nf90_float,(/niid,njid,nkid/),varid) , .true. )
         call disp_err( nf90_put_att(ncid,varid,"long_name","terminal fall velocity of qc") , .true. )
         call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+        call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       endif
       if( qd_vtr.gt.0 )then
         call disp_err( nf90_def_var(ncid,"vtr",nf90_float,(/niid,njid,nkid/),varid) , .true. )
         call disp_err( nf90_put_att(ncid,varid,"long_name","terminal fall velocity of qr") , .true. )
         call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+        call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       endif
       if( qd_vts.gt.0 )then
         call disp_err( nf90_def_var(ncid,"vts",nf90_float,(/niid,njid,nkid/),varid) , .true. )
         call disp_err( nf90_put_att(ncid,varid,"long_name","terminal fall velocity of qs") , .true. )
         call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+        call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       endif
       if( qd_vtg.gt.0 )then
         call disp_err( nf90_def_var(ncid,"vtg",nf90_float,(/niid,njid,nkid/),varid) , .true. )
         call disp_err( nf90_put_att(ncid,varid,"long_name","terminal fall velocity of qg") , .true. )
         call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+        call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       endif
       if( qd_vti.gt.0 )then
         call disp_err( nf90_def_var(ncid,"vti",nf90_float,(/niid,njid,nkid/),varid) , .true. )
         call disp_err( nf90_put_att(ncid,varid,"long_name","terminal fall velocity of qi") , .true. )
         call disp_err( nf90_put_att(ncid,varid,"units","m/s") , .true. )
+#ifdef NCFPLUS
+        call disp_err( NF90_DEF_VAR_CHUNKING(ncid,varid,NF90_CHUNKED,(/chkx,chky,1/)) , .true. )
+        call disp_err( nf90_def_var_deflate(ncid,varid,shuffle,deflate,deflate_level) , .true. )
+#endif
       endif
     ENDIF
     !-----
 
-      !------------------
-      ! end definitions:
+  !------------------
+  ! end definitions:
 
-      call disp_err( nf90_enddef(ncid) , .true. )
+  call disp_err( nf90_enddef(ncid) , .true. )
 
-      !---------------------------------------------
-      !ccccccccccccccccccccccccccccccccccccccccccccc
-      !---------------------------------------------
+  !---------------------------------------------
+  !ccccccccccccccccccccccccccccccccccccccccccccc
+  !---------------------------------------------
 
 
       status = nf90_inq_varid(ncid,'xh',varid)
@@ -90638,7 +91007,8 @@ writeout_nc.F   1440543533  502   20    100644  146200    `
       return
       end subroutine writepdata_nc
 #endif
-writeout_hdf5.F 1439436833  502   20    100644  112838    `
+
+writeout_hdf5.F 1573253965  3360  20    100644  112838    `
 ! HDF5 output written by Leigh Orf <leigh.orf@cmich.edu>
 !
 ! In namelist.input, you can choose which of the 2D and 3D variables are written.
@@ -93610,7 +93980,7 @@ subroutine writestat_hdf5(nrec,rtime,nstat,rstat,qname,budname)
 ! above endif matches #ifdef HDFOUT
       return
       end 
-raddata3d.F     1378307875  502   20    100644  206056    `
+raddata3d.F     1573253965  3360  20    100644  206056    `
 !
 !##################################################################
 !##################################################################
@@ -96727,7 +97097,7 @@ raddata3d.F     1378307875  502   20    100644  206056    `
 !
 
 END BLOCK DATA raddata
-radlib3d.F      1378313590  502   20    100644  25359     `
+radlib3d.F      1573253965  3360  20    100644  25359     `
 !
 !
 !##################################################################
@@ -97638,7 +98008,7 @@ SUBROUTINE sagpol(tau,ssc,g0,rll,tll)
   RETURN
 END SUBROUTINE sagpol
 
-irrad3d.F       1378328399  502   20    100644  58682     `
+irrad3d.F       1573253965  3360  20    100644  58682     `
 !
 !
 !##################################################################
@@ -99598,7 +99968,7 @@ SUBROUTINE co2kdis(m,n,np,k,co2exp,tco2,tran)
 
   RETURN
 END SUBROUTINE co2kdis
-sorad3d.F       1380050915  502   20    100644  69494     `
+sorad3d.F       1573253965  3360  20    100644  69494     `
 !
 !
 !##################################################################
@@ -101839,7 +102209,7 @@ SUBROUTINE cldflx(m,n,np,ict,icb,cc,rr,tt,td,rs,ts,                     &
   RETURN
 END SUBROUTINE cldflx
 
-radtrns3d.F     1440439099  502   20    100644  76236     `
+radtrns3d.F     1573253965  3360  20    100644  76236     `
 !
 !##################################################################
 !##################################################################
@@ -104129,7 +104499,7 @@ SUBROUTINE zenangl(nx,ny,      hterain, cosz, cosss, a2dr2,             &
 
   RETURN
 END SUBROUTINE zenangl
-getcape.F       1433700907  502   20    100644  16655     `
+getcape.F       1573253965  3360  20    100644  16655     `
 !-----------------------------------------------------------------------
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !-----------------------------------------------------------------------
@@ -104715,7 +105085,7 @@ getcape.F       1433700907  502   20    100644  16655     `
 !ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
 !-----------------------------------------------------------------------
 
-ysu.F           1430835739  502   20    100644  58705     `
+ysu.F           1573253965  3360  20    100644  58705     `
 !WRF:model_layer:physics
 !
 !
@@ -106245,7 +106615,7 @@ contains
 end module module_bl_ysu
 !-------------------------------------------------------------------------------
 
-sfclay.F        1430852059  502   20    100644  50166     `
+sfclay.F        1573253965  3360  20    100644  50166     `
 !WRF:MODEL_LAYER:PHYSICS
 !
 MODULE module_sf_sfclay
@@ -107197,7 +107567,7 @@ CONTAINS
 !-------------------------------------------------------------------          
 
 END MODULE module_sf_sfclay
-sfclayrev.F     1440439099  502   20    100644  55097     `
+sfclayrev.F     1573253965  3360  20    100644  55097     `
 !WRF:MODEL_LAYER:PHYSICS
 !
 MODULE module_sf_sfclayrev
@@ -108417,7 +108787,7 @@ END MODULE module_sf_sfclayrev
 
 
 
-slab.F          1380051935  502   20    100644  28254     `
+slab.F          1573253965  3360  20    100644  28254     `
 !WRF:MODEL_LAYER:PHYSICS
 !
 MODULE module_sf_slab
@@ -108986,7 +109356,7 @@ CONTAINS
 !-------------------------------------------------------------------          
 
 END MODULE module_sf_slab
-oml.F           1408479717  502   20    100644  12184     `
+oml.F           1573253965  3360  20    100644  12184     `
 !WRF:MODEL_LAYER:PHYSICS
 !
 MODULE module_sf_oml

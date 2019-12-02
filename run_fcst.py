@@ -12,7 +12,7 @@ import f90nml
 import pickle
 import netCDF4 as ncdf
 import datetime as DT
-
+import json
 _nthreads = 20
 _restart_frequency = 300.
 
@@ -33,9 +33,9 @@ def FindRestartFile(fcst_path,run_name,time):
                 print(("\n Found time %d in file:  %s" % (f_time, file)))
                 return n
 
-        print("\n\n  ERROR!!!")
-        print(("\n      FindRestartFile: A file with the restart time of %d cannot be found, exiting!!!" % time))
-        print("\n\n  ERROR!!!")
+        print("\n\nERROR!!!")
+        print(("\nFindRestartFile: A file with the restart time of %d cannot be found, exiting!!!" % time))
+        print("\n\nERROR!!!")
         sys.exit(-1)
                 
     else:
@@ -78,7 +78,8 @@ if options.exp == None:
     sys.exit(0)
 else:
     with open(options.exp, 'rb') as f:
-        experiment = pickle.load(f)
+#        experiment = pickle.load(f)
+        experiment = json.load(f)
 
 if options.init == True:
     init = True
@@ -137,7 +138,7 @@ nthreads = min(nthreads, ne)
 #-----------------------------------------------------------------------------------------------------
 # Write now we assume that the namelist each member uses is the same namelist.  So we just need to 
 # edit the namelist.input file found at the top level of the run directory.  
-# 
+# cd ..
 # HANDY Python module:  f90nml  -->  this is why python is great, someone already did this!!!!!!
 
 namelist = f90nml.read(os.path.join(experiment['base_path'],"namelist.input"))
@@ -193,7 +194,7 @@ for n in N.arange(ne_start-1,ne_end):
         print(("%s is the model path" % model))
         print(("%s is the outputfile path" % outputfile))
 
-    cmd = "cd %s ; %s >> %s" % (fcst_member, "cm1.exe", "cm1.out")
+    cmd = "cd %s ; %s >> %s" % (fcst_member, "./cm1.exe", "cm1.out")
     pool.apply_async(RunMember, (cmd,))
 
 pool.close()
@@ -202,6 +203,6 @@ pool.join()
 cpu_model = cpu_model + cpu.time() - c0
 
 if init:
-    print("\nRun_Fcst Script: Model runs initialized for experiment   %f  CPU secs\n" % (round(cpu_model, 3)))
+    print(("\nRun_Fcst Script: Model runs initialized for experiment   %f  CPU secs\n" % (round(cpu_model, 3))))
 else:
-    print("\nRun_Fcst Script: Model runs integrated out %d seconds, used   %f  CPU secs\n" % (run_time, round(cpu_model, 3)))
+    print(("\nRun_Fcst Script: Model runs integrated out %d seconds, used   %f  CPU secs\n" % (run_time, round(cpu_model, 3))))

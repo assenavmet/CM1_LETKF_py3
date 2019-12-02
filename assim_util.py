@@ -36,10 +36,10 @@ class myTimer():
     total = self.total
     if self.minutes:  
       total = round(total/60., 3) 
-      print("  %s ... Time in minutes for %s: %f" % (string, self.name, total))
+      print(("  %s ... Time in minutes for %s: %f" % (string, self.name, total)))
     else:
       total = round(total, 3) 
-      print("  %s ... Time in seconds for %s: %f " % (string, self.name, total))
+      print(("  %s ... Time in seconds for %s: %f " % (string, self.name, total)))
 
     print("\n  ---------------------------------------\n")
 
@@ -79,18 +79,18 @@ def print_state_diagnostics(mdata, store=False, header=False):
     return
         
   for zi in N.arange(mdata.nz):
-    print(" Prior       |  %8.5f  %8.5f  %10.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f" % \
+    print((" Prior       |  %8.5f  %8.5f  %10.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f" % \
         (uavg[zi,0], uavg[zi,1], vavg[zi,0], vavg[zi,1],  wavg[zi,0], wavg[zi,1], tavg[zi,0], tavg[zi,1], \
-         davg[zi,0], davg[zi,1], 1000.*qavg[zi,0], 1000.*qavg[zi,1]))
+         davg[zi,0], davg[zi,1], 1000.*qavg[zi,0], 1000.*qavg[zi,1])))
 
-    print(" %12.2f|  %8.5f  %8.5f  %10.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f \n" % \
+    print((" %12.2f|  %8.5f  %8.5f  %10.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f  %8.5f \n" % \
                          (mdata.zc.data[zi],   \
                          N.average(mdata["UA"].data[:-1,zi,:,:]),  N.std(mdata["UA"].data[:-1,zi,:,:]), \
                          N.average(mdata["VA"].data[:-1,zi,:,:]),  N.std(mdata["VA"].data[:-1,zi,:,:]), \
                          N.average(mdata["WA"].data[:-1,zi,:,:]),  N.std(mdata["WA"].data[:-1,zi,:,:]), \
                          N.average(mdata["TH"].data[:-1,zi,:,:]),  N.std(mdata["TH"].data[:-1,zi,:,:]), \
                          N.average(mdata["DBZ"].data[:-1,zi,:,:]),N.std(mdata["DBZ"].data[:-1,zi,:,:]),
-                   1000.*N.average(mdata["QR"].data[:-1,zi,:,:]), 1000.*N.std(mdata["QR"].data[:-1,zi,:,:])))
+                   1000.*N.average(mdata["QR"].data[:-1,zi,:,:]), 1000.*N.std(mdata["QR"].data[:-1,zi,:,:]))))
 
 #####################################################################################################
 def rename_weight_file(DT):
@@ -110,7 +110,7 @@ def write_inflation_file(array, xc, yc, zc, DT, path = "./"):
 
   filename = os.path.join(path, "%s_%s%s" % ("Inflation", DT.strftime("%Y-%m-%d_%H:%M:%S"), ".nc" ))
 
-  print("\n -->  Writing %s as the adaptive inflation file..." % (filename))
+  print(("\n -->  Writing %s as the adaptive inflation file..." % (filename)))
     
   rootgroup = ncdf.Dataset(filename, 'w', format='NETCDF4')
       

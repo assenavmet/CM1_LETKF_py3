@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import warnings
+warnings.filterwarnings("ignore")
 import sys
 import os
 import numpy as N
@@ -14,7 +16,7 @@ from nc_prior_file import *
 from assim_util import *
 import state_vector as state
 import pickle
-
+import json
 missing = -999.
 diag = True
 
@@ -32,7 +34,7 @@ if __name__ == "__main__":
 
   print("\n  ----------------------------------------------------------------------")
   print("\n                BEGIN PROGRAM ComputeHx                                 ")
-  print(("\n    WALLCLOCK START TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M")  ))
+  print("\n    WALLCLOCK START TIME:  %s \n" % now.strftime("%Y-%m-%d %H:%M") )
   print("\n  ----------------------------------------------------------------------")
   
 #-----------------------------------------------
@@ -71,8 +73,9 @@ if __name__ == "__main__":
     sys.exit(-1)
   else:
     with open(options.exper, 'rb') as p:
-        exper = pickle.load(p)
-        
+#        exper = pickle.load(p)
+        exper = json.load(p)
+
 # get path for file creation and location
 
   path = exper['base_path']
@@ -92,14 +95,14 @@ if __name__ == "__main__":
 
   if options.obserr == None:
     obs_error = exper['DA_PARAMS']['obs_errors']
-    print(("\n --> ComputeHx:  using the obs errors from the EXPER file:  %s" % obs_error))
+    print("\n --> ComputeHx:  using the obs errors from the EXPER file:  %s" % obs_error)
   else:
     print("\n --> ComputeHx:  using the obs errors from the command line")
     obs_error = _default_obs_error
     for key in list(obs_error.keys()):
       for n, item in enumerate(options.obserr):
         if item == obs_error[key][0]:
-           print(("\n --> ComputeHx:  Changing %s observational error to:  %s" % (obs_error[key][0],options.obserr[n+1])))
+           print("\n --> ComputeHx:  Changing %s observational error to:  %s" % (obs_error[key][0],options.obserr[n+1]))
            obs_error[key][1] = float(options.obserr[n+1])
 
 #-------------------------------------------------------------------------------
@@ -168,7 +171,7 @@ if __name__ == "__main__":
 
   analysis_time = DT.datetime(int(time[0]),int(time[1]),int(time[2]),int(time[3]),int(time[4]),int(time[5]))
      
-  print("\n --> ComputeHx:  Reading in model state for HxF at %s \n" %  (analysis_time.strftime("%Y-%m-%d %H:%M:%S")))
+  print(("\n --> ComputeHx:  Reading in model state for HxF at %s \n" %  (analysis_time.strftime("%Y-%m-%d %H:%M:%S"))))
     
 # read from history files
 
@@ -199,22 +202,23 @@ if __name__ == "__main__":
   begin  = analysis_time - dt
   ending = analysis_time + dt
     
-  print("\n --> ComputeHx:  Using pyDart to search with condition: " + condition)  
-  print("\n --> ComputeHx:  Using pyDart to search with begin time of: ", begin.strftime("%Y-%m-%d %H:%M:%S"))
-  print("\n --> ComputeHx:  Using pyDart to search with end   time of: ", ending.strftime("%Y-%m-%d %H:%M:%S"))
-  print(begin.timetuple()[:6])
-  print(ending.timetuple()[:6])
+  print(("\n --> ComputeHx:  Using pyDart to search with condition: " + condition))  
+  print(("\n --> ComputeHx:  Using pyDart to search with begin time of: ", begin.strftime("%Y-%m-%d %H:%M:%S")))
+  print(("\n --> ComputeHx:  Using pyDart to search with end   time of: ", ending.strftime("%Y-%m-%d %H:%M:%S")))
+  print((begin.timetuple()[:6]))
+  print((ending.timetuple()[:6]))
     
 # ob_f.search(start=begin.timetuple()[:6], end=ending.timetuple()[:6], condition=condition)
   ob_f.search(start=begin.timetuple()[:6], end=ending.timetuple()[:6])
 
 # number of observations, if there are none, kick out of the loop...
   
-  if ob_f.index != None:
-    print("\n --> ComputeHx:  Total number of obs found at search time: %s \n" % len(ob_f.index))
-    print(ob_f.index)
+#  if ob_f.index != None:
+  if len(ob_f.index) > 0:
+    print(("\n --> ComputeHx:  Total number of obs found at search time: %s \n" % len(ob_f.index)))
+    print((ob_f.index))
   else:
-    print("\n --> ComputeHx:  No obs found at search time:  %s exiting......\n" % (analysis_time))
+    print(("\n --> ComputeHx:  No obs found at search time:  %s exiting......\n" % (analysis_time)))
     sys.exit(0)
   
 # using the search index generated from above, obtain the location, data, and type
@@ -236,7 +240,7 @@ if __name__ == "__main__":
 
     nobs = N.size(idx) 
 
-    print("\n --> ComputeHx:  Total number of obs found is: %d \n" % (nobs))
+    print(("\n --> ComputeHx:  Total number of obs found is: %d \n" % (nobs)))
 
 # retrieve these from pyTable
 
