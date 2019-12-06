@@ -16,7 +16,7 @@ import json
 _nthreads = 20
 _restart_frequency = 300.
 
-debug = False
+debug = True
 
 def FindRestartFile(fcst_path,run_name,time):
 
@@ -31,7 +31,8 @@ def FindRestartFile(fcst_path,run_name,time):
 
             if( N.abs(f_time - time) < 1.0 ):
                 print(("\n Found time %d in file:  %s" % (f_time, file)))
-                return n
+                m = file[-6:-3]
+                return N.int(m)
 
         print("\n\nERROR!!!")
         print(("\nFindRestartFile: A file with the restart time of %d cannot be found, exiting!!!" % time))
@@ -155,6 +156,7 @@ else:
     output_basename = namelist['param9']['output_basename']
 
     namelist['param2']['irst']             = 1
+    print(FindRestartFile(experiment['fcst_members'][0],output_basename,start_time))
     namelist['param2']['rstnum']           = FindRestartFile(experiment['fcst_members'][0],output_basename,start_time)
     namelist['param1']['run_time']         = run_time
     namelist['param9']['restart_format']   = 2

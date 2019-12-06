@@ -116,7 +116,7 @@ defaults = {
                            "nthreads":            12,       # type(int):  number of threads used to run the ensemble members and enkf (if parallel)
                            "assim_window":       300,       # type(int):  window for assimilation
                                                             #             (note that the assim window will be +/- (assim_window/2) )
-                           "assim_freq":        -300,       # type(int):  used to set asynchronous DA assimilation
+                           "assim_freq":         300,       # type(int):  used to set asynchronous DA assimilation
                            "async_freq":         300,
                            "cook":              1200,       # type(int): time to pre-cook initial perturbations
                            "additive_noise":    [True,1],   # type(list): whether to add noise based on 1=cref, 2 = adaptive-inflation field
@@ -151,13 +151,13 @@ defaults = {
 #   then I join them together into 1 dictionary that is stored for the run
 
 cm1_nml = {"cm1namelist": [
-                           ('param0',  'nx', 75),
-                           ('param0',  'ny', 75),
+                           ('param0',  'nx', 50),
+                           ('param0',  'ny', 50),
                            ('param0',  'nz', 51),
-                           ('param1',  'dx', 2000.),
-                           ('param1',  'dy', 2000.),
+                           ('param1',  'dx', 3000.),
+                           ('param1',  'dy', 3000.),
                            ('param1',  'dz', 400.),
-                           ('param1',  'dtl', 6.0),
+                           ('param1',  'dtl', 10.0),
                            ('param1',  'run_time', 0),
                            ('param1',  'rstfrq', 0.0),
                            ('param2',  'ptype', _microphysics_options[defaults['microphysics']]),

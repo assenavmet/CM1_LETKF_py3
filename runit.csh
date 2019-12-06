@@ -1,13 +1,13 @@
 #!/bin/csh
 echo "Starting runit.csh"
 
-set dir = "PAR_A5_THP_BIAS-C"
+set dir = "test"
 
 echo "running job "$dir
 
 date
 
-python run_exper.py -d RUN_LETKF -i >& out_$dir
+python run_exper.py -d RUN_LETKF --debug -i >& out_$dir
 mv RUN_LETKF $dir
 
 date

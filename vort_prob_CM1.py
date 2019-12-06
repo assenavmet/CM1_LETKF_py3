@@ -230,6 +230,8 @@ print(("\nSize of the ensemble be read in:   %d" % ens_size))
 master_list = []
 master_DT   = []
 
+#ntimes must be an integer (n must be integer)
+ntimes = int(ntimes)
 for n in N.arange(ntimes):
     master_DT.append(myDT + DT.timedelta(seconds=int(n*dt_files)))
     master_list.append(ens.FindRestartFiles(exper, master_DT[n], ret_exp=False, ret_DT=False))
@@ -238,6 +240,8 @@ ny, nx = exper['cm1namelist'][1][2],exper['cm1namelist'][0][2]
 dx, dy = exper['cm1namelist'][3][2],exper['cm1namelist'][4][2]
 lat0, lon0 = exper['lat0'], exper['lon0']
 
+#ens_size must be an integer
+ens_size = int(ens_size)
 vvort  = N.zeros((ntimes,ens_size,level,ny,nx))
 vvmean = N.zeros((ntimes,ens_size,ny,nx))
 
@@ -299,8 +303,9 @@ if _yes_plot:
 
 # Create map coordinates
 #-------------------
-
-  map = ens.mymap(x_swath, y_swath, lat0, lon0, ax = ax, shape_env=shapefiles, counties=True, noticks=False)
+# ERROR /Users/vanessa.ferreira/CM1_LETKF/Plotting/tornado_shapes/extractDamagePolys.shp
+# change shape_env=shapefiles to shape_env=None
+  map = ens.mymap(x_swath, y_swath, lat0, lon0, ax = ax, shape_env=None, counties=True, noticks=False)
   lon2d, lat2d, x2d, y2d = map.makegrid(x_swath.size, y_swath.size, returnxy=True)
 
   clevels  = [0.0, 9., 10., 20, 30., 40., 50., 60., 70., 80., 90., 100.]

@@ -394,11 +394,13 @@ def mymap_draw_shapes(bmap, shape_env=None, ax=None):
             color      = items[1]
             linewidth  = float(items[2])
 
-            s = bmap.readshapefile(shapefile,'shapeinfo',drawbounds=False)
+            # Here it looks for /Users/vanessa.ferreira/CM1_LETKF/Plotting/tornado_shapes/extractDamagePolys, but this .shp file do not exist
+            # So, I will just comment this part
+            #s = bmap.readshapefile(shapefile,'shapeinfo',drawbounds=False)
 
-            for shape in bmap.shapeinfo:
-                xx, yy = list(zip(*shape))
-                bmap.plot(xx,yy,color=color,linewidth=linewidth,ax=ax)
+            #for shape in bmap.shapeinfo:
+            #    xx, yy = list(zip(*shape))
+            #    bmap.plot(xx,yy,color=color,linewidth=linewidth,ax=ax)
 
 #===============================================================================
 #   
@@ -1103,8 +1105,8 @@ def ens_IC_ZeroUV(ens, restore=False):
             f.variables['v0'][:,:,:] = f.variables['v0'][:,:,:] - vBs
             f.sync()
             f.close()
-            print(n, "Max U/V zeros:    ",  ens['U'][n,:,:,:].max(), ens['V'][n,:,:,:].max(), end=' ')
-            print(n, "Max FU/FV zeros:  ",  fstate.u[n,:,:,:].max(), fstate.v[n,:,:,:].max(), end=' ')
+            print("%d  Max U/V zeros:  %f  %f " %  (ens['U'][n,:,:,:].max(), ens['V'][n,:,:,:].max()))
+            print("%d  Max FU/FV zeros:  %f  %f " %  fstate.u[n,:,:,:].max(), fstate.v[n,:,:,:].max())
 
         print("\n ==> ens_IC_ZeroUV: !!!OVERWRITING!!! CM1 Restart files for ZERO WINDS")
         
